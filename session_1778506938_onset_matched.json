@@ -1,0 +1,378 @@
+[
+  {
+    "onset_ms": 3332,
+    "key_ms": 3281,
+    "diff_ms": 51,
+    "key": "r",
+    "is_error": false,
+    "interval_ms": 161
+  },
+  {
+    "onset_ms": 3703,
+    "key_ms": 3720,
+    "diff_ms": -17,
+    "key": "y",
+    "is_error": false,
+    "interval_ms": 460
+  },
+  {
+    "onset_ms": 4446,
+    "key_ms": 4430,
+    "diff_ms": 16,
+    "key": "r",
+    "is_error": false,
+    "interval_ms": 137
+  },
+  {
+    "onset_ms": 5375,
+    "key_ms": 5362,
+    "diff_ms": 13,
+    "key": "t",
+    "is_error": false,
+    "interval_ms": 192
+  },
+  {
+    "onset_ms": 5561,
+    "key_ms": 5484,
+    "diff_ms": 77,
+    "key": "e",
+    "is_error": false,
+    "interval_ms": 64
+  },
+  {
+    "onset_ms": 7047,
+    "key_ms": 7000,
+    "diff_ms": 47,
+    "key": "s",
+    "is_error": false,
+    "interval_ms": 122
+  },
+  {
+    "onset_ms": 7604,
+    "key_ms": 7636,
+    "diff_ms": -32,
+    "key": "k",
+    "is_error": false,
+    "interval_ms": 118
+  },
+  {
+    "onset_ms": 7976,
+    "key_ms": 7969,
+    "diff_ms": 7,
+    "key": "s",
+    "is_error": false,
+    "interval_ms": 104
+  },
+  {
+    "onset_ms": 8347,
+    "key_ms": 8422,
+    "diff_ms": -75,
+    "key": "b",
+    "is_error": false,
+    "interval_ms": 365
+  },
+  {
+    "onset_ms": 8533,
+    "key_ms": 8500,
+    "diff_ms": 33,
+    "key": "b",
+    "is_error": false,
+    "interval_ms": 365
+  },
+  {
+    "onset_ms": 9090,
+    "key_ms": 9067,
+    "diff_ms": 23,
+    "key": "-",
+    "is_error": false,
+    "interval_ms": 542
+  },
+  {
+    "onset_ms": 9462,
+    "key_ms": 9450,
+    "diff_ms": 12,
+    "key": "s",
+    "is_error": false,
+    "interval_ms": 319
+  },
+  {
+    "onset_ms": 10019,
+    "key_ms": 9953,
+    "diff_ms": 66,
+    "key": "a",
+    "is_error": false,
+    "interval_ms": 78
+  },
+  {
+    "onset_ms": 10948,
+    "key_ms": 10907,
+    "diff_ms": 41,
+    "key": "t",
+    "is_error": false,
+    "interval_ms": 147
+  },
+  {
+    "onset_ms": 11133,
+    "key_ms": 11072,
+    "diff_ms": 61,
+    "key": "y",
+    "is_error": false,
+    "interval_ms": 136
+  },
+  {
+    "onset_ms": 11319,
+    "key_ms": 11263,
+    "diff_ms": 56,
+    "key": "t",
+    "is_error": false,
+    "interval_ms": 111
+  },
+  {
+    "onset_ms": 11505,
+    "key_ms": 11503,
+    "diff_ms": 2,
+    "key": "e",
+    "is_error": true,
+    "interval_ms": 63
+  },
+  {
+    "onset_ms": 12434,
+    "key_ms": 12416,
+    "diff_ms": 18,
+    "key": "a",
+    "is_error": false,
+    "interval_ms": 63
+  },
+  {
+    "onset_ms": 12620,
+    "key_ms": 12570,
+    "diff_ms": 50,
+    "key": "i",
+    "is_error": false,
+    "interval_ms": 78
+  },
+  {
+    "onset_ms": 12805,
+    "key_ms": 12780,
+    "diff_ms": 25,
+    "key": "a",
+    "is_error": false,
+    "interval_ms": 37
+  },
+  {
+    "onset_ms": 12991,
+    "key_ms": 12959,
+    "diff_ms": 32,
+    "key": "t",
+    "is_error": false,
+    "interval_ms": 203
+  },
+  {
+    "onset_ms": 13734,
+    "key_ms": 13677,
+    "diff_ms": 57,
+    "key": "s",
+    "is_error": false,
+    "interval_ms": 215
+  },
+  {
+    "onset_ms": 13920,
+    "key_ms": 13963,
+    "diff_ms": -43,
+    "key": "y",
+    "is_error": false,
+    "interval_ms": 100
+  },
+  {
+    "onset_ms": 14106,
+    "key_ms": 14030,
+    "diff_ms": 76,
+    "key": "y",
+    "is_error": false,
+    "interval_ms": 100
+  },
+  {
+    "onset_ms": 14291,
+    "key_ms": 14215,
+    "diff_ms": 76,
+    "key": "k",
+    "is_error": false,
+    "interval_ms": 210
+  },
+  {
+    "onset_ms": 14477,
+    "key_ms": 14443,
+    "diff_ms": 34,
+    "key": "r",
+    "is_error": false,
+    "interval_ms": 129
+  },
+  {
+    "onset_ms": 14849,
+    "key_ms": 14790,
+    "diff_ms": 59,
+    "key": "a",
+    "is_error": false,
+    "interval_ms": 57
+  },
+  {
+    "onset_ms": 15034,
+    "key_ms": 14952,
+    "diff_ms": 82,
+    "key": "a",
+    "is_error": false,
+    "interval_ms": 109
+  },
+  {
+    "onset_ms": 15220,
+    "key_ms": 15133,
+    "diff_ms": 87,
+    "key": "a",
+    "is_error": false,
+    "interval_ms": 63
+  },
+  {
+    "onset_ms": 15406,
+    "key_ms": 15321,
+    "diff_ms": 85,
+    "key": "i",
+    "is_error": false,
+    "interval_ms": 139
+  },
+  {
+    "onset_ms": 15592,
+    "key_ms": 15556,
+    "diff_ms": 36,
+    "key": "i",
+    "is_error": false,
+    "interval_ms": 42
+  },
+  {
+    "onset_ms": 15777,
+    "key_ms": 15754,
+    "diff_ms": 23,
+    "key": "o",
+    "is_error": false,
+    "interval_ms": 72
+  },
+  {
+    "onset_ms": 15963,
+    "key_ms": 15950,
+    "diff_ms": 13,
+    "key": "y",
+    "is_error": false,
+    "interval_ms": 156
+  },
+  {
+    "onset_ms": 16149,
+    "key_ms": 16122,
+    "diff_ms": 27,
+    "key": "t",
+    "is_error": false,
+    "interval_ms": 104
+  },
+  {
+    "onset_ms": 16335,
+    "key_ms": 16301,
+    "diff_ms": 34,
+    "key": "t",
+    "is_error": false,
+    "interval_ms": 171
+  },
+  {
+    "onset_ms": 17078,
+    "key_ms": 17045,
+    "diff_ms": 33,
+    "key": "k",
+    "is_error": false,
+    "interval_ms": 177
+  },
+  {
+    "onset_ms": 17264,
+    "key_ms": 17202,
+    "diff_ms": 62,
+    "key": "n",
+    "is_error": false,
+    "interval_ms": 125
+  },
+  {
+    "onset_ms": 17635,
+    "key_ms": 17547,
+    "diff_ms": 88,
+    "key": "t",
+    "is_error": false,
+    "interval_ms": 172
+  },
+  {
+    "onset_ms": 18192,
+    "key_ms": 18197,
+    "diff_ms": -5,
+    "key": "u",
+    "is_error": false,
+    "interval_ms": 54
+  },
+  {
+    "onset_ms": 18564,
+    "key_ms": 18539,
+    "diff_ms": 25,
+    "key": "n",
+    "is_error": false,
+    "interval_ms": 144
+  },
+  {
+    "onset_ms": 18750,
+    "key_ms": 18716,
+    "diff_ms": 34,
+    "key": "a",
+    "is_error": false,
+    "interval_ms": 65
+  },
+  {
+    "onset_ms": 18935,
+    "key_ms": 18852,
+    "diff_ms": 83,
+    "key": "o",
+    "is_error": false,
+    "interval_ms": 55
+  },
+  {
+    "onset_ms": 19121,
+    "key_ms": 19049,
+    "diff_ms": 72,
+    "key": "n",
+    "is_error": false,
+    "interval_ms": 193
+  },
+  {
+    "onset_ms": 23208,
+    "key_ms": 23127,
+    "diff_ms": 81,
+    "key": "b",
+    "is_error": false,
+    "interval_ms": 682
+  },
+  {
+    "onset_ms": 24137,
+    "key_ms": 24111,
+    "diff_ms": 26,
+    "key": "d",
+    "is_error": false,
+    "interval_ms": 716
+  },
+  {
+    "onset_ms": 24508,
+    "key_ms": 24563,
+    "diff_ms": -55,
+    "key": "m",
+    "is_error": false,
+    "interval_ms": 228
+  },
+  {
+    "onset_ms": 25623,
+    "key_ms": 25557,
+    "diff_ms": 66,
+    "key": "s",
+    "is_error": false,
+    "interval_ms": 90
+  }
+]

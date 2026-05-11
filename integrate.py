@@ -26,8 +26,37 @@ key_layout  = grid["key_layout"]
 kb_x, kb_y = bbox["x"], bbox["y"]
 kb_w, kb_h  = bbox["w"], bbox["h"]
 
-print(f"onsetマッチ数: {len(onset_matched)}件")
-print(f"poseフレーム数: {len(pose_log)}件")
+# -----------------------------------------------
+# タイムスタンプのオフセット補正
+# -----------------------------------------------
+# onsetはキーログ基準（録音開始からの相対時刻）
+# poseは動画基準（動画開始からの相対時刻）
+# recorder.pyでは録音・動画・キーロガーを同時起動しているので
+# キーロガーの最初の打鍵時刻とposeの対応するフレームを使ってオフセットを推定
+
+# onsetの最初の時刻とposeの時刻範囲を確認
+onset_first = onset_matched[0]["onset_ms"]
+pose_times  = [f["timestamp_ms"] for f in pose_log]
+pose_first  = min(pose_times)
+pose_last   = max(pose_times)
+
+print(f"onset範囲: {onset_first}ms 〜 {onset_matched[-1]['onset_ms']}ms")
+print(f"pose範囲:  {pose_first}ms 〜 {pose_last}ms")
+
+# onsetの時刻をpose基準に変換するオフセット
+# onsetはキーログ基準なので、キーログの最初の打鍵時刻を引いてpose基準に合わせる
+with open(ONSET_FILE.replace("onset_matched", "keys"), encoding="utf-8") as f:
+    keylog_all = json.load(f)
+first_key_ts = min(e["timestamp_ms"] for e in keylog_all if not e["is_backspace"] and not e["key"].startswith("Key."))
+print(f"キーログ最初の打鍵: {first_key_ts}ms")
+
+# オフセット = onset基準時刻 - pose基準時刻の差
+# onsetはキーログ基準なのでそのまま使える（recorder.pyで同時起動しているため）
+# poseはフレーム番号×(1/fps)×1000で計算されているので同じ基準のはず
+# → ずれがあれば手動で補正
+OFFSET_MS = first_key_ts  # キーログ最初の打鍵時刻でオフセット補正
+
+print(f"適用オフセット: {OFFSET_MS}ms")
 
 # -----------------------------------------------
 # 標準運指テーブル
@@ -64,12 +93,12 @@ def pixel_to_key(px, py):
 # -----------------------------------------------
 # onset時刻で骨格フレームを検索し最近傍指を特定
 # -----------------------------------------------
-SEARCH_WINDOW_MS = 80  # onset前後の探索範囲
+SEARCH_WINDOW_MS = 300  # 探索範囲を広げる
 
 results = []
 
 for entry in onset_matched:
-    onset_ms = entry["onset_ms"]
+    onset_ms = entry["onset_ms"] - OFFSET_MS  # オフセット補正
     key      = entry["key"]
     std_finger = STANDARD_FINGER.get(key, "?")
 
@@ -169,8 +198,9 @@ print("\n--- サンプル（先頭20件）---")
 for r in results[:20]:
     match_str = "✓" if r["key_match"] else "✗"
     src = "CAM" if r["source"] == "camera" else "STD"
+    std_name = r.get('std_finger_name') or '?'
     print(f"  [{src}]{match_str} key={r['key']:4s} "
-          f"標準:{r['std_finger_name']:8s} "
+          f"標準:{std_name:8s} "
           f"検出:{str(r['actual_finger']):20s} "
           f"interval:{r['interval_ms']}ms")
 
