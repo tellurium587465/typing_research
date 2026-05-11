@@ -1,0 +1,10 @@
+*.avi
+*.wav
+*.mp4
+*.task
+*.png
+session_*_pose.json
+session_*_video.*
+session_*_audio.*
+__pycache__/
+.venv/
