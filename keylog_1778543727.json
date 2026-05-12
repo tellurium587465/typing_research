@@ -1,0 +1,555 @@
+[
+  {
+    "timestamp_ms": 3033,
+    "key": "k",
+    "interval_ms": 3033,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 3215,
+    "key": "i",
+    "interval_ms": 182,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 3385,
+    "key": "-",
+    "interval_ms": 170,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 3604,
+    "key": "r",
+    "interval_ms": 219,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 3705,
+    "key": "o",
+    "interval_ms": 101,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 3869,
+    "key": "g",
+    "interval_ms": 164,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 3940,
+    "key": "a",
+    "interval_ms": 71,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 4055,
+    "key": "-",
+    "interval_ms": 115,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 4283,
+    "key": "d",
+    "interval_ms": 228,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 4354,
+    "key": "a",
+    "interval_ms": 71,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 4513,
+    "key": "y",
+    "interval_ms": 159,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 4576,
+    "key": "o",
+    "interval_ms": 63,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 5456,
+    "key": "i",
+    "interval_ms": 880,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 5541,
+    "key": "r",
+    "interval_ms": 85,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 5623,
+    "key": "o",
+    "interval_ms": 82,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 5701,
+    "key": "i",
+    "interval_ms": 78,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 5789,
+    "key": "r",
+    "interval_ms": 88,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 5873,
+    "key": "o",
+    "interval_ms": 84,
+    "is_backspace": false,
+    "is_error": true
+  },
+  {
+    "timestamp_ms": 8660,
+    "key": "Key.backspace",
+    "interval_ms": 2787,
+    "is_backspace": true,
+    "is_error": true
+  },
+  {
+    "timestamp_ms": 8819,
+    "key": "Key.backspace",
+    "interval_ms": 159,
+    "is_backspace": true,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 10149,
+    "key": "h",
+    "interval_ms": 1330,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 10239,
+    "key": "a",
+    "interval_ms": 90,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 10322,
+    "key": "i",
+    "interval_ms": 83,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 10422,
+    "key": "r",
+    "interval_ms": 100,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 10466,
+    "key": "e",
+    "interval_ms": 44,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 10618,
+    "key": "t",
+    "interval_ms": 152,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 10689,
+    "key": "u",
+    "interval_ms": 71,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 10835,
+    "key": "g",
+    "interval_ms": 146,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 10901,
+    "key": "a",
+    "interval_ms": 66,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 11087,
+    "key": "t",
+    "interval_ms": 186,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 11151,
+    "key": "i",
+    "interval_ms": 64,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 11256,
+    "key": "g",
+    "interval_ms": 105,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 11365,
+    "key": "u",
+    "interval_ms": 109,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 11372,
+    "key": "a",
+    "interval_ms": 7,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 11551,
+    "key": "k",
+    "interval_ms": 179,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 11626,
+    "key": "a",
+    "interval_ms": 75,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 11792,
+    "key": "r",
+    "interval_ms": 166,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 11792,
+    "key": "a",
+    "interval_ms": 0,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 12266,
+    "key": "t",
+    "interval_ms": 474,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 12326,
+    "key": "a",
+    "interval_ms": 60,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 12397,
+    "key": "i",
+    "interval_ms": 71,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 12562,
+    "key": "h",
+    "interval_ms": 165,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 12631,
+    "key": "e",
+    "interval_ms": 69,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 12770,
+    "key": "n",
+    "interval_ms": 139,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 12887,
+    "key": "n",
+    "interval_ms": 117,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 12965,
+    "key": "d",
+    "interval_ms": 78,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 13029,
+    "key": "a",
+    "interval_ms": 64,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 13090,
+    "key": "k",
+    "interval_ms": 61,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 13187,
+    "key": "e",
+    "interval_ms": 97,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 13336,
+    "key": "d",
+    "interval_ms": 149,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 13422,
+    "key": "o",
+    "interval_ms": 86,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 13553,
+    "key": "s",
+    "interval_ms": 131,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 13655,
+    "key": "i",
+    "interval_ms": 102,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 13814,
+    "key": "z",
+    "interval_ms": 159,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 13879,
+    "key": "e",
+    "interval_ms": 65,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 13956,
+    "key": "n",
+    "interval_ms": 77,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 14072,
+    "key": "n",
+    "interval_ms": 116,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 14189,
+    "key": "g",
+    "interval_ms": 117,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 14240,
+    "key": "e",
+    "interval_ms": 51,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 14307,
+    "key": "n",
+    "interval_ms": 67,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 14421,
+    "key": "n",
+    "interval_ms": 114,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 14520,
+    "key": "g",
+    "interval_ms": 99,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 14641,
+    "key": "o",
+    "interval_ms": 121,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 14961,
+    "key": "t",
+    "interval_ms": 320,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 15023,
+    "key": "o",
+    "interval_ms": 62,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 15186,
+    "key": "k",
+    "interval_ms": 163,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 15250,
+    "key": "a",
+    "interval_ms": 64,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 15403,
+    "key": "d",
+    "interval_ms": 153,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 15619,
+    "key": "e",
+    "interval_ms": 216,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 15837,
+    "key": "y",
+    "interval_ms": 218,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 15922,
+    "key": "a",
+    "interval_ms": 85,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 15972,
+    "key": "r",
+    "interval_ms": 50,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 16056,
+    "key": "o",
+    "interval_ms": 84,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 16089,
+    "key": "u",
+    "interval_ms": 33,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 16252,
+    "key": "k",
+    "interval_ms": 163,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 16357,
+    "key": "a",
+    "interval_ms": 105,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 16456,
+    "key": "n",
+    "interval_ms": 99,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 16523,
+    "key": "e",
+    "interval_ms": 67,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 17268,
+    "key": "Key.esc",
+    "interval_ms": 745,
+    "is_backspace": false,
+    "is_error": false
+  }
+]

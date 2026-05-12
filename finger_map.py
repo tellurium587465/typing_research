@@ -2,7 +2,7 @@ import json
 import numpy as np
 from collections import defaultdict
 
-KEYLOG_FILE = "session_1778404533_keys.json"
+KEYLOG_FILE = "keylog_1778545201.json"
 
 # -----------------------------------------------
 # QWERTY 標準運指テーブル

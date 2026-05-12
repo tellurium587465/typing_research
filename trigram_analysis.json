@@ -1,47 +1,47 @@
 {
-  "session": "session_1778404533_keys.json",
-  "total_keystrokes": 208,
-  "total_trigrams": 206,
+  "session": "keylog_1778545201.json",
+  "total_keystrokes": 358,
+  "total_trigrams": 356,
   "trigram_stats": [
     {
       "fingers": [
-        "R2",
         "R4",
-        "R3"
+        "R4",
+        "R4"
       ],
-      "count": 4,
-      "avg_interval": 295.4,
-      "score": 1181.5,
-      "error_rate": 0.25,
+      "count": 9,
+      "avg_interval": 120.0,
+      "score": 1080.0,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R4",
+        "R2",
+        "R4"
+      ],
+      "count": 8,
+      "avg_interval": 110.2,
+      "score": 882.0,
+      "error_rate": 0.0,
       "same_finger": false,
       "same_hand": true,
       "alternating": false
     },
     {
       "fingers": [
-        "R4",
         "R3",
+        "R4",
         "R3"
       ],
-      "count": 3,
-      "avg_interval": 375.7,
-      "score": 1127.0,
+      "count": 6,
+      "avg_interval": 120.6,
+      "score": 723.5,
       "error_rate": 0.0,
-      "same_finger": true,
-      "same_hand": true,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "R3",
-        "R4",
-        "R4"
-      ],
-      "count": 5,
-      "avg_interval": 171.3,
-      "score": 856.5,
-      "error_rate": 0.0,
-      "same_finger": true,
+      "same_finger": false,
       "same_hand": true,
       "alternating": false
     },
@@ -52,12 +52,82 @@
         "R3"
       ],
       "count": 4,
-      "avg_interval": 206.0,
-      "score": 824.0,
+      "avg_interval": 158.1,
+      "score": 632.5,
       "error_rate": 0.0,
       "same_finger": true,
       "same_hand": true,
       "alternating": false
+    },
+    {
+      "fingers": [
+        "R4",
+        "R4",
+        "R3"
+      ],
+      "count": 5,
+      "avg_interval": 123.0,
+      "score": 615.0,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R3",
+        "R3",
+        "L4"
+      ],
+      "count": 5,
+      "avg_interval": 116.4,
+      "score": 582.0,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R4",
+        "R3",
+        "R3"
+      ],
+      "count": 5,
+      "avg_interval": 114.2,
+      "score": 571.0,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R4",
+        "R3",
+        "R4"
+      ],
+      "count": 4,
+      "avg_interval": 142.0,
+      "score": 568.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L1",
+        "R4",
+        "L1"
+      ],
+      "count": 6,
+      "avg_interval": 93.1,
+      "score": 558.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
     },
     {
       "fingers": [
@@ -66,8 +136,8 @@
         "R4"
       ],
       "count": 6,
-      "avg_interval": 134.8,
-      "score": 808.5,
+      "avg_interval": 92.0,
+      "score": 552.0,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
@@ -75,377 +145,41 @@
     },
     {
       "fingers": [
-        "L1",
-        "R4",
-        "R4"
-      ],
-      "count": 5,
-      "avg_interval": 158.1,
-      "score": 790.5,
-      "error_rate": 0.0,
-      "same_finger": true,
-      "same_hand": false,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "L3",
-        "R3",
-        "R3"
-      ],
-      "count": 4,
-      "avg_interval": 169.4,
-      "score": 677.5,
-      "error_rate": 0.0,
-      "same_finger": true,
-      "same_hand": false,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "R4",
-        "L3",
-        "R4"
-      ],
-      "count": 3,
-      "avg_interval": 224.5,
-      "score": 673.5,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": false,
-      "alternating": true
-    },
-    {
-      "fingers": [
-        "L3",
-        "R4",
-        "R4"
-      ],
-      "count": 3,
-      "avg_interval": 211.5,
-      "score": 634.5,
-      "error_rate": 0.0,
-      "same_finger": true,
-      "same_hand": false,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "R4",
-        "R4",
-        "R4"
-      ],
-      "count": 2,
-      "avg_interval": 286.0,
-      "score": 572.0,
-      "error_rate": 0.0,
-      "same_finger": true,
-      "same_hand": true,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "R4",
-        "L2",
-        "R2"
-      ],
-      "count": 4,
-      "avg_interval": 140.6,
-      "score": 562.5,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": false,
-      "alternating": true
-    },
-    {
-      "fingers": [
-        "R4",
-        "R4",
-        "R3"
-      ],
-      "count": 4,
-      "avg_interval": 139.0,
-      "score": 556.0,
-      "error_rate": 0.0,
-      "same_finger": true,
-      "same_hand": true,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "R4",
-        "R4",
-        "R2"
-      ],
-      "count": 4,
-      "avg_interval": 135.5,
-      "score": 542.0,
-      "error_rate": 0.25,
-      "same_finger": true,
-      "same_hand": true,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "R4",
         "R2",
+        "R3",
         "R4"
       ],
       "count": 4,
-      "avg_interval": 134.5,
-      "score": 538.0,
-      "error_rate": 0.25,
+      "avg_interval": 137.0,
+      "score": 548.0,
+      "error_rate": 0.0,
       "same_finger": false,
       "same_hand": true,
       "alternating": false
     },
     {
       "fingers": [
-        "L3",
-        "L1",
+        "R3",
+        "R4",
         "R4"
       ],
       "count": 4,
-      "avg_interval": 134.4,
-      "score": 537.5,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": false,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "R3",
-        "R4",
-        "L3"
-      ],
-      "count": 3,
-      "avg_interval": 167.5,
-      "score": 502.5,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": false,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "R4",
-        "R4",
-        "L1"
-      ],
-      "count": 2,
-      "avg_interval": 243.8,
-      "score": 487.5,
+      "avg_interval": 124.5,
+      "score": 498.0,
       "error_rate": 0.0,
       "same_finger": true,
-      "same_hand": false,
+      "same_hand": true,
       "alternating": false
     },
     {
       "fingers": [
-        "L1",
         "R4",
+        "L4",
         "L1"
       ],
       "count": 5,
-      "avg_interval": 88.4,
-      "score": 442.0,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": false,
-      "alternating": true
-    },
-    {
-      "fingers": [
-        "R4",
-        "L3",
-        "L1"
-      ],
-      "count": 3,
-      "avg_interval": 145.8,
-      "score": 437.5,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": false,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "R3",
-        "R4",
-        "L1"
-      ],
-      "count": 2,
-      "avg_interval": 201.2,
-      "score": 402.5,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": false,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "L2",
-        "R2",
-        "L4"
-      ],
-      "count": 2,
-      "avg_interval": 196.2,
-      "score": 392.5,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": false,
-      "alternating": true
-    },
-    {
-      "fingers": [
-        "R3",
-        "R3",
-        "L1"
-      ],
-      "count": 4,
-      "avg_interval": 98.0,
-      "score": 392.0,
-      "error_rate": 0.0,
-      "same_finger": true,
-      "same_hand": false,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "R4",
-        "R4",
-        "L4"
-      ],
-      "count": 3,
-      "avg_interval": 129.8,
-      "score": 389.5,
-      "error_rate": 0.0,
-      "same_finger": true,
-      "same_hand": false,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "R3",
-        "R3",
-        "R4"
-      ],
-      "count": 3,
-      "avg_interval": 129.5,
-      "score": 388.5,
-      "error_rate": 0.0,
-      "same_finger": true,
-      "same_hand": true,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "L2",
-        "R4",
-        "R4"
-      ],
-      "count": 3,
-      "avg_interval": 127.0,
-      "score": 381.0,
-      "error_rate": 0.0,
-      "same_finger": true,
-      "same_hand": false,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "L1",
-        "L4",
-        "L1"
-      ],
-      "count": 4,
-      "avg_interval": 92.2,
-      "score": 369.0,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": true,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "R4",
-        "R3",
-        "R2"
-      ],
-      "count": 2,
-      "avg_interval": 172.5,
-      "score": 345.0,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": true,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "L4",
-        "R3",
-        "R4"
-      ],
-      "count": 2,
-      "avg_interval": 172.2,
-      "score": 344.5,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": false,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "L4",
-        "L3",
-        "L1"
-      ],
-      "count": 1,
-      "avg_interval": 327.0,
-      "score": 327.0,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": true,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "R4",
-        "R3",
-        "R4"
-      ],
-      "count": 2,
-      "avg_interval": 153.0,
-      "score": 306.0,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": true,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "R3",
-        "R2",
-        "R4"
-      ],
-      "count": 3,
-      "avg_interval": 101.5,
-      "score": 304.5,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": true,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "L4",
-        "L3",
-        "R3"
-      ],
-      "count": 4,
-      "avg_interval": 74.4,
-      "score": 297.5,
+      "avg_interval": 91.8,
+      "score": 459.0,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
@@ -454,40 +188,12 @@
     {
       "fingers": [
         "R1",
-        "R3",
+        "L4",
         "R4"
       ],
-      "count": 1,
-      "avg_interval": 297.0,
-      "score": 297.0,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": true,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "R2",
-        "R3",
-        "R3"
-      ],
-      "count": 1,
-      "avg_interval": 293.0,
-      "score": 293.0,
-      "error_rate": 0.0,
-      "same_finger": true,
-      "same_hand": true,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "L3",
-        "R4",
-        "L1"
-      ],
-      "count": 2,
-      "avg_interval": 142.5,
-      "score": 285.0,
+      "count": 4,
+      "avg_interval": 112.2,
+      "score": 449.0,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
@@ -495,41 +201,167 @@
     },
     {
       "fingers": [
+        "R3",
+        "L4",
+        "R3"
+      ],
+      "count": 4,
+      "avg_interval": 109.9,
+      "score": 439.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "R4",
+        "R4",
+        "L3"
+      ],
+      "count": 3,
+      "avg_interval": 142.5,
+      "score": 427.5,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L2",
+        "R2",
+        "R3"
+      ],
+      "count": 4,
+      "avg_interval": 105.0,
+      "score": 420.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
         "L1",
         "R3",
+        "L4"
+      ],
+      "count": 4,
+      "avg_interval": 102.6,
+      "score": 410.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "R3",
+        "L4",
         "R4"
       ],
       "count": 4,
-      "avg_interval": 70.5,
-      "score": 282.0,
+      "avg_interval": 100.0,
+      "score": 400.0,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
-      "alternating": false
+      "alternating": true
     },
     {
       "fingers": [
-        "R3",
+        "R2",
         "R4",
-        "L2"
+        "R2"
       ],
-      "count": 1,
-      "avg_interval": 247.0,
-      "score": 247.0,
+      "count": 3,
+      "avg_interval": 124.0,
+      "score": 372.0,
       "error_rate": 0.0,
       "same_finger": false,
-      "same_hand": false,
+      "same_hand": true,
       "alternating": false
     },
     {
       "fingers": [
-        "R4",
-        "R3",
-        "L3"
+        "R1",
+        "R2",
+        "R1"
       ],
       "count": 2,
-      "avg_interval": 121.0,
-      "score": 242.0,
+      "avg_interval": 184.2,
+      "score": 368.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R3",
+        "R3",
+        "R4"
+      ],
+      "count": 3,
+      "avg_interval": 122.7,
+      "score": 368.0,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R4",
+        "R3",
+        "R1"
+      ],
+      "count": 3,
+      "avg_interval": 121.5,
+      "score": 364.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L4",
+        "R4",
+        "R4"
+      ],
+      "count": 4,
+      "avg_interval": 90.5,
+      "score": 362.0,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R3",
+        "R3",
+        "L2"
+      ],
+      "count": 3,
+      "avg_interval": 120.2,
+      "score": 360.5,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L4",
+        "R4",
+        "R3"
+      ],
+      "count": 4,
+      "avg_interval": 84.1,
+      "score": 336.5,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
@@ -537,16 +369,58 @@
     },
     {
       "fingers": [
-        "R4",
+        "R2",
+        "L4",
+        "R1"
+      ],
+      "count": 1,
+      "avg_interval": 335.0,
+      "score": 335.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "R3",
         "R2",
         "R3"
       ],
       "count": 1,
-      "avg_interval": 241.5,
-      "score": 241.5,
+      "avg_interval": 334.0,
+      "score": 334.0,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L4",
+        "L1",
+        "R4"
+      ],
+      "count": 4,
+      "avg_interval": 79.6,
+      "score": 318.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L1",
+        "R4",
+        "R4"
+      ],
+      "count": 3,
+      "avg_interval": 106.0,
+      "score": 318.0,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": false,
       "alternating": false
     },
     {
@@ -556,8 +430,22 @@
         "R3"
       ],
       "count": 3,
-      "avg_interval": 80.5,
-      "score": 241.5,
+      "avg_interval": 104.5,
+      "score": 313.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "L4",
+        "R4",
+        "L4"
+      ],
+      "count": 3,
+      "avg_interval": 101.2,
+      "score": 303.5,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
@@ -566,12 +454,26 @@
     {
       "fingers": [
         "R4",
-        "L4",
-        "R3"
+        "R3",
+        "L1"
       ],
-      "count": 2,
-      "avg_interval": 118.8,
-      "score": 237.5,
+      "count": 3,
+      "avg_interval": 100.8,
+      "score": 302.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L4",
+        "R1",
+        "L4"
+      ],
+      "count": 1,
+      "avg_interval": 301.5,
+      "score": 301.5,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
@@ -579,43 +481,323 @@
     },
     {
       "fingers": [
+        "L4",
+        "R3",
+        "R3"
+      ],
+      "count": 3,
+      "avg_interval": 100.0,
+      "score": 300.0,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R1",
+        "R1",
+        "R2"
+      ],
+      "count": 1,
+      "avg_interval": 295.5,
+      "score": 295.5,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L1",
+        "R4",
+        "R3"
+      ],
+      "count": 3,
+      "avg_interval": 95.7,
+      "score": 287.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R3",
+        "R1",
+        "R4"
+      ],
+      "count": 2,
+      "avg_interval": 140.2,
+      "score": 280.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R3",
+        "R1",
+        "L4"
+      ],
+      "count": 2,
+      "avg_interval": 139.5,
+      "score": 279.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L2",
+        "R4",
+        "R4"
+      ],
+      "count": 2,
+      "avg_interval": 136.2,
+      "score": 272.5,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L1",
+        "R3",
+        "R3"
+      ],
+      "count": 3,
+      "avg_interval": 90.5,
+      "score": 271.5,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
         "R2",
         "R3",
+        "L4"
+      ],
+      "count": 1,
+      "avg_interval": 270.5,
+      "score": 270.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R4",
+        "R4",
+        "L1"
+      ],
+      "count": 3,
+      "avg_interval": 88.5,
+      "score": 265.5,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R3",
+        "L1",
         "R4"
+      ],
+      "count": 3,
+      "avg_interval": 88.0,
+      "score": 264.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "L1",
+        "R4",
+        "R2"
+      ],
+      "count": 4,
+      "avg_interval": 65.9,
+      "score": 263.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R3",
+        "L2",
+        "R2"
+      ],
+      "count": 3,
+      "avg_interval": 87.7,
+      "score": 263.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "R4",
+        "R4",
+        "R1"
+      ],
+      "count": 1,
+      "avg_interval": 258.0,
+      "score": 258.0,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R3",
+        "R3",
+        "L1"
+      ],
+      "count": 2,
+      "avg_interval": 127.2,
+      "score": 254.5,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L1",
+        "R3",
+        "R4"
+      ],
+      "count": 2,
+      "avg_interval": 126.0,
+      "score": 252.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R4",
+        "R3",
+        "R2"
+      ],
+      "count": 1,
+      "avg_interval": 251.5,
+      "score": 251.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L4",
+        "L1",
+        "L4"
+      ],
+      "count": 3,
+      "avg_interval": 83.2,
+      "score": 249.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R4",
+        "R1",
+        "R4"
+      ],
+      "count": 1,
+      "avg_interval": 247.5,
+      "score": 247.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L1",
+        "L4",
+        "R3"
+      ],
+      "count": 3,
+      "avg_interval": 81.8,
+      "score": 245.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R4",
+        "R4",
+        "R2"
+      ],
+      "count": 2,
+      "avg_interval": 121.5,
+      "score": 243.0,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R4",
+        "R4",
+        "L4"
+      ],
+      "count": 2,
+      "avg_interval": 116.0,
+      "score": 232.0,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L3",
+        "L4",
+        "R4"
+      ],
+      "count": 3,
+      "avg_interval": 75.8,
+      "score": 227.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R4",
+        "R3",
+        "L4"
       ],
       "count": 2,
       "avg_interval": 112.0,
       "score": 224.0,
       "error_rate": 0.0,
       "same_finger": false,
-      "same_hand": true,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "R3",
-        "R4",
-        "L4"
-      ],
-      "count": 2,
-      "avg_interval": 109.5,
-      "score": 219.0,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": false,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "R4",
-        "R4",
-        "L3"
-      ],
-      "count": 2,
-      "avg_interval": 108.8,
-      "score": 217.5,
-      "error_rate": 0.0,
-      "same_finger": true,
       "same_hand": false,
       "alternating": false
     },
@@ -625,9 +807,9 @@
         "L3",
         "L4"
       ],
-      "count": 1,
-      "avg_interval": 200.5,
-      "score": 200.5,
+      "count": 2,
+      "avg_interval": 111.8,
+      "score": 223.5,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
@@ -635,13 +817,181 @@
     },
     {
       "fingers": [
-        "R4",
-        "L1",
-        "L4"
+        "L4",
+        "R3",
+        "R4"
+      ],
+      "count": 2,
+      "avg_interval": 111.5,
+      "score": 223.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R3",
+        "L4",
+        "R2"
+      ],
+      "count": 2,
+      "avg_interval": 110.2,
+      "score": 220.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "R3",
+        "L4",
+        "L1"
       ],
       "count": 3,
-      "avg_interval": 64.2,
-      "score": 192.5,
+      "avg_interval": 72.3,
+      "score": 217.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L2",
+        "R3",
+        "R3"
+      ],
+      "count": 2,
+      "avg_interval": 108.0,
+      "score": 216.0,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R3",
+        "L1",
+        "L3"
+      ],
+      "count": 2,
+      "avg_interval": 108.0,
+      "score": 216.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L4",
+        "R1",
+        "R1"
+      ],
+      "count": 1,
+      "avg_interval": 211.5,
+      "score": 211.5,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R2",
+        "L3",
+        "R2"
+      ],
+      "count": 2,
+      "avg_interval": 103.5,
+      "score": 207.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "R1",
+        "L1",
+        "R4"
+      ],
+      "count": 2,
+      "avg_interval": 103.0,
+      "score": 206.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "R3",
+        "R4",
+        "L1"
+      ],
+      "count": 2,
+      "avg_interval": 100.5,
+      "score": 201.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L4",
+        "R3",
+        "L4"
+      ],
+      "count": 2,
+      "avg_interval": 100.2,
+      "score": 200.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "R3",
+        "R3",
+        "L3"
+      ],
+      "count": 2,
+      "avg_interval": 98.0,
+      "score": 196.0,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R4",
+        "L1",
+        "L1"
+      ],
+      "count": 2,
+      "avg_interval": 97.5,
+      "score": 195.0,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R2",
+        "R4",
+        "L1"
+      ],
+      "count": 2,
+      "avg_interval": 97.2,
+      "score": 194.5,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
@@ -654,8 +1004,8 @@
         "L3"
       ],
       "count": 2,
-      "avg_interval": 96.0,
-      "score": 192.0,
+      "avg_interval": 97.0,
+      "score": 194.0,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
@@ -663,9 +1013,23 @@
     },
     {
       "fingers": [
-        "L4",
         "R4",
-        "L2"
+        "L4",
+        "R4"
+      ],
+      "count": 2,
+      "avg_interval": 96.5,
+      "score": 193.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "L3",
+        "R2",
+        "R3"
       ],
       "count": 2,
       "avg_interval": 95.8,
@@ -673,17 +1037,31 @@
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
-      "alternating": true
+      "alternating": false
     },
     {
       "fingers": [
         "R2",
-        "L4",
-        "L3"
+        "R4",
+        "R3"
+      ],
+      "count": 2,
+      "avg_interval": 93.8,
+      "score": 187.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R1",
+        "R2",
+        "L4"
       ],
       "count": 1,
-      "avg_interval": 190.5,
-      "score": 190.5,
+      "avg_interval": 187.5,
+      "score": 187.5,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
@@ -691,27 +1069,69 @@
     },
     {
       "fingers": [
-        "R3",
+        "L4",
         "L1",
-        "R4"
+        "R3"
       ],
-      "count": 2,
-      "avg_interval": 94.0,
-      "score": 188.0,
+      "count": 4,
+      "avg_interval": 46.4,
+      "score": 185.5,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
-      "alternating": true
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L1",
+        "L4",
+        "L1"
+      ],
+      "count": 2,
+      "avg_interval": 90.0,
+      "score": 180.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L1",
+        "L1",
+        "R3"
+      ],
+      "count": 2,
+      "avg_interval": 90.0,
+      "score": 180.0,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L4",
+        "R4",
+        "R2"
+      ],
+      "count": 2,
+      "avg_interval": 89.0,
+      "score": 178.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
     },
     {
       "fingers": [
         "R2",
-        "L4",
-        "R4"
+        "L2",
+        "R3"
       ],
-      "count": 1,
-      "avg_interval": 185.0,
-      "score": 185.0,
+      "count": 2,
+      "avg_interval": 86.0,
+      "score": 172.0,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
@@ -719,13 +1139,83 @@
     },
     {
       "fingers": [
+        "R3",
         "L1",
-        "L4",
-        "R4"
+        "R3"
+      ],
+      "count": 2,
+      "avg_interval": 85.0,
+      "score": 170.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "R4",
+        "L3",
+        "R2"
       ],
       "count": 1,
-      "avg_interval": 170.0,
-      "score": 170.0,
+      "avg_interval": 169.5,
+      "score": 169.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "R4",
+        "R2",
+        "L3"
+      ],
+      "count": 2,
+      "avg_interval": 83.2,
+      "score": 166.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L4",
+        "R3",
+        "R1"
+      ],
+      "count": 1,
+      "avg_interval": 163.0,
+      "score": 163.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R4",
+        "L1",
+        "L4"
+      ],
+      "count": 2,
+      "avg_interval": 80.5,
+      "score": 161.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L4",
+        "L3",
+        "R4"
+      ],
+      "count": 2,
+      "avg_interval": 80.2,
+      "score": 160.5,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
@@ -738,8 +1228,8 @@
         "L2"
       ],
       "count": 2,
-      "avg_interval": 84.8,
-      "score": 169.5,
+      "avg_interval": 78.8,
+      "score": 157.5,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
@@ -747,27 +1237,27 @@
     },
     {
       "fingers": [
-        "L1",
-        "L1",
-        "L4"
+        "R4",
+        "L2",
+        "R2"
       ],
       "count": 1,
-      "avg_interval": 160.5,
-      "score": 160.5,
+      "avg_interval": 157.5,
+      "score": 157.5,
       "error_rate": 0.0,
-      "same_finger": true,
-      "same_hand": true,
-      "alternating": false
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
     },
     {
       "fingers": [
+        "R2",
         "R4",
-        "R3",
-        "L1"
+        "L3"
       ],
       "count": 1,
-      "avg_interval": 150.0,
-      "score": 150.0,
+      "avg_interval": 154.0,
+      "score": 154.0,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
@@ -776,11 +1266,95 @@
     {
       "fingers": [
         "L4",
-        "R3",
-        "L4"
+        "L3",
+        "R3"
+      ],
+      "count": 2,
+      "avg_interval": 76.8,
+      "score": 153.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R2",
+        "R4",
+        "R4"
       ],
       "count": 1,
-      "avg_interval": 144.5,
+      "avg_interval": 153.0,
+      "score": 153.0,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L1",
+        "R3",
+        "L1"
+      ],
+      "count": 2,
+      "avg_interval": 76.5,
+      "score": 153.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "R2",
+        "R1",
+        "L1"
+      ],
+      "count": 1,
+      "avg_interval": 149.0,
+      "score": 149.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L4",
+        "R2",
+        "L3"
+      ],
+      "count": 1,
+      "avg_interval": 147.5,
+      "score": 147.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "L4",
+        "R2",
+        "R3"
+      ],
+      "count": 1,
+      "avg_interval": 147.5,
+      "score": 147.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R3",
+        "L2",
+        "R4"
+      ],
+      "count": 2,
+      "avg_interval": 72.2,
       "score": 144.5,
       "error_rate": 0.0,
       "same_finger": false,
@@ -789,97 +1363,111 @@
     },
     {
       "fingers": [
-        "L3",
-        "L4",
+        "R3",
+        "R1",
         "L3"
-      ],
-      "count": 1,
-      "avg_interval": 144.0,
-      "score": 144.0,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": true,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "R3",
-        "R3",
-        "R2"
       ],
       "count": 1,
       "avg_interval": 143.0,
       "score": 143.0,
       "error_rate": 0.0,
-      "same_finger": true,
-      "same_hand": true,
+      "same_finger": false,
+      "same_hand": false,
       "alternating": false
     },
     {
       "fingers": [
+        "R4",
         "L1",
+        "L2"
+      ],
+      "count": 2,
+      "avg_interval": 71.2,
+      "score": 142.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R4",
+        "R3",
+        "L2"
+      ],
+      "count": 2,
+      "avg_interval": 70.0,
+      "score": 140.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R1",
         "L1",
         "L1"
       ],
       "count": 1,
-      "avg_interval": 142.5,
-      "score": 142.5,
+      "avg_interval": 140.0,
+      "score": 140.0,
       "error_rate": 0.0,
       "same_finger": true,
-      "same_hand": true,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "L1",
-        "L2",
-        "R4"
-      ],
-      "count": 2,
-      "avg_interval": 71.0,
-      "score": 142.0,
-      "error_rate": 0.0,
-      "same_finger": false,
       "same_hand": false,
       "alternating": false
     },
     {
       "fingers": [
         "R4",
-        "L4",
-        "L3"
-      ],
-      "count": 2,
-      "avg_interval": 70.2,
-      "score": 140.5,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": false,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "R2",
-        "R4",
+        "L3",
         "L3"
       ],
       "count": 1,
       "avg_interval": 139.5,
       "score": 139.5,
       "error_rate": 0.0,
-      "same_finger": false,
+      "same_finger": true,
       "same_hand": false,
       "alternating": false
     },
     {
       "fingers": [
-        "L4",
-        "L1",
-        "L4"
+        "L3",
+        "R4",
+        "L2"
       ],
       "count": 1,
-      "avg_interval": 136.5,
-      "score": 136.5,
+      "avg_interval": 138.0,
+      "score": 138.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "R2",
+        "L4",
+        "R2"
+      ],
+      "count": 1,
+      "avg_interval": 137.5,
+      "score": 137.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "L3",
+        "L4",
+        "L1"
+      ],
+      "count": 1,
+      "avg_interval": 134.0,
+      "score": 134.0,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": true,
@@ -887,13 +1475,69 @@
     },
     {
       "fingers": [
-        "L4",
         "R4",
+        "R2",
         "R3"
       ],
       "count": 1,
-      "avg_interval": 133.5,
-      "score": 133.5,
+      "avg_interval": 133.0,
+      "score": 133.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L1",
+        "L4",
+        "L3"
+      ],
+      "count": 1,
+      "avg_interval": 131.5,
+      "score": 131.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R3",
+        "R4",
+        "R2"
+      ],
+      "count": 1,
+      "avg_interval": 131.5,
+      "score": 131.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R2",
+        "R3",
+        "R3"
+      ],
+      "count": 1,
+      "avg_interval": 131.5,
+      "score": 131.5,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R3",
+        "L1",
+        "L4"
+      ],
+      "count": 1,
+      "avg_interval": 131.0,
+      "score": 131.0,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
@@ -901,12 +1545,12 @@
     },
     {
       "fingers": [
-        "L4",
-        "L3",
-        "R4"
+        "R1",
+        "R4",
+        "L1"
       ],
-      "count": 2,
-      "avg_interval": 65.2,
+      "count": 1,
+      "avg_interval": 130.5,
       "score": 130.5,
       "error_rate": 0.0,
       "same_finger": false,
@@ -915,27 +1559,27 @@
     },
     {
       "fingers": [
-        "R2",
-        "L2",
-        "R2"
+        "L1",
+        "L1",
+        "L1"
       ],
       "count": 1,
-      "avg_interval": 128.5,
-      "score": 128.5,
+      "avg_interval": 130.0,
+      "score": 130.0,
       "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": false,
-      "alternating": true
+      "same_finger": true,
+      "same_hand": true,
+      "alternating": false
     },
     {
       "fingers": [
-        "L4",
         "R2",
-        "R3"
+        "R3",
+        "L1"
       ],
       "count": 1,
-      "avg_interval": 128.0,
-      "score": 128.0,
+      "avg_interval": 127.5,
+      "score": 127.5,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
@@ -944,54 +1588,82 @@
     {
       "fingers": [
         "R3",
+        "R4",
+        "L4"
+      ],
+      "count": 1,
+      "avg_interval": 126.5,
+      "score": 126.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L2",
+        "L2",
+        "R3"
+      ],
+      "count": 1,
+      "avg_interval": 126.5,
+      "score": 126.5,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L1",
+        "L1",
+        "R4"
+      ],
+      "count": 1,
+      "avg_interval": 124.5,
+      "score": 124.5,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L2",
         "L1",
         "L1"
+      ],
+      "count": 1,
+      "avg_interval": 124.0,
+      "score": 124.0,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R4",
+        "L4",
+        "R1"
       ],
       "count": 1,
       "avg_interval": 123.0,
       "score": 123.0,
       "error_rate": 0.0,
-      "same_finger": true,
-      "same_hand": false,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "R3",
-        "R4",
-        "R3"
-      ],
-      "count": 1,
-      "avg_interval": 120.5,
-      "score": 120.5,
-      "error_rate": 0.0,
       "same_finger": false,
-      "same_hand": true,
-      "alternating": false
+      "same_hand": false,
+      "alternating": true
     },
     {
       "fingers": [
-        "L1",
-        "R3",
-        "R3"
+        "R2",
+        "R1",
+        "R2"
       ],
       "count": 1,
-      "avg_interval": 119.0,
-      "score": 119.0,
-      "error_rate": 0.0,
-      "same_finger": true,
-      "same_hand": false,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "L4",
-        "L1",
-        "L2"
-      ],
-      "count": 2,
-      "avg_interval": 59.2,
-      "score": 118.5,
+      "avg_interval": 123.0,
+      "score": 123.0,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": true,
@@ -1000,26 +1672,26 @@
     {
       "fingers": [
         "L2",
-        "R3",
-        "L4"
+        "L1",
+        "R4"
       ],
-      "count": 1,
-      "avg_interval": 116.5,
-      "score": 116.5,
+      "count": 2,
+      "avg_interval": 60.5,
+      "score": 121.0,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
-      "alternating": true
+      "alternating": false
     },
     {
       "fingers": [
         "R3",
-        "R3",
-        "L4"
+        "L2",
+        "L2"
       ],
       "count": 1,
-      "avg_interval": 115.5,
-      "score": 115.5,
+      "avg_interval": 117.0,
+      "score": 117.0,
       "error_rate": 0.0,
       "same_finger": true,
       "same_hand": false,
@@ -1027,9 +1699,9 @@
     },
     {
       "fingers": [
-        "R4",
-        "L4",
-        "R4"
+        "L3",
+        "R1",
+        "L1"
       ],
       "count": 1,
       "avg_interval": 115.0,
@@ -1042,12 +1714,40 @@
     {
       "fingers": [
         "L1",
-        "R4",
-        "R3"
+        "L4",
+        "R2"
+      ],
+      "count": 1,
+      "avg_interval": 112.0,
+      "score": 112.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L3",
+        "L3",
+        "R4"
       ],
       "count": 1,
       "avg_interval": 111.0,
       "score": 111.0,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R3",
+        "R2",
+        "L1"
+      ],
+      "count": 1,
+      "avg_interval": 110.5,
+      "score": 110.5,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
@@ -1056,82 +1756,40 @@
     {
       "fingers": [
         "L1",
-        "R1",
-        "R3"
+        "L3",
+        "L4"
       ],
       "count": 1,
-      "avg_interval": 108.0,
-      "score": 108.0,
+      "avg_interval": 108.5,
+      "score": 108.5,
       "error_rate": 0.0,
       "same_finger": false,
-      "same_hand": false,
+      "same_hand": true,
       "alternating": false
     },
     {
       "fingers": [
-        "R3",
-        "L4",
+        "R1",
+        "R1",
         "L1"
       ],
       "count": 1,
-      "avg_interval": 107.0,
-      "score": 107.0,
+      "avg_interval": 104.5,
+      "score": 104.5,
       "error_rate": 0.0,
-      "same_finger": false,
+      "same_finger": true,
       "same_hand": false,
       "alternating": false
     },
     {
       "fingers": [
-        "L2",
-        "R2",
-        "L2"
-      ],
-      "count": 1,
-      "avg_interval": 107.0,
-      "score": 107.0,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": false,
-      "alternating": true
-    },
-    {
-      "fingers": [
-        "R2",
-        "L2",
-        "R3"
-      ],
-      "count": 1,
-      "avg_interval": 105.0,
-      "score": 105.0,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": false,
-      "alternating": true
-    },
-    {
-      "fingers": [
-        "L4",
-        "R4",
-        "R2"
-      ],
-      "count": 1,
-      "avg_interval": 105.0,
-      "score": 105.0,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": false,
-      "alternating": false
-    },
-    {
-      "fingers": [
+        "L3",
         "R3",
-        "L2",
-        "R4"
+        "L1"
       ],
       "count": 1,
-      "avg_interval": 104.0,
-      "score": 104.0,
+      "avg_interval": 104.5,
+      "score": 104.5,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
@@ -1139,9 +1797,23 @@
     },
     {
       "fingers": [
-        "L2",
+        "R4",
+        "L3",
+        "R1"
+      ],
+      "count": 1,
+      "avg_interval": 103.5,
+      "score": 103.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
         "R2",
-        "R3"
+        "R3",
+        "L2"
       ],
       "count": 1,
       "avg_interval": 103.0,
@@ -1153,27 +1825,27 @@
     },
     {
       "fingers": [
-        "L2",
-        "R3",
-        "R4"
-      ],
-      "count": 1,
-      "avg_interval": 98.0,
-      "score": 98.0,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": false,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "R2",
+        "L4",
         "R4",
         "L2"
       ],
       "count": 1,
-      "avg_interval": 96.5,
-      "score": 96.5,
+      "avg_interval": 101.5,
+      "score": 101.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "R2",
+        "L3",
+        "L4"
+      ],
+      "count": 1,
+      "avg_interval": 101.0,
+      "score": 101.0,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
@@ -1181,13 +1853,181 @@
     },
     {
       "fingers": [
-        "L4",
         "L1",
+        "L1",
+        "L4"
+      ],
+      "count": 1,
+      "avg_interval": 101.0,
+      "score": 101.0,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L1",
+        "R1",
         "R1"
       ],
       "count": 1,
-      "avg_interval": 94.0,
-      "score": 94.0,
+      "avg_interval": 101.0,
+      "score": 101.0,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R3",
+        "L1",
+        "L2"
+      ],
+      "count": 1,
+      "avg_interval": 100.5,
+      "score": 100.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R1",
+        "R3",
+        "R1"
+      ],
+      "count": 1,
+      "avg_interval": 100.5,
+      "score": 100.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L3",
+        "R4",
+        "R4"
+      ],
+      "count": 1,
+      "avg_interval": 100.5,
+      "score": 100.5,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L3",
+        "R3",
+        "R3"
+      ],
+      "count": 1,
+      "avg_interval": 99.5,
+      "score": 99.5,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L3",
+        "R3",
+        "L3"
+      ],
+      "count": 1,
+      "avg_interval": 99.5,
+      "score": 99.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "L1",
+        "L2",
+        "L1"
+      ],
+      "count": 1,
+      "avg_interval": 99.0,
+      "score": 99.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L3",
+        "R2",
+        "L2"
+      ],
+      "count": 1,
+      "avg_interval": 98.5,
+      "score": 98.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "R2",
+        "L4",
+        "R3"
+      ],
+      "count": 1,
+      "avg_interval": 98.5,
+      "score": 98.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "R1",
+        "R4",
+        "R4"
+      ],
+      "count": 1,
+      "avg_interval": 97.5,
+      "score": 97.5,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L3",
+        "R2",
+        "R4"
+      ],
+      "count": 1,
+      "avg_interval": 95.5,
+      "score": 95.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R4",
+        "R3",
+        "L3"
+      ],
+      "count": 1,
+      "avg_interval": 95.0,
+      "score": 95.0,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
@@ -1196,12 +2036,82 @@
     {
       "fingers": [
         "L1",
-        "R3",
+        "R1",
         "L4"
       ],
       "count": 1,
       "avg_interval": 94.0,
       "score": 94.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "L4",
+        "R2",
+        "L2"
+      ],
+      "count": 1,
+      "avg_interval": 93.0,
+      "score": 93.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "L1",
+        "R4",
+        "L4"
+      ],
+      "count": 1,
+      "avg_interval": 92.5,
+      "score": 92.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "R3",
+        "L3",
+        "R2"
+      ],
+      "count": 1,
+      "avg_interval": 92.5,
+      "score": 92.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "L3",
+        "R4",
+        "L1"
+      ],
+      "count": 1,
+      "avg_interval": 91.5,
+      "score": 91.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "R4",
+        "L2",
+        "R3"
+      ],
+      "count": 1,
+      "avg_interval": 91.0,
+      "score": 91.0,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
@@ -1214,26 +2124,12 @@
         "L4"
       ],
       "count": 1,
-      "avg_interval": 93.0,
-      "score": 93.0,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": false,
-      "alternating": true
-    },
-    {
-      "fingers": [
-        "R2",
-        "L2",
-        "L3"
-      ],
-      "count": 1,
       "avg_interval": 90.5,
       "score": 90.5,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
-      "alternating": false
+      "alternating": true
     },
     {
       "fingers": [
@@ -1251,23 +2147,51 @@
     },
     {
       "fingers": [
-        "R3",
-        "R4",
-        "R2"
+        "R2",
+        "L1",
+        "L1"
       ],
       "count": 1,
-      "avg_interval": 88.5,
-      "score": 88.5,
+      "avg_interval": 89.5,
+      "score": 89.5,
       "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": true,
+      "same_finger": true,
+      "same_hand": false,
       "alternating": false
     },
     {
       "fingers": [
-        "R4",
         "R3",
-        "L2"
+        "R2",
+        "L4"
+      ],
+      "count": 1,
+      "avg_interval": 89.0,
+      "score": 89.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L1",
+        "R3",
+        "L3"
+      ],
+      "count": 1,
+      "avg_interval": 88.0,
+      "score": 88.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "R2",
+        "R4",
+        "L4"
       ],
       "count": 1,
       "avg_interval": 87.0,
@@ -1279,13 +2203,13 @@
     },
     {
       "fingers": [
-        "R4",
-        "L4",
+        "R2",
+        "L2",
         "R2"
       ],
       "count": 1,
-      "avg_interval": 86.0,
-      "score": 86.0,
+      "avg_interval": 86.5,
+      "score": 86.5,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
@@ -1293,9 +2217,23 @@
     },
     {
       "fingers": [
-        "R2",
         "R4",
-        "L1"
+        "R1",
+        "R2"
+      ],
+      "count": 1,
+      "avg_interval": 86.0,
+      "score": 86.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L2",
+        "R4",
+        "R1"
       ],
       "count": 1,
       "avg_interval": 85.5,
@@ -1307,8 +2245,50 @@
     },
     {
       "fingers": [
-        "L1",
+        "R1",
         "R4",
+        "L4"
+      ],
+      "count": 1,
+      "avg_interval": 85.5,
+      "score": 85.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R3",
+        "L3",
+        "R4"
+      ],
+      "count": 1,
+      "avg_interval": 85.0,
+      "score": 85.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "R4",
+        "R1",
+        "L1"
+      ],
+      "count": 1,
+      "avg_interval": 85.0,
+      "score": 85.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R2",
+        "R3",
         "R2"
       ],
       "count": 1,
@@ -1316,18 +2296,18 @@
       "score": 84.5,
       "error_rate": 0.0,
       "same_finger": false,
-      "same_hand": false,
+      "same_hand": true,
       "alternating": false
     },
     {
       "fingers": [
-        "L3",
+        "L2",
         "R3",
-        "R2"
+        "R4"
       ],
       "count": 1,
-      "avg_interval": 84.0,
-      "score": 84.0,
+      "avg_interval": 83.0,
+      "score": 83.0,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
@@ -1335,13 +2315,13 @@
     },
     {
       "fingers": [
+        "L2",
         "R3",
-        "L4",
-        "R4"
+        "L2"
       ],
       "count": 1,
-      "avg_interval": 83.5,
-      "score": 83.5,
+      "avg_interval": 82.0,
+      "score": 82.0,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
@@ -1350,12 +2330,194 @@
     {
       "fingers": [
         "R4",
-        "R4",
-        "L2"
+        "L3",
+        "L1"
       ],
       "count": 1,
-      "avg_interval": 83.5,
-      "score": 83.5,
+      "avg_interval": 81.5,
+      "score": 81.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R1",
+        "L1",
+        "L4"
+      ],
+      "count": 1,
+      "avg_interval": 79.5,
+      "score": 79.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R1",
+        "L3",
+        "L1"
+      ],
+      "count": 1,
+      "avg_interval": 76.5,
+      "score": 76.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L2",
+        "R2",
+        "L4"
+      ],
+      "count": 1,
+      "avg_interval": 76.5,
+      "score": 76.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": true
+    },
+    {
+      "fingers": [
+        "R4",
+        "L4",
+        "L3"
+      ],
+      "count": 1,
+      "avg_interval": 76.5,
+      "score": 76.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L4",
+        "R2",
+        "R4"
+      ],
+      "count": 1,
+      "avg_interval": 75.5,
+      "score": 75.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R2",
+        "L2",
+        "L3"
+      ],
+      "count": 1,
+      "avg_interval": 75.0,
+      "score": 75.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R3",
+        "R4",
+        "R1"
+      ],
+      "count": 1,
+      "avg_interval": 71.0,
+      "score": 71.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L2",
+        "R3",
+        "R1"
+      ],
+      "count": 1,
+      "avg_interval": 70.0,
+      "score": 70.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R3",
+        "R3",
+        "R2"
+      ],
+      "count": 1,
+      "avg_interval": 70.0,
+      "score": 70.0,
+      "error_rate": 0.0,
+      "same_finger": true,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R4",
+        "L2",
+        "L1"
+      ],
+      "count": 1,
+      "avg_interval": 68.5,
+      "score": 68.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R3",
+        "L2",
+        "L1"
+      ],
+      "count": 1,
+      "avg_interval": 67.0,
+      "score": 67.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L1",
+        "L2",
+        "R4"
+      ],
+      "count": 1,
+      "avg_interval": 63.5,
+      "score": 63.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L1",
+        "L1",
+        "R1"
+      ],
+      "count": 1,
+      "avg_interval": 63.0,
+      "score": 63.0,
       "error_rate": 0.0,
       "same_finger": true,
       "same_hand": false,
@@ -1363,107 +2525,9 @@
     },
     {
       "fingers": [
-        "R3",
-        "R2",
-        "L2"
-      ],
-      "count": 1,
-      "avg_interval": 83.5,
-      "score": 83.5,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": false,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "L4",
-        "R2",
-        "R4"
-      ],
-      "count": 1,
-      "avg_interval": 78.5,
-      "score": 78.5,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": false,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "L2",
-        "R2",
-        "R4"
-      ],
-      "count": 1,
-      "avg_interval": 73.5,
-      "score": 73.5,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": false,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "R2",
-        "L2",
-        "L1"
-      ],
-      "count": 1,
-      "avg_interval": 72.5,
-      "score": 72.5,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": false,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "R3",
         "L1",
-        "L4"
-      ],
-      "count": 1,
-      "avg_interval": 71.5,
-      "score": 71.5,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": false,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "R2",
-        "R4",
-        "L4"
-      ],
-      "count": 1,
-      "avg_interval": 64.0,
-      "score": 64.0,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": false,
-      "alternating": false
-    },
-    {
-      "fingers": [
-        "R3",
-        "L1",
-        "R3"
-      ],
-      "count": 1,
-      "avg_interval": 63.0,
-      "score": 63.0,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": false,
-      "alternating": true
-    },
-    {
-      "fingers": [
-        "R3",
         "L4",
-        "R2"
+        "R4"
       ],
       "count": 1,
       "avg_interval": 62.5,
@@ -1471,45 +2535,17 @@
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
-      "alternating": true
+      "alternating": false
     },
     {
       "fingers": [
-        "L2",
         "L3",
-        "R3"
-      ],
-      "count": 1,
-      "avg_interval": 61.0,
-      "score": 61.0,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": false,
-      "alternating": false
-    },
-    {
-      "fingers": [
         "R4",
-        "L2",
-        "R3"
+        "R2"
       ],
       "count": 1,
-      "avg_interval": 60.5,
-      "score": 60.5,
-      "error_rate": 0.0,
-      "same_finger": false,
-      "same_hand": false,
-      "alternating": true
-    },
-    {
-      "fingers": [
-        "L2",
-        "L1",
-        "R3"
-      ],
-      "count": 1,
-      "avg_interval": 57.5,
-      "score": 57.5,
+      "avg_interval": 61.5,
+      "score": 61.5,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
@@ -1517,8 +2553,36 @@
     },
     {
       "fingers": [
+        "R3",
+        "R4",
+        "L2"
+      ],
+      "count": 1,
+      "avg_interval": 59.5,
+      "score": 59.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "R3",
+        "R1",
+        "R3"
+      ],
+      "count": 1,
+      "avg_interval": 59.0,
+      "score": 59.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": true,
+      "alternating": false
+    },
+    {
+      "fingers": [
         "L1",
-        "L4",
+        "L2",
         "R3"
       ],
       "count": 1,
@@ -1531,13 +2595,69 @@
     },
     {
       "fingers": [
-        "L4",
+        "L3",
         "L1",
+        "R1"
+      ],
+      "count": 1,
+      "avg_interval": 50.5,
+      "score": 50.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L3",
+        "R4",
+        "R3"
+      ],
+      "count": 1,
+      "avg_interval": 47.0,
+      "score": 47.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L2",
+        "L3",
         "R3"
       ],
       "count": 1,
       "avg_interval": 46.0,
       "score": 46.0,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L1",
+        "L3",
+        "R4"
+      ],
+      "count": 1,
+      "avg_interval": 43.5,
+      "score": 43.5,
+      "error_rate": 0.0,
+      "same_finger": false,
+      "same_hand": false,
+      "alternating": false
+    },
+    {
+      "fingers": [
+        "L3",
+        "L1",
+        "R3"
+      ],
+      "count": 1,
+      "avg_interval": 43.0,
+      "score": 43.0,
       "error_rate": 0.0,
       "same_finger": false,
       "same_hand": false,
