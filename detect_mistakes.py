@@ -1,7 +1,7 @@
 import json
 
-KEYLOG_FILE  = "keylog_1778545201.json"
-DTLD_FILE    = r"C:\Users\25B1029\Desktop\DtldKHJY.log"
+KEYLOG_FILE  = "keylog_1778551159.json"
+DTLD_FILE = r"C:\Users\riku5\OneDrive\Desktop\ゲーム\DtldKHJY.log"
 
 # -----------------------------------------------
 # タイプウェルの単語リストを読み込む
