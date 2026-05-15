@@ -1,0 +1,409 @@
+{
+  "trigram_bottleneck": [
+    {
+      "roman": "uka",
+      "hira": "うか",
+      "key_1": "u",
+      "key_2": "k",
+      "key_3": "a",
+      "count": 20,
+      "avg_ms": 110.4,
+      "score": 2209.0
+    },
+    {
+      "roman": "eru",
+      "hira": "える",
+      "key_1": "e",
+      "key_2": "r",
+      "key_3": "u",
+      "count": 22,
+      "avg_ms": 81.0,
+      "score": 1781.0
+    },
+    {
+      "roman": "oku",
+      "hira": "おく",
+      "key_1": "o",
+      "key_2": "k",
+      "key_3": "u",
+      "count": 11,
+      "avg_ms": 121.7,
+      "score": 1338.5
+    },
+    {
+      "roman": "ana",
+      "hira": "あな",
+      "key_1": "a",
+      "key_2": "n",
+      "key_3": "a",
+      "count": 14,
+      "avg_ms": 85.6,
+      "score": 1199.0
+    },
+    {
+      "roman": "you",
+      "hira": "よう",
+      "key_1": "y",
+      "key_2": "o",
+      "key_3": "u",
+      "count": 10,
+      "avg_ms": 116.2,
+      "score": 1162.5
+    },
+    {
+      "roman": "tuk",
+      "hira": "つk",
+      "key_1": "t",
+      "key_2": "u",
+      "key_3": "k",
+      "count": 12,
+      "avg_ms": 92.3,
+      "score": 1107.5
+    },
+    {
+      "roman": "uru",
+      "hira": "うる",
+      "key_1": "u",
+      "key_2": "r",
+      "key_3": "u",
+      "count": 12,
+      "avg_ms": 84.0,
+      "score": 1008.5
+    },
+    {
+      "roman": "umi",
+      "hira": "うみ",
+      "key_1": "u",
+      "key_2": "m",
+      "key_3": "i",
+      "count": 8,
+      "avg_ms": 125.1,
+      "score": 1001.0
+    },
+    {
+      "roman": "kyo",
+      "hira": "きょ",
+      "key_1": "k",
+      "key_2": "y",
+      "key_3": "o",
+      "count": 6,
+      "avg_ms": 163.8,
+      "score": 983.0
+    },
+    {
+      "roman": "uta",
+      "hira": "うた",
+      "key_1": "u",
+      "key_2": "t",
+      "key_3": "a",
+      "count": 12,
+      "avg_ms": 77.8,
+      "score": 933.0
+    },
+    {
+      "roman": "itu",
+      "hira": "いつ",
+      "key_1": "i",
+      "key_2": "t",
+      "key_3": "u",
+      "count": 11,
+      "avg_ms": 84.2,
+      "score": 926.5
+    },
+    {
+      "roman": "uma",
+      "hira": "うま",
+      "key_1": "u",
+      "key_2": "m",
+      "key_3": "a",
+      "count": 9,
+      "avg_ms": 101.4,
+      "score": 913.0
+    },
+    {
+      "roman": "enn",
+      "hira": "えん",
+      "key_1": "e",
+      "key_2": "n",
+      "key_3": "n",
+      "count": 9,
+      "avg_ms": 100.2,
+      "score": 902.0
+    },
+    {
+      "roman": "ono",
+      "hira": "おの",
+      "key_1": "o",
+      "key_2": "n",
+      "key_3": "o",
+      "count": 8,
+      "avg_ms": 110.4,
+      "score": 883.0
+    },
+    {
+      "roman": "ait",
+      "hira": "あいt",
+      "key_1": "a",
+      "key_2": "i",
+      "key_3": "t",
+      "count": 11,
+      "avg_ms": 79.3,
+      "score": 872.5
+    },
+    {
+      "roman": "iko",
+      "hira": "いこ",
+      "key_1": "i",
+      "key_2": "k",
+      "key_3": "o",
+      "count": 9,
+      "avg_ms": 95.9,
+      "score": 863.0
+    },
+    {
+      "roman": "sii",
+      "hira": "しい",
+      "key_1": "s",
+      "key_2": "i",
+      "key_3": "i",
+      "count": 8,
+      "avg_ms": 107.6,
+      "score": 861.0
+    },
+    {
+      "roman": "sok",
+      "hira": "そk",
+      "key_1": "s",
+      "key_2": "o",
+      "key_3": "k",
+      "count": 7,
+      "avg_ms": 121.3,
+      "score": 849.0
+    },
+    {
+      "roman": "kir",
+      "hira": "きr",
+      "key_1": "k",
+      "key_2": "i",
+      "key_3": "r",
+      "count": 7,
+      "avg_ms": 119.5,
+      "score": 836.5
+    },
+    {
+      "roman": "ama",
+      "hira": "あま",
+      "key_1": "a",
+      "key_2": "m",
+      "key_3": "a",
+      "count": 9,
+      "avg_ms": 92.8,
+      "score": 835.0
+    },
+    {
+      "roman": "nai",
+      "hira": "ない",
+      "key_1": "n",
+      "key_2": "a",
+      "key_3": "i",
+      "count": 9,
+      "avg_ms": 89.9,
+      "score": 809.5
+    },
+    {
+      "roman": "ruk",
+      "hira": "るk",
+      "key_1": "r",
+      "key_2": "u",
+      "key_3": "k",
+      "count": 9,
+      "avg_ms": 89.2,
+      "score": 802.5
+    },
+    {
+      "roman": "uko",
+      "hira": "うこ",
+      "key_1": "u",
+      "key_2": "k",
+      "key_3": "o",
+      "count": 6,
+      "avg_ms": 129.2,
+      "score": 775.5
+    },
+    {
+      "roman": "omu",
+      "hira": "おむ",
+      "key_1": "o",
+      "key_2": "m",
+      "key_3": "u",
+      "count": 5,
+      "avg_ms": 153.7,
+      "score": 768.5
+    },
+    {
+      "roman": "ito",
+      "hira": "いと",
+      "key_1": "i",
+      "key_2": "t",
+      "key_3": "o",
+      "count": 9,
+      "avg_ms": 85.2,
+      "score": 766.5
+    },
+    {
+      "roman": "oko",
+      "hira": "おこ",
+      "key_1": "o",
+      "key_2": "k",
+      "key_3": "o",
+      "count": 7,
+      "avg_ms": 109.5,
+      "score": 766.5
+    },
+    {
+      "roman": "osi",
+      "hira": "おし",
+      "key_1": "o",
+      "key_2": "s",
+      "key_3": "i",
+      "count": 8,
+      "avg_ms": 94.2,
+      "score": 754.0
+    },
+    {
+      "roman": "ima",
+      "hira": "いま",
+      "key_1": "i",
+      "key_2": "m",
+      "key_3": "a",
+      "count": 8,
+      "avg_ms": 92.1,
+      "score": 736.5
+    },
+    {
+      "roman": "iki",
+      "hira": "いき",
+      "key_1": "i",
+      "key_2": "k",
+      "key_3": "i",
+      "count": 5,
+      "avg_ms": 145.5,
+      "score": 727.5
+    },
+    {
+      "roman": "iji",
+      "hira": "いじ",
+      "key_1": "i",
+      "key_2": "j",
+      "key_3": "i",
+      "count": 6,
+      "avg_ms": 120.7,
+      "score": 724.0
+    }
+  ],
+  "trigram_fastest": [
+    {
+      "roman": "tai",
+      "hira": "たい",
+      "key_1": "t",
+      "key_2": "a",
+      "key_3": "i",
+      "count": 6,
+      "avg_ms": 47.6,
+      "score": 285.5
+    },
+    {
+      "roman": "rai",
+      "hira": "らい",
+      "key_1": "r",
+      "key_2": "a",
+      "key_3": "i",
+      "count": 3,
+      "avg_ms": 48.3,
+      "score": 145.0
+    },
+    {
+      "roman": "mag",
+      "hira": "まg",
+      "key_1": "m",
+      "key_2": "a",
+      "key_3": "g",
+      "count": 4,
+      "avg_ms": 48.5,
+      "score": 194.0
+    },
+    {
+      "roman": "ohu",
+      "hira": "おふ",
+      "key_1": "o",
+      "key_2": "h",
+      "key_3": "u",
+      "count": 3,
+      "avg_ms": 50.0,
+      "score": 150.0
+    },
+    {
+      "roman": "sei",
+      "hira": "せい",
+      "key_1": "s",
+      "key_2": "e",
+      "key_3": "i",
+      "count": 6,
+      "avg_ms": 50.3,
+      "score": 302.0
+    },
+    {
+      "roman": "gai",
+      "hira": "がい",
+      "key_1": "g",
+      "key_2": "a",
+      "key_3": "i",
+      "count": 3,
+      "avg_ms": 50.7,
+      "score": 152.0
+    },
+    {
+      "roman": "zen",
+      "hira": "ぜん",
+      "key_1": "z",
+      "key_2": "e",
+      "key_3": "n",
+      "count": 3,
+      "avg_ms": 52.7,
+      "score": 158.0
+    },
+    {
+      "roman": "ago",
+      "hira": "あご",
+      "key_1": "a",
+      "key_2": "g",
+      "key_3": "o",
+      "count": 4,
+      "avg_ms": 55.5,
+      "score": 222.0
+    },
+    {
+      "roman": "dhi",
+      "hira": "でぃ",
+      "key_1": "d",
+      "key_2": "h",
+      "key_3": "i",
+      "count": 4,
+      "avg_ms": 56.2,
+      "score": 225.0
+    },
+    {
+      "roman": "amo",
+      "hira": "あも",
+      "key_1": "a",
+      "key_2": "m",
+      "key_3": "o",
+      "count": 4,
+      "avg_ms": 56.8,
+      "score": 227.0
+    }
+  ],
+  "slow_keystrokes": 75,
+  "total_keystrokes": 1813,
+  "threshold_ms": 195.8
+}

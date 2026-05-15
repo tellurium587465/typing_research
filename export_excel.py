@@ -3,6 +3,15 @@ import glob
 import pandas as pd
 from collections import defaultdict
 
+VOWELS = set("aiueo")
+
+def key_type(k):
+    return "母音" if k in VOWELS else "子音"
+
+def vowel_pattern(k1, k2, k3):
+    v = lambda k: "V" if k in VOWELS else "C"
+    return f"{v(k1)}{v(k2)}{v(k3)}"
+
 FINGER_NAMES = {
     "L1":"左小指","L2":"左薬指","L3":"左中指","L4":"左人差し指",
     "R4":"右人差し指","R3":"右中指","R2":"右薬指","R1":"右小指",
@@ -22,20 +31,27 @@ STANDARD_FINGER = {
 def same_hand(f1, f2):
     return f1[0] == f2[0]
 
-# -----------------------------------------------
-# 全キーログファイルを収集
-# -----------------------------------------------
-keylog_files = glob.glob("keylog_*.json") + glob.glob("session_*_keys.json")
+keylog_files = glob.glob("keylog_*_with_errors.json") + glob.glob("keylog_*.json")
+# with_errorsがあれば通常版は除外
+with_errors = glob.glob("keylog_*_with_errors.json")
+base_ids = [f.replace("_with_errors.json","").replace("keylog_","") for f in with_errors]
+keylog_files = with_errors + [
+    f for f in glob.glob("keylog_*.json")
+    if "with_errors" not in f
+    and f.replace("keylog_","").replace(".json","") not in base_ids
+]
+
 print(f"検出したキーログファイル: {len(keylog_files)}件")
 for f in keylog_files:
     print(f"  {f}")
 
-# -----------------------------------------------
-# セッションごとに別ファイルに保存
-# -----------------------------------------------
+all_trigrams_combined = []
+
 for fname in keylog_files:
-    session_id = fname.replace("keylog_", "").replace("_keys.json", "").replace("_with_errors.json", "").replace(".json", "")
-    
+    session_id = (fname.replace("keylog_","")
+                      .replace("_with_errors.json","")
+                      .replace(".json",""))
+
     with open(fname, encoding="utf-8") as f:
         keylog = json.load(f)
 
@@ -47,15 +63,22 @@ for fname in keylog_files:
     ]
 
     for e in normal_keys:
-        e["std_finger"] = STANDARD_FINGER[e["key"]]
+        e["std_finger"]      = STANDARD_FINGER[e["key"]]
         e["std_finger_name"] = FINGER_NAMES.get(e["std_finger"], "?")
-        e["session_id"] = session_id
+        e["session_id"]      = session_id
+        e["boin"]            = e["key"] in VOWELS
 
-    # 3-gram生成
     trigrams = []
     for i in range(len(normal_keys) - 2):
         a, b, c = normal_keys[i], normal_keys[i+1], normal_keys[i+2]
         fa, fb, fc = a["std_finger"], b["std_finger"], c["std_finger"]
+        LEFT  = {"L1","L2","L3","L4"}
+        RIGHT = {"R1","R2","R3","R4"}
+        def hand(f):
+            if f in LEFT:  return "L"
+            if f in RIGHT: return "R"
+            return "?"
+
         tg = {
             "session_id":      session_id,
             "finger_1":        fa,
@@ -67,6 +90,12 @@ for fname in keylog_files:
             "key_1":           a["key"],
             "key_2":           b["key"],
             "key_3":           c["key"],
+            "key_1_type":      key_type(a["key"]),
+            "key_2_type":      key_type(b["key"]),
+            "key_3_type":      key_type(c["key"]),
+            "vowel_count":     sum(1 for k in [a["key"], b["key"], c["key"]] if k in VOWELS),
+            "vowel_pattern":   vowel_pattern(a["key"], b["key"], c["key"]),
+            "hand_pattern":    f"{hand(fa)}{hand(fb)}{hand(fc)}",
             "interval_1_2_ms": b["interval_ms"],
             "interval_2_3_ms": c["interval_ms"],
             "avg_interval_ms": (b["interval_ms"] + c["interval_ms"]) / 2,
@@ -81,7 +110,6 @@ for fname in keylog_files:
         }
         trigrams.append(tg)
 
-    # 集計
     stats = defaultdict(lambda: {"count":0,"total_interval":0,"errors":0,
                                   "same_finger":False,"same_hand":False,
                                   "alternating":False,"pattern_type":""})
@@ -121,6 +149,11 @@ for fname in keylog_files:
         avg_interval=("avg_interval_ms","mean"),
         std_interval=("avg_interval_ms","std"),
     ).reset_index()
+    vowel_summary = df_tg.groupby("vowel_pattern").agg(
+        count=("avg_interval_ms","count"),
+        avg_interval=("avg_interval_ms","mean"),
+        std_interval=("avg_interval_ms","std"),
+    ).reset_index()
 
     output_file = f"typing_analysis_{session_id}.xlsx"
     with pd.ExcelWriter(output_file, engine="openpyxl") as writer:
@@ -128,5 +161,21 @@ for fname in keylog_files:
         df_tg.to_excel(writer, sheet_name="3gram_全データ", index=False)
         df_stats.to_excel(writer, sheet_name="3gram_集計", index=False)
         summary.to_excel(writer, sheet_name="パターン別サマリ", index=False)
+        vowel_summary.to_excel(writer, sheet_name="母音パターン別サマリ", index=False)
 
+    # JASP用CSVを別途出力
+    csv_file = f"jasp_trigram_{session_id}.csv"
+    df_tg.to_csv(csv_file, index=False, encoding="utf-8-sig")
     print(f"保存: {output_file}（打鍵:{len(normal_keys)}件 3gram:{len(trigrams)}件）")
+    print(f"JASP用CSV: {csv_file}")
+
+    all_trigrams_combined.append(df_tg)
+
+# 全セッション統合CSV
+if all_trigrams_combined:
+    df_all = pd.concat(all_trigrams_combined, ignore_index=True)
+    combined_csv = "jasp_trigram_ALL.csv"
+    df_all.to_csv(combined_csv, index=False, encoding="utf-8-sig")
+    print(f"\n全セッション統合CSV: {combined_csv}（{len(df_all)}件）")
+    print(f"hand_patternの分布:")
+    print(df_all["hand_pattern"].value_counts().sort_index())

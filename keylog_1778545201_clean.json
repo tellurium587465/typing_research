@@ -1,0 +1,2431 @@
+[
+  {
+    "timestamp_ms": 7379,
+    "key": "n",
+    "interval_ms": 147,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 7432,
+    "key": "i",
+    "interval_ms": 53,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 7753,
+    "key": "r",
+    "interval_ms": 163,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 7896,
+    "key": "i",
+    "interval_ms": 143,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 8079,
+    "key": "-",
+    "interval_ms": 183,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 8182,
+    "key": "d",
+    "interval_ms": 103,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 8232,
+    "key": "a",
+    "interval_ms": 50,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 8283,
+    "key": "-",
+    "interval_ms": 51,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 8694,
+    "key": "r",
+    "interval_ms": 137,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 8750,
+    "key": "y",
+    "interval_ms": 56,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 8798,
+    "key": "o",
+    "interval_ms": 48,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 8977,
+    "key": "h",
+    "interval_ms": 179,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 9015,
+    "key": "i",
+    "interval_ms": 38,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 9243,
+    "key": "k",
+    "interval_ms": 85,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 9339,
+    "key": "u",
+    "interval_ms": 96,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 9496,
+    "key": "t",
+    "interval_ms": 157,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 9553,
+    "key": "a",
+    "interval_ms": 57,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 9599,
+    "key": "b",
+    "interval_ms": 46,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 9730,
+    "key": "a",
+    "interval_ms": 131,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 9802,
+    "key": "r",
+    "interval_ms": 72,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 9855,
+    "key": "u",
+    "interval_ms": 53,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 10065,
+    "key": "m",
+    "interval_ms": 28,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 10159,
+    "key": "e",
+    "interval_ms": 94,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 10344,
+    "key": "d",
+    "interval_ms": 185,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 10381,
+    "key": "h",
+    "interval_ms": 37,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 10438,
+    "key": "i",
+    "interval_ms": 57,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 10515,
+    "key": "a",
+    "interval_ms": 77,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 10689,
+    "key": "h",
+    "interval_ms": 74,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 10740,
+    "key": "o",
+    "interval_ms": 51,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 10910,
+    "key": "n",
+    "interval_ms": 170,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 11046,
+    "key": "n",
+    "interval_ms": 136,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 11142,
+    "key": "r",
+    "interval_ms": 96,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 11181,
+    "key": "a",
+    "interval_ms": 39,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 11244,
+    "key": "i",
+    "interval_ms": 63,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 11409,
+    "key": "a",
+    "interval_ms": 77,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 11594,
+    "key": "r",
+    "interval_ms": 185,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 11672,
+    "key": "e",
+    "interval_ms": 78,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 11795,
+    "key": "h",
+    "interval_ms": 123,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 11795,
+    "key": "o",
+    "interval_ms": 0,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 11929,
+    "key": "d",
+    "interval_ms": 134,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 12010,
+    "key": "o",
+    "interval_ms": 81,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 12214,
+    "key": "s",
+    "interval_ms": 116,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 12271,
+    "key": "o",
+    "interval_ms": 57,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 12367,
+    "key": "r",
+    "interval_ms": 96,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 12546,
+    "key": "o",
+    "interval_ms": 179,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 12662,
+    "key": "e",
+    "interval_ms": 116,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 12748,
+    "key": "r",
+    "interval_ms": 86,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 12840,
+    "key": "u",
+    "interval_ms": 92,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 13067,
+    "key": "b",
+    "interval_ms": 126,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 13165,
+    "key": "a",
+    "interval_ms": 98,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 13254,
+    "key": "n",
+    "interval_ms": 89,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 13331,
+    "key": "a",
+    "interval_ms": 77,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 13364,
+    "key": "n",
+    "interval_ms": 33,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 13480,
+    "key": "a",
+    "interval_ms": 116,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 13681,
+    "key": "h",
+    "interval_ms": 100,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 13765,
+    "key": "a",
+    "interval_ms": 84,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 13891,
+    "key": "i",
+    "interval_ms": 126,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 14014,
+    "key": "h",
+    "interval_ms": 123,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 14087,
+    "key": "i",
+    "interval_ms": 73,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 14263,
+    "key": "-",
+    "interval_ms": 176,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 14364,
+    "key": "r",
+    "interval_ms": 101,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 14440,
+    "key": "u",
+    "interval_ms": 76,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 14631,
+    "key": "k",
+    "interval_ms": 101,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 14715,
+    "key": "a",
+    "interval_ms": 84,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 14832,
+    "key": "w",
+    "interval_ms": 117,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 14913,
+    "key": "a",
+    "interval_ms": 81,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 15073,
+    "key": "m",
+    "interval_ms": 58,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 15139,
+    "key": "o",
+    "interval_ms": 66,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 15230,
+    "key": "s",
+    "interval_ms": 91,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 15281,
+    "key": "i",
+    "interval_ms": 51,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 15486,
+    "key": "p",
+    "interval_ms": 89,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 15515,
+    "key": "i",
+    "interval_ms": 29,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 15687,
+    "key": "-",
+    "interval_ms": 172,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 15876,
+    "key": "m",
+    "interval_ms": 189,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 15948,
+    "key": "a",
+    "interval_ms": 72,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 16031,
+    "key": "n",
+    "interval_ms": 83,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 16150,
+    "key": "n",
+    "interval_ms": 119,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 16361,
+    "key": "h",
+    "interval_ms": 66,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 16429,
+    "key": "u",
+    "interval_ms": 68,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 16532,
+    "key": "z",
+    "interval_ms": 103,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 16614,
+    "key": "a",
+    "interval_ms": 82,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 16675,
+    "key": "k",
+    "interval_ms": 61,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 16790,
+    "key": "e",
+    "interval_ms": 115,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 16866,
+    "key": "r",
+    "interval_ms": 76,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 16948,
+    "key": "u",
+    "interval_ms": 82,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 17166,
+    "key": "n",
+    "interval_ms": 100,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 17227,
+    "key": "i",
+    "interval_ms": 61,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 17295,
+    "key": "s",
+    "interval_ms": 68,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 17461,
+    "key": "s",
+    "interval_ms": 166,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 17548,
+    "key": "i",
+    "interval_ms": 87,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 17724,
+    "key": "s",
+    "interval_ms": 77,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 17775,
+    "key": "u",
+    "interval_ms": 51,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 17895,
+    "key": "p",
+    "interval_ms": 120,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 17947,
+    "key": "o",
+    "interval_ms": 52,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 18873,
+    "key": "t",
+    "interval_ms": 256,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 18947,
+    "key": "u",
+    "interval_ms": 74,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 19181,
+    "key": "k",
+    "interval_ms": 91,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 19280,
+    "key": "e",
+    "interval_ms": 99,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 19360,
+    "key": "k",
+    "interval_ms": 80,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 19479,
+    "key": "k",
+    "interval_ms": 119,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 19676,
+    "key": "y",
+    "interval_ms": 197,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 19742,
+    "key": "o",
+    "interval_ms": 66,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 19942,
+    "key": "k",
+    "interval_ms": 200,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 20014,
+    "key": "u",
+    "interval_ms": 72,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 20187,
+    "key": "s",
+    "interval_ms": 47,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 20277,
+    "key": "a",
+    "interval_ms": 90,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 20290,
+    "key": "u",
+    "interval_ms": 13,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 20508,
+    "key": "n",
+    "interval_ms": 218,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 20756,
+    "key": "d",
+    "interval_ms": 248,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 20847,
+    "key": "o",
+    "interval_ms": 91,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 21381,
+    "key": "y",
+    "interval_ms": 100,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 21480,
+    "key": "a",
+    "interval_ms": 99,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 21589,
+    "key": "m",
+    "interval_ms": 109,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 21663,
+    "key": "a",
+    "interval_ms": 74,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 21895,
+    "key": "a",
+    "interval_ms": 131,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 21981,
+    "key": "k",
+    "interval_ms": 86,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 22061,
+    "key": "a",
+    "interval_ms": 80,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 22140,
+    "key": "i",
+    "interval_ms": 79,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 22331,
+    "key": "k",
+    "interval_ms": 89,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 22397,
+    "key": "e",
+    "interval_ms": 66,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 22587,
+    "key": "t",
+    "interval_ms": 190,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 22665,
+    "key": "a",
+    "interval_ms": 78,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 22780,
+    "key": "t",
+    "interval_ms": 115,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 22848,
+    "key": "a",
+    "interval_ms": 68,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 22910,
+    "key": "m",
+    "interval_ms": 62,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 23029,
+    "key": "a",
+    "interval_ms": 119,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 23051,
+    "key": "s",
+    "interval_ms": 22,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 23140,
+    "key": "i",
+    "interval_ms": 89,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 23262,
+    "key": "i",
+    "interval_ms": 122,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 23495,
+    "key": "b",
+    "interval_ms": 141,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 23590,
+    "key": "i",
+    "interval_ms": 95,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 23729,
+    "key": "n",
+    "interval_ms": 139,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 23800,
+    "key": "i",
+    "interval_ms": 71,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 23992,
+    "key": "-",
+    "interval_ms": 192,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 24081,
+    "key": "r",
+    "interval_ms": 89,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 24190,
+    "key": "u",
+    "interval_ms": 109,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 24342,
+    "key": "t",
+    "interval_ms": 51,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 24402,
+    "key": "a",
+    "interval_ms": 60,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 24418,
+    "key": "i",
+    "interval_ms": 16,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 24657,
+    "key": "u",
+    "interval_ms": 239,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 24882,
+    "key": "h",
+    "interval_ms": 88,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 24959,
+    "key": "u",
+    "interval_ms": 77,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 25454,
+    "key": "u",
+    "interval_ms": 56,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 25728,
+    "key": "h",
+    "interval_ms": 139,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 25792,
+    "key": "u",
+    "interval_ms": 64,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 25945,
+    "key": "u",
+    "interval_ms": 153,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 26083,
+    "key": "h",
+    "interval_ms": 138,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 26180,
+    "key": "u",
+    "interval_ms": 97,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 26443,
+    "key": "k",
+    "interval_ms": 198,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 26531,
+    "key": "a",
+    "interval_ms": 88,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 26678,
+    "key": "e",
+    "interval_ms": 147,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 26748,
+    "key": "r",
+    "interval_ms": 70,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 26797,
+    "key": "u",
+    "interval_ms": 49,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 26967,
+    "key": "i",
+    "interval_ms": 39,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 27158,
+    "key": "k",
+    "interval_ms": 191,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 27204,
+    "key": "e",
+    "interval_ms": 46,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 27328,
+    "key": "n",
+    "interval_ms": 124,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 27387,
+    "key": "a",
+    "interval_ms": 59,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 27495,
+    "key": "i",
+    "interval_ms": 108,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 27646,
+    "key": "k",
+    "interval_ms": 34,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 27811,
+    "key": "i",
+    "interval_ms": 165,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 27913,
+    "key": "s",
+    "interval_ms": 102,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 27984,
+    "key": "o",
+    "interval_ms": 71,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 28186,
+    "key": "k",
+    "interval_ms": 202,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 28259,
+    "key": "u",
+    "interval_ms": 73,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 28464,
+    "key": "p",
+    "interval_ms": 69,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 28565,
+    "key": "a",
+    "interval_ms": 101,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 28744,
+    "key": "z",
+    "interval_ms": 179,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 28814,
+    "key": "u",
+    "interval_ms": 70,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 28929,
+    "key": "r",
+    "interval_ms": 115,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 28981,
+    "key": "u",
+    "interval_ms": 52,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 29211,
+    "key": "m",
+    "interval_ms": 131,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 29274,
+    "key": "i",
+    "interval_ms": 63,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 29444,
+    "key": "j",
+    "interval_ms": 170,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 29514,
+    "key": "i",
+    "interval_ms": 70,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 29724,
+    "key": "n",
+    "interval_ms": 210,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 29850,
+    "key": "n",
+    "interval_ms": 126,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 30084,
+    "key": "m",
+    "interval_ms": 234,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 30140,
+    "key": "o",
+    "interval_ms": 56,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 30396,
+    "key": "y",
+    "interval_ms": 101,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 30485,
+    "key": "a",
+    "interval_ms": 89,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 30540,
+    "key": "s",
+    "interval_ms": 55,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 30612,
+    "key": "u",
+    "interval_ms": 72,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 30809,
+    "key": "m",
+    "interval_ms": 197,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 30886,
+    "key": "i",
+    "interval_ms": 77,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 31095,
+    "key": "w",
+    "interval_ms": 74,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 31155,
+    "key": "a",
+    "interval_ms": 60,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 31343,
+    "key": "z",
+    "interval_ms": 188,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 31415,
+    "key": "a",
+    "interval_ms": 72,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 31545,
+    "key": "t",
+    "interval_ms": 130,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 31639,
+    "key": "o",
+    "interval_ms": 94,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 31855,
+    "key": "s",
+    "interval_ms": 92,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 31913,
+    "key": "e",
+    "interval_ms": 58,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 31947,
+    "key": "i",
+    "interval_ms": 34,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 32094,
+    "key": "g",
+    "interval_ms": 147,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 32175,
+    "key": "e",
+    "interval_ms": 81,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 32214,
+    "key": "n",
+    "interval_ms": 39,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 32376,
+    "key": "n",
+    "interval_ms": 162,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 32597,
+    "key": "t",
+    "interval_ms": 70,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 32680,
+    "key": "e",
+    "interval_ms": 83,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 32761,
+    "key": "i",
+    "interval_ms": 81,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 32879,
+    "key": "d",
+    "interval_ms": 118,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 32946,
+    "key": "o",
+    "interval_ms": 67,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 33147,
+    "key": "k",
+    "interval_ms": 101,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 33309,
+    "key": "i",
+    "interval_ms": 162,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 33397,
+    "key": "r",
+    "interval_ms": 88,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 33441,
+    "key": "a",
+    "interval_ms": 44,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 33504,
+    "key": "k",
+    "interval_ms": 63,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 33674,
+    "key": "i",
+    "interval_ms": 170,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 33743,
+    "key": "r",
+    "interval_ms": 69,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 33806,
+    "key": "a",
+    "interval_ms": 63,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 33993,
+    "key": "m",
+    "interval_ms": 50,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 34046,
+    "key": "o",
+    "interval_ms": 53,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 34243,
+    "key": "n",
+    "interval_ms": 197,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 34325,
+    "key": "o",
+    "interval_ms": 82,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 34493,
+    "key": "m",
+    "interval_ms": 168,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 34556,
+    "key": "o",
+    "interval_ms": 63,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 34723,
+    "key": "n",
+    "interval_ms": 167,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 34790,
+    "key": "o",
+    "interval_ms": 67,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 34881,
+    "key": "s",
+    "interval_ms": 91,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 34992,
+    "key": "i",
+    "interval_ms": 111,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 35102,
+    "key": "i",
+    "interval_ms": 110,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 35281,
+    "key": "t",
+    "interval_ms": 68,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 35353,
+    "key": "i",
+    "interval_ms": 72,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 35492,
+    "key": "i",
+    "interval_ms": 139,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 35675,
+    "key": "k",
+    "interval_ms": 183,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 35857,
+    "key": "i",
+    "interval_ms": 182,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 36031,
+    "key": "s",
+    "interval_ms": 69,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 36123,
+    "key": "u",
+    "interval_ms": 92,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 36307,
+    "key": "m",
+    "interval_ms": 184,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 36493,
+    "key": "u",
+    "interval_ms": 186,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 36694,
+    "key": "d",
+    "interval_ms": 81,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 36776,
+    "key": "a",
+    "interval_ms": 82,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 36780,
+    "key": "i",
+    "interval_ms": 4,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 36942,
+    "key": "t",
+    "interval_ms": 162,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 37014,
+    "key": "o",
+    "interval_ms": 72,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 37093,
+    "key": "u",
+    "interval_ms": 79,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 37188,
+    "key": "r",
+    "interval_ms": 95,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 37312,
+    "key": "y",
+    "interval_ms": 124,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 37440,
+    "key": "o",
+    "interval_ms": 128,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 37496,
+    "key": "u",
+    "interval_ms": 56,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 37731,
+    "key": "i",
+    "interval_ms": 102,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 37861,
+    "key": "t",
+    "interval_ms": 130,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 37901,
+    "key": "a",
+    "interval_ms": 40,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 37947,
+    "key": "i",
+    "interval_ms": 46,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 38159,
+    "key": "t",
+    "interval_ms": 97,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 38226,
+    "key": "u",
+    "interval_ms": 67,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 38388,
+    "key": "t",
+    "interval_ms": 162,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 38460,
+    "key": "a",
+    "interval_ms": 72,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 38595,
+    "key": "n",
+    "interval_ms": 135,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 38714,
+    "key": "a",
+    "interval_ms": 119,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 38845,
+    "key": "i",
+    "interval_ms": 131,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 39080,
+    "key": "t",
+    "interval_ms": 117,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 39140,
+    "key": "u",
+    "interval_ms": 60,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 39358,
+    "key": "m",
+    "interval_ms": 218,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 39446,
+    "key": "i",
+    "interval_ms": 88,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 39727,
+    "key": "p",
+    "interval_ms": 129,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 39798,
+    "key": "u",
+    "interval_ms": 71,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 39898,
+    "key": "r",
+    "interval_ms": 100,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 40044,
+    "key": "p",
+    "interval_ms": 146,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 40321,
+    "key": "p",
+    "interval_ms": 277,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 40808,
+    "key": "p",
+    "interval_ms": 173,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 40881,
+    "key": "o",
+    "interval_ms": 73,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 41058,
+    "key": "-",
+    "interval_ms": 177,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 41179,
+    "key": "z",
+    "interval_ms": 121,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 41264,
+    "key": "u",
+    "interval_ms": 85,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 41513,
+    "key": "n",
+    "interval_ms": 118,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 41591,
+    "key": "o",
+    "interval_ms": 78,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 41712,
+    "key": "d",
+    "interval_ms": 121,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 41790,
+    "key": "o",
+    "interval_ms": 78,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 41927,
+    "key": "k",
+    "interval_ms": 137,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 42045,
+    "key": "a",
+    "interval_ms": 118,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 42199,
+    "key": "m",
+    "interval_ms": 58,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 42343,
+    "key": "i",
+    "interval_ms": 144,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 42556,
+    "key": "j",
+    "interval_ms": 213,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 42617,
+    "key": "i",
+    "interval_ms": 61,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 42808,
+    "key": "k",
+    "interval_ms": 191,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 42888,
+    "key": "a",
+    "interval_ms": 80,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 42989,
+    "key": "i",
+    "interval_ms": 101,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 43209,
+    "key": "b",
+    "interval_ms": 163,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 43303,
+    "key": "u",
+    "interval_ms": 94,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 43412,
+    "key": "s",
+    "interval_ms": 109,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 43485,
+    "key": "i",
+    "interval_ms": 73,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 43696,
+    "key": "m",
+    "interval_ms": 93,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 43788,
+    "key": "a",
+    "interval_ms": 92,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 43865,
+    "key": "t",
+    "interval_ms": 77,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 43930,
+    "key": "i",
+    "interval_ms": 65,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 44077,
+    "key": "m",
+    "interval_ms": 147,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 44147,
+    "key": "a",
+    "interval_ms": 70,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 44230,
+    "key": "t",
+    "interval_ms": 83,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 44346,
+    "key": "i",
+    "interval_ms": 116,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 44530,
+    "key": "i",
+    "interval_ms": 103,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 44630,
+    "key": "s",
+    "interval_ms": 100,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 44683,
+    "key": "o",
+    "interval_ms": 53,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 44763,
+    "key": "i",
+    "interval_ms": 80,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 44889,
+    "key": "s",
+    "interval_ms": 126,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 44963,
+    "key": "o",
+    "interval_ms": 74,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 45174,
+    "key": "k",
+    "interval_ms": 85,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 45258,
+    "key": "o",
+    "interval_ms": 84,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 45395,
+    "key": "z",
+    "interval_ms": 137,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 45437,
+    "key": "a",
+    "interval_ms": 42,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 45521,
+    "key": "p",
+    "interval_ms": 84,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 45639,
+    "key": "p",
+    "interval_ms": 118,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 45730,
+    "key": "a",
+    "interval_ms": 91,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 45798,
+    "key": "r",
+    "interval_ms": 68,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 45880,
+    "key": "i",
+    "interval_ms": 82,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 46115,
+    "key": "k",
+    "interval_ms": 88,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 46167,
+    "key": "o",
+    "interval_ms": 52,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 46293,
+    "key": "b",
+    "interval_ms": 126,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 46364,
+    "key": "i",
+    "interval_ms": 71,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 46494,
+    "key": "r",
+    "interval_ms": 130,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 46561,
+    "key": "i",
+    "interval_ms": 67,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 46694,
+    "key": "t",
+    "interval_ms": 133,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 46763,
+    "key": "u",
+    "interval_ms": 69,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 46937,
+    "key": "k",
+    "interval_ms": 174,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 47029,
+    "key": "u",
+    "interval_ms": 92,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 47230,
+    "key": "k",
+    "interval_ms": 113,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 47387,
+    "key": "i",
+    "interval_ms": 157,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 47464,
+    "key": "r",
+    "interval_ms": 77,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 47547,
+    "key": "e",
+    "interval_ms": 83,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 47607,
+    "key": "i",
+    "interval_ms": 60,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 47909,
+    "key": "z",
+    "interval_ms": 149,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 47957,
+    "key": "e",
+    "interval_ms": 48,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 47996,
+    "key": "n",
+    "interval_ms": 39,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 48233,
+    "key": "s",
+    "interval_ms": 237,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 48311,
+    "key": "o",
+    "interval_ms": 78,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 48508,
+    "key": "k",
+    "interval_ms": 197,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 48578,
+    "key": "u",
+    "interval_ms": 70,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 48796,
+    "key": "m",
+    "interval_ms": 83,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 48875,
+    "key": "a",
+    "interval_ms": 79,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 48990,
+    "key": "j",
+    "interval_ms": 115,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 49047,
+    "key": "i",
+    "interval_ms": 57,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 49257,
+    "key": "k",
+    "interval_ms": 210,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 49426,
+    "key": "k",
+    "interval_ms": 169,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 49496,
+    "key": "u",
+    "interval_ms": 70,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 49854,
+    "key": "k",
+    "interval_ms": 252,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 50105,
+    "key": "o",
+    "interval_ms": 251,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 50646,
+    "key": "r",
+    "interval_ms": 124,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 50729,
+    "key": "o",
+    "interval_ms": 83,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 50941,
+    "key": "k",
+    "interval_ms": 212,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 51011,
+    "key": "u",
+    "interval_ms": 70,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 51223,
+    "key": "m",
+    "interval_ms": 110,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 51311,
+    "key": "a",
+    "interval_ms": 88,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 51444,
+    "key": "y",
+    "interval_ms": 133,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 51486,
+    "key": "o",
+    "interval_ms": 42,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 51689,
+    "key": "n",
+    "interval_ms": 203,
+    "is_backspace": false,
+    "is_error": false
+  },
+  {
+    "timestamp_ms": 51794,
+    "key": "e",
+    "interval_ms": 105,
+    "is_backspace": false,
+    "is_error": false
+  }
+]
