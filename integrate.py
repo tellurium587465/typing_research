@@ -2,10 +2,12 @@ import json
 import numpy as np
 from collections import defaultdict
 
-ONSET_FILE  = "session_1778410381_onset_matched.json"
-POSE_FILE   = "session_1778410381_pose.json"
+from session_utils import get_session_files
+_sf = get_session_files()
+ONSET_FILE  = _sf["onset"]
+POSE_FILE   = _sf["pose"]
 GRID_FILE   = "keyboard_grid.json"
-OUTPUT_FILE = "session_1778410381_integrated.json"
+OUTPUT_FILE = _sf["integrated"]
 
 # -----------------------------------------------
 # データ読み込み

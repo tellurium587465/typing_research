@@ -5,8 +5,10 @@ from mediapipe.tasks.python import vision
 import json
 import time
 
-VIDEO_FILE = "session_1778410381_video.avi"
-OUTPUT_FILE = "session_1778410381_pose.json"
+from session_utils import get_session_files
+_sf = get_session_files()
+VIDEO_FILE  = _sf["video"]
+OUTPUT_FILE = _sf["pose"]
 MODEL_PATH = "hand_landmarker.task"
 
 # 指先ランドマーク番号と名前

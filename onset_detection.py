@@ -4,8 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import json
 
-AUDIO_FILE = "session_1778507607_audio.wav"
-KEYLOG_FILE = "session_1778507607_keys.json"
+AUDIO_FILE = "session_1778410381_audio.wav"
+KEYLOG_FILE = "session_1778410381_keys.json"
 
 # -----------------------------------------------
 # 音声読み込み＋無音区間のトリミング
@@ -14,13 +14,13 @@ print("音声読み込み中...")
 y, sr = librosa.load(AUDIO_FILE, sr=None, mono=True)
 duration = len(y) / sr
 print(f"サンプリングレート: {sr}Hz  長さ: {duration:.2f}秒")
-print(f"録音最大音量: {np.max(np.abs(y)):.6f}")
-
-# 音量が小さい場合は正規化して増幅
 max_amp = np.max(np.abs(y))
-if max_amp < 0.01:
-    y = y / max_amp * 0.5
-    print(f"音量を正規化しました（{max_amp:.6f} → 0.5）")
+print(f"録音最大音量: {max_amp:.6f}")
+
+# 音量を常に正規化（大きすぎても小さすぎても補正）
+target_amp = 0.3
+y = y / (max_amp + 1e-9) * target_amp
+print(f"音量正規化: {max_amp:.6f} → {target_amp}")
 
 # キーログの最初の打鍵時刻から1秒前をトリミング開始点にする
 with open(KEYLOG_FILE, encoding="utf-8") as f:
@@ -41,12 +41,12 @@ print(f"トリミング: {trim_start_ms}ms以前をカット（残り{len(y)/sr:
 # -----------------------------------------------
 onset_frames = librosa.onset.onset_detect(
     y=y, sr=sr,
-    wait=5,
-    pre_avg=4,
-    post_avg=4,
-    pre_max=4,
-    post_max=4,
-    delta=0.03
+    wait=10,
+    pre_avg=7,
+    post_avg=7,
+    pre_max=7,
+    post_max=7,
+    delta=0.10
 )
 onset_times = librosa.frames_to_time(onset_frames, sr=sr)
 onset_ms = (onset_times * 1000).astype(int)
