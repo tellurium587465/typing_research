@@ -63,10 +63,10 @@ img = cv2.imread(IMAGE_FILE)
 h_img, w_img = img.shape[:2]
 hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
-lower1 = np.array([125, 40, 40])
+lower1 = np.array([125, 20, 80])
 upper1 = np.array([165, 255, 255])
 mask1  = cv2.inRange(hsv, lower1, upper1)
-lower2 = np.array([160, 40, 40])
+lower2 = np.array([160, 20, 80])
 upper2 = np.array([180, 255, 255])
 mask2  = cv2.inRange(hsv, lower2, upper2)
 mask   = cv2.bitwise_or(mask1, mask2)
@@ -115,8 +115,8 @@ else:
     print(f"ホモグラフィ補正: スキップ（{len(approx)}点）")
 
 # bboxを少し内側に補正（枠のベゼル分を除去）
-BEZEL_X = int(bw * 0.02)  # 左右の余白
-BEZEL_Y = int(bh * 0.05)  # 上下の余白
+BEZEL_X = 0               # 左右の余白なし
+BEZEL_Y = int(bh * 0.02)  # 上下の余白（2%）
 bx += BEZEL_X
 by += BEZEL_Y
 bw -= BEZEL_X * 2
@@ -200,6 +200,29 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 
 # -----------------------------------------------
+# 各キーの矩形領域を計算（x_min, x_max, y_min, y_max）
+# -----------------------------------------------
+key_rects = {}
+
+for row_idx, row in enumerate(ROWS):
+    cy = by + (row_idx + 0.5) * key_h_px
+    y_min_local = by + row_idx * key_h_px
+    y_max_local = by + (row_idx + 1) * key_h_px
+    x = 0.0
+    for key, width in row:
+        x_min_local = bx + x * key_w_px
+        x_max_local = bx + (x + width) * key_w_px
+        # 元画像座標に変換
+        ox_min, oy_min = to_orig(x_min_local, y_min_local)
+        ox_max, oy_max = to_orig(x_max_local, y_max_local)
+        MARGIN = 4  # キー矩形を各方向に4px拡張
+        key_rects[key] = {
+            "x_min": ox_min - MARGIN, "x_max": ox_max + MARGIN,
+            "y_min": oy_min - MARGIN, "y_max": oy_max + MARGIN
+        }
+        x += width
+
+# -----------------------------------------------
 # JSON保存
 # -----------------------------------------------
 kb_data = {
@@ -208,6 +231,7 @@ kb_data = {
     "col_centers": col_centers_by_row[2],
     "col_centers_by_row": col_centers_by_row,
     "key_positions": {k: list(v) for k, v in key_positions.items()},
+    "key_rects": key_rects,
     "key_layout": KEY_LAYOUT,
     "key_w_px": round(key_w_px, 2),
     "key_h_px": round(key_h_px, 2),
