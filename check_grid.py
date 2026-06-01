@@ -1,8 +1,10 @@
 import cv2
 import json
 
-POSE_FILE  = "session_1778410381_pose.json"
-VIDEO_FILE = "session_1778410381_video.avi"
+from session_utils import get_session_files
+_sf = get_session_files()
+POSE_FILE  = _sf["pose"]
+VIDEO_FILE = _sf["video"]
 GRID_FILE  = "keyboard_grid.json"
 
 with open(POSE_FILE) as f:
@@ -13,6 +15,7 @@ with open(GRID_FILE) as f:
 
 bbox = grid["bbox"]
 x, y, w, h = bbox["x"], bbox["y"], bbox["w"], bbox["h"]
+key_positions = grid.get("key_positions", {})
 
 # キーボード領域内に指先があるフレームを探す
 target_ts = None
@@ -51,9 +54,16 @@ if not ret:
 # グリッドを描画
 cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
 for r in grid["row_centers"]:
-    cv2.line(frame, (x, y+r), (x+w, y+r), (0, 255, 255), 1)
+    cv2.line(frame, (x, r), (x+w, r), (0, 255, 255), 1)
 for c in grid["col_centers"]:
-    cv2.line(frame, (x+c, y), (x+c, y+h), (255, 100, 0), 1)
+    cv2.line(frame, (c, y), (c, y+h), (255, 100, 0), 1)
+
+# キーポジションを描画（青い点）
+for key, (kx, ky) in key_positions.items():
+    cv2.circle(frame, (kx, ky), 4, (255, 0, 0), -1)
+    if len(key) <= 2 and key.isalpha():
+        cv2.putText(frame, key, (kx-4, ky+4),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.3, (255, 200, 0), 1)
 
 # 指先座標を描画
 for hand in pose_frame["hands"]:
