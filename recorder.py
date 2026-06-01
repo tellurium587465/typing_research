@@ -12,6 +12,44 @@ SAMPLE_RATE = 44100
 SESSION_ID = f"session_{int(time.time())}"
 FPS = 30
 
+# -----------------------------------------------
+# マイクデバイス自動選択
+# -----------------------------------------------
+def select_best_mic(test_duration=0.5, target_sr=SAMPLE_RATE):
+    """入力デバイスを短時間テストし、最も音量が大きいものを返す"""
+    devices = sd.query_devices()
+    candidates = [
+        (i, d) for i, d in enumerate(devices)
+        if d["max_input_channels"] > 0
+        and "mapper" not in d["name"].lower()   # Windows サウンドマッパーは除外
+        and "primary" not in d["name"].lower()  # プライマリドライバも除外
+    ]
+    print("=== マイクデバイス検索 ===")
+    best_idx, best_rms = None, -1.0
+    for idx, dev in candidates:
+        try:
+            sr = int(dev["default_samplerate"])
+            frames_n = int(sr * test_duration)
+            rec = sd.rec(frames_n, samplerate=sr, channels=1,
+                         device=idx, dtype="float32")
+            sd.wait()
+            rms = float(np.sqrt(np.mean(rec ** 2)))
+            status = f"RMS={rms:.6f}"
+            print(f"  [{idx:2d}] {dev['name'][:40]:40s}  {status}")
+            if rms > best_rms:
+                best_rms = rms
+                best_idx = idx
+        except Exception as e:
+            print(f"  [{idx:2d}] {dev['name'][:40]:40s}  エラー: {e}")
+    if best_idx is None:
+        print("利用可能なマイクが見つかりません。デフォルトを使用します。")
+        return None
+    chosen = devices[best_idx]["name"]
+    print(f"\n選択: [{best_idx}] {chosen}  (RMS={best_rms:.6f})")
+    return best_idx
+
+AUDIO_DEVICE = select_best_mic()
+
 # 共有データ
 keylog = []
 audio_frames = []
@@ -27,7 +65,8 @@ def audio_callback(indata, frames, time_info, status):
         audio_frames.append(indata.copy())
 
 def start_recording():
-    with sd.InputStream(samplerate=SAMPLE_RATE, channels=1, callback=audio_callback):
+    with sd.InputStream(samplerate=SAMPLE_RATE, channels=1,
+                        device=AUDIO_DEVICE, callback=audio_callback):
         while recording[0]:
             time.sleep(0.1)
 
@@ -118,7 +157,10 @@ start_time[0] = time.time()
 print("録音＋カメラ＋キーロガー開始（ESCで終了）")
 print("-" * 40)
 
-# カメラメインループ
+# カメラメインループ（フレームカウントと実時間を記録）
+frame_count = 0
+video_start_time = time.time()
+
 while recording[0]:
     ret, frame = cap.read()
     if not ret:
@@ -126,14 +168,21 @@ while recording[0]:
         break
     frame = process_frame(frame)
     out.write(frame)
+    frame_count += 1
     cv2.imshow("Recording...", frame)
-    if cv2.waitKey(33) & 0xFF == ord('q'):
+    if cv2.waitKey(1) & 0xFF == ord('q'):  # waitKeyを1msに変更（処理遅延を減らす）
         recording[0] = False
         break
+
+video_end_time = time.time()
+actual_duration = video_end_time - video_start_time
+actual_fps_real = frame_count / actual_duration if actual_duration > 0 else FPS
 
 cap.release()
 out.release()
 cv2.destroyAllWindows()
+
+print(f"実際のキャプチャ: {frame_count}フレーム / {actual_duration:.1f}秒 = {actual_fps_real:.2f}fps")
 
 key_thread.join(timeout=2)
 rec_thread.join(timeout=2)
@@ -153,6 +202,19 @@ audio_file = f"{SESSION_ID}_audio.wav"
 if audio_frames:
     audio_data = np.concatenate(audio_frames, axis=0)
     wav_write(audio_file, SAMPLE_RATE, audio_data)
+
+# セッションメタデータ保存（actual_fps を記録して後続スクリプトが使えるように）
+meta_file = f"{SESSION_ID}_meta.json"
+meta = {
+    "session_id": SESSION_ID,
+    "claimed_fps": FPS,
+    "actual_fps": round(actual_fps_real, 4),
+    "frame_count": frame_count,
+    "video_duration_s": round(actual_duration, 3),
+    "sample_rate": SAMPLE_RATE,
+}
+with open(meta_file, "w", encoding="utf-8") as f:
+    json.dump(meta, f, ensure_ascii=False, indent=2)
 
 print("-" * 40)
 print(f"キーログ保存: {keylog_file}（{len(keylog)}件）")

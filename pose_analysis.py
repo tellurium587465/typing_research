@@ -1,3 +1,4 @@
+import argparse
 import cv2
 import mediapipe as mp
 from mediapipe.tasks import python as mp_python
@@ -5,8 +6,15 @@ from mediapipe.tasks.python import vision
 import json
 import time
 
-VIDEO_FILE = "session_1778410381_video.avi"
-OUTPUT_FILE = "session_1778410381_pose.json"
+from session_utils import get_session_files
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--session-id", default=None)
+args = parser.parse_args()
+
+_sf = get_session_files(args.session_id)
+VIDEO_FILE  = _sf["video"]
+OUTPUT_FILE = _sf["pose"]
 MODEL_PATH = "hand_landmarker.task"
 
 # 指先ランドマーク番号と名前
@@ -51,10 +59,36 @@ options = vision.HandLandmarkerOptions(
 )
 
 cap = cv2.VideoCapture(VIDEO_FILE)
-fps = cap.get(cv2.CAP_PROP_FPS)
+claimed_fps = cap.get(cv2.CAP_PROP_FPS)
 total = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 print(f"動画: {VIDEO_FILE}")
-print(f"FPS: {fps}  総フレーム数: {total}")
+print(f"FPS(動画メタデータ): {claimed_fps}  総フレーム数: {total}")
+
+# ─── 実際のFPSを算出（meta.json → 音声ファイル → claimed_fps の優先順）──
+import scipy.io.wavfile as _wav, os as _os
+actual_fps = claimed_fps  # デフォルト
+
+META_FILE  = _sf["meta"]
+AUDIO_FILE = _sf["audio"]
+
+if _os.path.exists(META_FILE):
+    # recorder.py が保存した actual_fps を使う（最も正確）
+    import json as _json
+    with open(META_FILE, encoding="utf-8") as _f:
+        _meta = _json.load(_f)
+    actual_fps = _meta.get("actual_fps", claimed_fps)
+    print(f"meta.json から実際のFPS: {actual_fps:.2f}")
+elif _os.path.exists(AUDIO_FILE) and total > 0:
+    # 音声長から算出（旧セッション用フォールバック）
+    _sr, _aud = _wav.read(AUDIO_FILE)
+    audio_duration_s = len(_aud) / _sr
+    actual_fps = total / audio_duration_s
+    print(f"音声長から実際のFPS推定: {actual_fps:.2f} "
+          f"(補正係数: {actual_fps/claimed_fps:.3f})")
+else:
+    print("FPS補正情報なし。クレームFPSをそのまま使用")
+
+fps = actual_fps  # 以降はこれを使用
 
 pose_log = []  # フレームごとの指先座標を保存
 frame_idx = 0

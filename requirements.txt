@@ -1,0 +1,14 @@
+librosa
+mediapipe
+opencv-python
+scipy
+numpy
+pandas
+openpyxl
+matplotlib
+seaborn
+sounddevice
+pynput
+pykakasi
+python-pptx
+numba
