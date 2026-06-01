@@ -2,12 +2,23 @@ import json
 import numpy as np
 from collections import defaultdict
 
+import argparse
 from session_utils import get_session_files
-_sf = get_session_files()
+import os
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--session-id", default=None)
+args = parser.parse_args()
+
+_sf = get_session_files(args.session_id)
 ONSET_FILE  = _sf["onset"]
 POSE_FILE   = _sf["pose"]
-GRID_FILE   = "keyboard_grid.json"
 OUTPUT_FILE = _sf["integrated"]
+
+# セッション別グリッドを優先、なければ共通グリッドにフォールバック
+_session_grid = _sf["keyboard_grid"]
+GRID_FILE = _session_grid if os.path.exists(_session_grid) else "keyboard_grid.json"
+print(f"キーボードグリッド: {GRID_FILE}")
 
 # -----------------------------------------------
 # データ読み込み
@@ -70,36 +81,64 @@ EXCLUDED_FINGERS = {("Right", "thumb")}  # 右親指は使わない
 # key_positions のグローバル座標で最近傍キーを返す
 # -----------------------------------------------
 def pixel_to_key(px, py):
-    """ピクセル座標がどのキーの矩形領域に入っているか返す。
-    key_rects（keyboard_detect.pyで生成した実寸矩形）を使用。
-    複数キーに重なる場合は中心距離が最小のものを返す。"""
-    best_key  = None
-    best_dist = float("inf")
+    """ピクセル座標に最も近いキーを返す。
+    ① key_rects 内に入っているキーがあれば最近傍を返す（高精度）
+    ② key_rects に入っていない場合でも、最近傍キーを返す（MAX_FALLBACK_PX 以内）
+    """
+    MAX_FALLBACK_PX = KEY_W_PX * 1.5   # rect外でもここまでは最近傍を返す
+
+    best_in_rect = None
+    best_in_dist = float("inf")
+    best_near    = None
+    best_near_d  = float("inf")
+
     if KEY_RECTS:
         for kname, rect in KEY_RECTS.items():
-            if rect["x_min"] <= px <= rect["x_max"] and rect["y_min"] <= py <= rect["y_max"]:
-                kx, ky = KEY_POSITIONS[kname]
-                dist = np.sqrt((px - kx) ** 2 + (py - ky) ** 2)
-                if dist < best_dist:
-                    best_dist = dist
-                    best_key  = kname
+            kx, ky = KEY_POSITIONS[kname]
+            dist = np.sqrt((px - kx) ** 2 + (py - ky) ** 2)
+            in_rect = (rect["x_min"] <= px <= rect["x_max"] and
+                       rect["y_min"] <= py <= rect["y_max"])
+            if in_rect and dist < best_in_dist:
+                best_in_dist = dist
+                best_in_rect = kname
+            if dist < best_near_d:
+                best_near_d = dist
+                best_near   = kname
     else:
-        # key_rects がない場合は中心±半キーサイズで代替
-        half_w = KEY_W_PX / 2
-        half_h = KEY_H_PX / 2
         for kname, (kx, ky) in KEY_POSITIONS.items():
-            if abs(px - kx) <= half_w and abs(py - ky) <= half_h:
-                dist = np.sqrt((px - kx) ** 2 + (py - ky) ** 2)
-                if dist < best_dist:
-                    best_dist = dist
-                    best_key  = kname
-    return best_key
+            dist = np.sqrt((px - kx) ** 2 + (py - ky) ** 2)
+            if dist < best_near_d:
+                best_near_d = dist
+                best_near   = kname
+
+    if best_in_rect is not None:
+        return best_in_rect
+    if best_near_d <= MAX_FALLBACK_PX:
+        return best_near
+    return None
 
 # -----------------------------------------------
-# タイムスタンプ基準
+# タイムスタンプ基準チェック
 # onset_ms と pose の timestamp_ms はどちらも recorder.py 起動基準で同一
-# 旧コードの OFFSET_MS 補正（first_key_ts を引く）は誤りだったため削除
 # -----------------------------------------------
+if not onset_matched:
+    print("onset_matched.json が空のため、キーログのタイムスタンプを代用します。")
+    print("（音声マッチング精度はないがカメラによる指特定は試みる）")
+    # キーログ直接で onset_matched 形式に変換
+    import json as _json
+    with open(_sf["keys"], encoding="utf-8") as _f:
+        _keylog = _json.load(_f)
+    _normal = [e for e in _keylog if not e.get("is_backspace") and not e["key"].startswith("Key.")]
+    onset_matched = [{
+        "onset_ms":    e["timestamp_ms"],
+        "key_ms":      e["timestamp_ms"],
+        "diff_ms":     0,
+        "key":         e["key"],
+        "is_error":    e.get("is_error", False),
+        "interval_ms": e["interval_ms"],
+    } for e in _normal]
+    print(f"キーログからonset代用: {len(onset_matched)}件")
+
 onset_first = onset_matched[0]["onset_ms"]
 pose_times  = [f["timestamp_ms"] for f in pose_log]
 pose_first  = min(pose_times)
@@ -248,13 +287,13 @@ print(f"運指一致率:  {len(finger_matches)}/{len(camera_results)}件 "
 
 print("\n--- サンプル（先頭20件）---")
 for r in results[:20]:
-    km  = "✓" if r["key_match"]    else "✗"
-    fm  = "✓" if r["finger_match"] else "✗"
+    km  = "OK" if r["key_match"]    else "NG"
+    fm  = "OK" if r["finger_match"] else "NG"
     src = "CAM" if r["source"] == "camera" else "STD"
     print(f"  [{src}] key={r['key']:4s} "
-          f"標準:{r.get('std_finger_name','?'):8s} "
-          f"検出:{str(r.get('actual_finger_name','None')):10s} "
-          f"キー{km} 運指{fm} "
+          f"std:{r.get('std_finger_name','?'):8s} "
+          f"det:{str(r.get('actual_finger_name','None')):10s} "
+          f"key={km} fin={fm} "
           f"dist={str(r.get('dist_to_key',''))+'px':8s} "
           f"interval:{r['interval_ms']}ms")
 
@@ -288,8 +327,8 @@ for r in camera_results:
 
 for code, count in sorted(finger_dist.items(), key=lambda x: -x[1]):
     name = FINGER_NAMES.get(code, code)
-    bar  = "█" * (count // 5)
-    print(f"  {code:4s} {name:8s}: {count:4d}件 {bar}")
+    bar  = "#" * (count // 5)
+    print(f"  {code:4s} {name:8s}: {count:4d} {bar}")
 
 # 保存
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:

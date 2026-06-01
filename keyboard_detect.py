@@ -1,10 +1,22 @@
+import argparse
 import cv2
 import numpy as np
 import json
 import matplotlib.pyplot as plt
 from scipy.signal import find_peaks
 
-IMAGE_FILE = "frame_10.png"
+from session_utils import get_session_files
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--session-id", default=None)
+parser.add_argument("--headless", action="store_true", help="ウィンドウ表示なし（パイプライン用）")
+parser.add_argument("--image", default="frame_10.png", help="キーボード検出用フレーム画像")
+args = parser.parse_args()
+
+_sf = get_session_files(args.session_id)
+SESSION_ID = _sf["session_id"]
+IMAGE_FILE = args.image
+GRID_OUTPUT = _sf["keyboard_grid"]   # セッション別グリッドファイル
 
 # -----------------------------------------------
 # Rainy75 物理レイアウト定義（75%キーボード）
@@ -84,35 +96,43 @@ if not contours:
 largest  = max(contours, key=cv2.contourArea)
 bx, by, bw, bh = cv2.boundingRect(largest)
 
-# 輪郭を4点に近似してホモグラフィ補正を試みる
-epsilon = 0.02 * cv2.arcLength(largest, True)
-approx  = cv2.approxPolyDP(largest, epsilon, True)
+# ── ホモグラフィ補正（傾きが5°以上の場合のみ） ─────────────────────
+# minAreaRect で実際の傾き角を計測し、閾値以上なら透視補正を適用
+HOMOGRAPHY_ANGLE_THRESH = 5.0  # degrees
 
-M_inv = None  # 逆変換行列（斜め補正時のみ使用）
+rect_min  = cv2.minAreaRect(largest)
+tilt_deg  = abs(rect_min[2])                 # 0～90° の傾き
+# OpenCV の minAreaRect は -90°～0° を返すので正規化
+if tilt_deg > 45:
+    tilt_deg = 90 - tilt_deg
+print(f"キーボード傾き角: {tilt_deg:.1f}°")
 
-if len(approx) == 4:
-    pts = np.float32([p[0] for p in approx])
+M_inv = None
+
+if tilt_deg >= HOMOGRAPHY_ANGLE_THRESH:
+    # minAreaRect の4頂点を使ってホモグラフィを計算（精度が高い）
+    corners = cv2.boxPoints(rect_min).astype(np.float32)
     # 時計回りに並び替え（左上・右上・右下・左下）
-    s    = pts.sum(axis=1)
-    diff = np.diff(pts, axis=1)
+    s    = corners.sum(axis=1)
+    diff = corners[:, 0] - corners[:, 1]
     rect = np.float32([
-        pts[np.argmin(s)],   # 左上
-        pts[np.argmin(diff)],# 右上
-        pts[np.argmax(s)],   # 右下
-        pts[np.argmax(diff)] # 左下
+        corners[np.argmin(s)],
+        corners[np.argmax(diff)],
+        corners[np.argmax(s)],
+        corners[np.argmin(diff)],
     ])
-    DST_W = int(bw)
-    DST_H = int(bh)
+    DST_W   = int(bw)
+    DST_H   = int(bh)
     pts_dst = np.float32([[0,0],[DST_W,0],[DST_W,DST_H],[0,DST_H]])
-    M     = cv2.getPerspectiveTransform(rect, pts_dst)
-    M_inv = cv2.getPerspectiveTransform(pts_dst, rect)
-    print(f"ホモグラフィ補正: 成功（4点検出）")
+    M       = cv2.getPerspectiveTransform(rect, pts_dst)
+    M_inv   = cv2.getPerspectiveTransform(pts_dst, rect)
+    print(f"ホモグラフィ補正: 適用（傾き{tilt_deg:.1f}° ≥ {HOMOGRAPHY_ANGLE_THRESH}°）")
     # 補正後の画像でbboxを再設定
     bx, by, bw, bh = 0, 0, DST_W, DST_H
 else:
     M     = None
     M_inv = None
-    print(f"ホモグラフィ補正: スキップ（{len(approx)}点）")
+    print(f"ホモグラフィ補正: スキップ（傾き{tilt_deg:.1f}° < {HOMOGRAPHY_ANGLE_THRESH}°、補正不要）")
 
 # bboxを少し内側に補正（枠のベゼル分を除去）
 BEZEL_X = 0               # 左右の余白なし
@@ -194,10 +214,11 @@ for key, (cx, cy) in key_positions.items():
                     cv2.FONT_HERSHEY_SIMPLEX, 0.3, (255, 255, 255), 1)
 
 cv2.imwrite("keyboard_detect.png", vis)
-cv2.imshow("Keyboard Detection", vis)
 print(f"検出キー数: {len(key_positions)}個")
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+if not args.headless:
+    cv2.imshow("Keyboard Detection", vis)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
 # -----------------------------------------------
 # 各キーの矩形領域を計算（x_min, x_max, y_min, y_max）
@@ -215,7 +236,7 @@ for row_idx, row in enumerate(ROWS):
         # 元画像座標に変換
         ox_min, oy_min = to_orig(x_min_local, y_min_local)
         ox_max, oy_max = to_orig(x_max_local, y_max_local)
-        MARGIN = 4  # キー矩形を各方向に4px拡張
+        MARGIN = 8  # キー矩形を各方向に拡張（隣接キーのヒット率改善）
         key_rects[key] = {
             "x_min": ox_min - MARGIN, "x_max": ox_max + MARGIN,
             "y_min": oy_min - MARGIN, "y_max": oy_max + MARGIN
@@ -238,6 +259,11 @@ kb_data = {
     "homography": M_inv.tolist() if M_inv is not None else None,
 }
 
+with open(GRID_OUTPUT, "w", encoding="utf-8") as f:
+    json.dump(kb_data, f, ensure_ascii=False, indent=2)
+print(f"保存: {GRID_OUTPUT}")
+
+# 後方互換: keyboard_grid.json にも保存（integrate.py 等のフォールバック用）
 with open("keyboard_grid.json", "w", encoding="utf-8") as f:
     json.dump(kb_data, f, ensure_ascii=False, indent=2)
-print("保存: keyboard_grid.json")
+print("保存: keyboard_grid.json（後方互換）")

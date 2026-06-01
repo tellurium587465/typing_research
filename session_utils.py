@@ -21,12 +21,14 @@ def get_session_files(session_id=None):
         session_id = get_latest_session()
     return {
         "session_id": session_id,
-        "keys":    f"session_{session_id}_keys.json",
-        "audio":   f"session_{session_id}_audio.wav",
-        "video":   f"session_{session_id}_video.avi",
-        "pose":    f"session_{session_id}_pose.json",
-        "onset":   f"session_{session_id}_onset_matched.json",
-        "integrated": f"session_{session_id}_integrated.json",
+        "keys":         f"session_{session_id}_keys.json",
+        "audio":        f"session_{session_id}_audio.wav",
+        "video":        f"session_{session_id}_video.avi",
+        "pose":         f"session_{session_id}_pose.json",
+        "onset":        f"session_{session_id}_onset_matched.json",
+        "integrated":   f"session_{session_id}_integrated.json",
+        "keyboard_grid": f"session_{session_id}_keyboard_grid.json",
+        "meta":          f"session_{session_id}_meta.json",
     }
 
 if __name__ == "__main__":

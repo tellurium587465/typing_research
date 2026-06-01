@@ -1,10 +1,31 @@
+# 録画・音声（大容量）
 *.avi
 *.wav
 *.mp4
 *.task
 *.png
+
+# セッション生データ（ローカル保持・git管理外）
 session_*_pose.json
+session_*_pose_backup.json
 session_*_video.*
 session_*_audio.*
+session_*_keys.json
+session_*_integrated.json
+session_*_onset_matched.json
+session_*_keyboard_grid.json
+session_*_meta.json
+frame_*.png
+
+# 分析出力（再生成可能）
+jasp_trigram_*.csv
+jasp_trigram_ALL*.csv
+typing_analysis_*.xlsx
+
+# 仮想環境
 __pycache__/
 .venv/
+.venv310/
+
+# Office ファイル
+*.pptx
