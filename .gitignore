@@ -1,17 +1,15 @@
-# 録画・音声（大容量）
+# ── 録画・音声（大容量バイナリ）────────────────────────────────
 *.avi
 *.wav
 *.mp4
 *.task
 *.png
 
-# セッション生データ（新構造: sessions/{id}/）
-sessions/*/audio.wav
-sessions/*/video.avi
-sessions/*/pose.json
-sessions/*/pose_backup.json
+# ── セッション生データ（新構造: sessions/{id}/）────────────────
+sessions/
+# sessions/ 以下は全て除外（データはローカル保持のみ）
 
-# セッション生データ（旧構造: 後方互換）
+# ── セッション生データ（旧構造: ルート直下の残骸）──────────────
 session_*_pose.json
 session_*_pose_backup.json
 session_*_video.*
@@ -23,17 +21,23 @@ session_*_keyboard_grid.json
 session_*_meta.json
 frame_*.png
 
-# 分析出力（再生成可能）
+# ── 分析出力（再生成可能）────────────────────────────────────
+output/
 jasp_trigram_*.csv
 jasp_trigram_ALL*.csv
 typing_analysis_*.xlsx
-output/*.png
-output/*.csv
 
-# 仮想環境
+# ── 環境・キャッシュ ─────────────────────────────────────────
 __pycache__/
 .venv/
 .venv310/
+*.pyc
 
-# Office ファイル
+# ── Office・その他 ────────────────────────────────────────────
 *.pptx
+*.bak
+labels_config.json
+
+# ── OS ────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db

@@ -13,7 +13,28 @@ start.bat record  →  start.bat analyze  →  start.bat report
 
 ---
 
-## セットアップ
+## 新しいPC へのセットアップ（GitHub 経由）
+
+```bat
+REM 1. リポジトリをクローン
+git clone https://github.com/tellurium587465/typing_research.git
+cd typing_research
+
+REM 2. セットアップを実行（1回だけ）
+setup.bat
+```
+
+`setup.bat` が自動で行うこと：
+- Python 仮想環境 (`.venv310`) の作成
+- 依存パッケージのインストール
+- MediaPipe モデル (`hand_landmarker.task`) のダウンロード
+- デスクトップに `タイピング研究.bat` ランチャーを生成
+
+以降はデスクトップの **`タイピング研究.bat`** をダブルクリックするだけ。
+
+---
+
+## セットアップ（開発環境を直接構築する場合）
 
 ### 必要なもの
 
