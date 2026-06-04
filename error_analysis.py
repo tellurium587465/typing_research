@@ -1,21 +1,23 @@
 """
-error_analysis.py  ─ エラー誘発パターン分析（⑥ メイン）
+error_analysis.py  ─ アルペジオ考慮型エラー誘発パターン分析
 
-「なぜミスが起きるか」を打鍵リズム・指遷移・前後文脈から分析する。
+アルペジオ（意図的な高速連打）と偶発的な急加速を区別して
+「本当に危険なミス」を特定する。
 
-主要な分析:
-  1. エラー直前のリズム崩れ  ─ 急加速した直後にミスが集中するか
-  2. 危険なキー遷移          ─ どの2鍵の連続でエラーが起きやすいか
-  3. 指遷移別エラー率        ─ どの指の組み合わせが危険か
-  4. エラーの回復コスト      ─ バックスペース後に速度が戻るまでの打鍵数
-  5. エラーのクラスタリング  ─ ミスは連続して起きやすいか
-  6. 急加速検出              ─ 「危険速度帯」の閾値を推定
+判定フロー:
+  1. 直前ペアが arpeggio_map でアルペジオ認定されているか？
+     → YES: アルペジオ内エラー（速さ自体は問題でない）
+     → NO:  Z-score でペア固有の外れ値かチェック
+
+  2. ペア固有 Z-score = (interval - pair_mean) / pair_std
+     → Z < -2 かつ pair.type == "variable" : 危険な急加速
+     → Z < -2 かつ pair.type == "normal"   : 偶発的な急加速（中程度のリスク）
+     → -2 <= Z : 統計的に正常範囲
 
 使い方:
-  python error_analysis.py                    # 全セッション統合
+  python error_analysis.py                    # 全セッション
   python error_analysis.py --session-id 1778934176
-  python error_analysis.py --context 5        # エラー前後N打鍵を表示
-  python error_analysis.py --speed-ratio 0.5  # 急加速の閾値（平均の何倍）
+  python error_analysis.py --arpeggio-map arpeggio_map.json
 """
 import argparse, json, glob, os, re, sys
 from collections import defaultdict
@@ -30,21 +32,61 @@ from plot_utils import setup_jp_font
 setup_jp_font()
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--session-id",   default=None)
-parser.add_argument("--context",      type=int,   default=4,
-                    help="エラー前後に表示する打鍵数")
-parser.add_argument("--phrase-ms",    type=int,   default=1000)
-parser.add_argument("--speed-ratio",  type=float, default=0.6,
-                    help="急加速と判定する閾値（baseline の何倍以下）")
+parser.add_argument("--session-id",    default=None)
+parser.add_argument("--phrase-ms",     type=int,   default=1000)
+parser.add_argument("--arpeggio-map",  default="arpeggio_map.json")
+parser.add_argument("--context",       type=int,   default=4)
 args = parser.parse_args()
 
-PHRASE_MS    = args.phrase_ms
-SPEED_RATIO  = args.speed_ratio  # interval < baseline * SPEED_RATIO → 急加速
+# ── アルペジオマップの読み込み ─────────────────────────────────
+arpeggio_map = {}
+if os.path.exists(args.arpeggio_map):
+    with open(args.arpeggio_map, encoding="utf-8") as f:
+        arpeggio_map = json.load(f)
+    print(f"アルペジオマップ: {len(arpeggio_map)}ペア読み込み")
+else:
+    print("※ arpeggio_map.json なし。先に python arpeggio_analysis.py を実行してください")
+    print("  グローバル baseline のみで分析します")
 
-FINGER_NAMES = {
-    "L1":"左小指","L2":"左薬指","L3":"左中指","L4":"左人差し指",
-    "R4":"右人差し指","R3":"右中指","R2":"右薬指","R1":"右小指",
-}
+def get_pair_info(prev_key, curr_key):
+    """ペア情報を取得（なければ None）"""
+    key = f"{prev_key}{curr_key}"
+    return arpeggio_map.get(key)
+
+def classify_speed(interval_ms, pair_info, global_mean):
+    """
+    間隔を分類して (label, z_score, explanation) を返す。
+
+    label:
+      "arpeggio_normal"  : アルペジオペアの正常範囲
+      "arpeggio_extreme" : アルペジオペアでも異常に速い（Z < -3）
+      "rush_variable"    : 変動大ペアでの急加速 → 最危険
+      "rush_normal"      : 通常ペアでの急加速 → 中リスク
+      "rush_unknown"     : ペア不明での急加速（globalで判断）
+      "normal"           : 正常範囲
+    """
+    if pair_info:
+        pm, ps = pair_info["mean"], pair_info["std"]
+        z = (interval_ms - pm) / max(ps, 1)
+        ptype = pair_info["type"]
+
+        if ptype == "arpeggio":
+            if z < -3:
+                return "arpeggio_extreme", z, f"アルペジオ内だが異常速 (Z={z:.1f})"
+            return "arpeggio_normal", z, f"アルペジオ正常範囲 (Z={z:.1f})"
+        elif z < -2:
+            if ptype == "variable":
+                return "rush_variable", z, f"変動大ペアでの急加速 (Z={z:.1f}) ← 最危険"
+            else:
+                return "rush_normal",   z, f"通常ペアでの急加速 (Z={z:.1f})"
+        else:
+            return "normal", z, f"正常範囲 (Z={z:.1f})"
+    else:
+        # ペア不明：グローバル基準
+        ratio = interval_ms / global_mean if global_mean > 0 else 1
+        if ratio < 0.4:
+            return "rush_unknown", None, f"ペア不明・global比{ratio:.0%}"
+        return "normal", None, "ペア不明・通常範囲"
 
 # ── データ読み込み ─────────────────────────────────────────────
 if args.session_id:
@@ -52,21 +94,21 @@ if args.session_id:
 else:
     key_files = sorted(glob.glob("session_*_keys.json"))
 
-# integrated data があれば指情報も使う
 def load_integrated(sid):
     p = f"session_{sid}_integrated.json"
     if not os.path.exists(p):
         return {}
     with open(p, encoding="utf-8") as f:
         data = json.load(f)
-    # onset_ms → actual_finger のマップ
     return {r["onset_ms"]: r for r in data if r.get("actual_finger")}
 
-# ── セッションごとの分析 ────────────────────────────────────────
-ALL_ERRORS        = []   # エラーの詳細
-ALL_BASELINES     = []   # baseline interval
-ALL_RECOVERY      = []   # 回復コスト（バックスペース後のN打鍵の平均interval）
+FINGER_NAMES = {
+    "L1":"左小指","L2":"左薬指","L3":"左中指","L4":"左人差し指",
+    "R4":"右人差し指","R3":"右中指","R2":"右薬指","R1":"右小指",
+}
 
+ALL_ERRORS    = []
+ALL_BASELINES = []
 SESSION_SUMMARIES = []
 
 for kf in key_files:
@@ -78,333 +120,248 @@ for kf in key_files:
 
     integ = load_integrated(sid)
 
-    # フレーズ境界を除いた通常打鍵
-    valid = [k for k in keylog if 0 < k["interval_ms"] <= PHRASE_MS
-             and not k["key"].startswith("Key.")]
-    baselines = [k["interval_ms"] for k in valid if not k.get("is_error")]
-    baseline_mean   = np.mean(baselines)   if baselines else 1
-    baseline_median = np.median(baselines) if baselines else 1
+    normal = [k for k in keylog
+              if not k.get("is_backspace")
+              and not k["key"].startswith("Key.")
+              and 0 < k["interval_ms"] <= args.phrase_ms]
+
+    baselines = [k["interval_ms"] for k in normal if not k.get("is_error")]
+    ALL_BASELINES.extend(baselines)
+    global_mean   = np.mean(baselines)   if baselines else 1
+    global_median = np.median(baselines) if baselines else 1
 
     errors = [k for k in keylog if k.get("is_error")]
-    ALL_BASELINES.extend(baselines)
+    SESSION_SUMMARIES.append({
+        "sid": sid, "total": len(normal), "n_errors": len(errors),
+        "error_rate": len(errors) / max(len(normal), 1) * 100,
+        "global_mean": global_mean,
+    })
 
-    summary = {
-        "sid": sid,
-        "total_keys":     len(valid),
-        "n_errors":       len(errors),
-        "error_rate":     len(errors) / max(len(valid), 1) * 100,
-        "baseline_mean":  baseline_mean,
-        "baseline_median": baseline_median,
-    }
-    SESSION_SUMMARIES.append(summary)
+    all_keys = keylog
+    valid_idx = [i for i, k in enumerate(all_keys) if not k["key"].startswith("Key.")]
 
-    # エラーごとの文脈分析
-    all_keys = keylog  # 全打鍵（BSも含む）
     for ki, entry in enumerate(all_keys):
         if not entry.get("is_error"):
             continue
 
         iv = entry["interval_ms"]
 
-        # 前後の打鍵コンテキスト（BSを除く有効打鍵）
-        valid_idx = [i for i, k in enumerate(all_keys) if not k["key"].startswith("Key.")]
-        vi = None
-        for vi_cand, idx in enumerate(valid_idx):
-            if idx == ki:
-                vi = vi_cand
-                break
+        # コンテキスト取得
+        vi = next((j for j, idx in enumerate(valid_idx) if idx == ki), None)
         if vi is None:
             continue
 
         ctx_before = [all_keys[valid_idx[j]] for j in range(max(0, vi-args.context), vi)]
-        ctx_after  = [all_keys[valid_idx[j]] for j in range(vi+1, min(len(valid_idx), vi+args.context+1))
+        ctx_after  = [all_keys[valid_idx[j]] for j in
+                      range(vi+1, min(len(valid_idx), vi+args.context+2))
                       if not all_keys[valid_idx[j]].get("is_backspace")]
 
-        # 急加速フラグ
-        is_rushing = (0 < iv <= PHRASE_MS) and (iv < baseline_mean * SPEED_RATIO)
-
-        # 直前のキーとの遷移
         prev_key = ctx_before[-1]["key"] if ctx_before else None
-        prev_iv  = ctx_before[-1]["interval_ms"] if ctx_before else None
+
+        # ペア情報とスピード分類
+        pair_info = get_pair_info(prev_key, entry["key"]) if prev_key else None
+        label, z_score, explanation = classify_speed(iv, pair_info, global_mean)
 
         # 指情報
         actual_finger = None
-        # onset_ms でマッチング（±100ms）
         if integ:
             ts = entry["timestamp_ms"]
-            for oms, r in integ.items():
-                if abs(oms - ts) < 100:
-                    actual_finger = r.get("actual_finger")
-                    break
+            actual_finger = next(
+                (r.get("actual_finger") for oms, r in integ.items() if abs(oms - ts) < 100),
+                None
+            )
 
-        # 回復コスト: バックスペース後の打鍵の間隔が元に戻るまで
-        recovery_ivs = []
-        for k in ctx_after[:4]:
-            if 0 < k["interval_ms"] <= PHRASE_MS:
-                recovery_ivs.append(k["interval_ms"])
+        # 回復コスト
+        recovery_ivs = [k["interval_ms"] for k in ctx_after[:4]
+                        if 0 < k["interval_ms"] <= args.phrase_ms]
 
-        error_rec = {
-            "sid":            sid,
-            "key":            entry["key"],
-            "interval_ms":    iv,
-            "baseline_mean":  baseline_mean,
-            "ratio_to_base":  iv / baseline_mean if baseline_mean > 0 else 1,
-            "is_rushing":     is_rushing,
-            "prev_key":       prev_key,
-            "prev_iv":        prev_iv,
-            "actual_finger":  actual_finger,
-            "ctx_before":     ctx_before,
-            "ctx_after":      ctx_after,
-            "recovery_ivs":   recovery_ivs,
-            "recovery_mean":  np.mean(recovery_ivs) if recovery_ivs else None,
-        }
-        ALL_ERRORS.append(error_rec)
+        ALL_ERRORS.append({
+            "sid": sid,
+            "key": entry["key"],
+            "interval_ms":   iv,
+            "global_mean":   global_mean,
+            "prev_key":      prev_key,
+            "pair_info":     pair_info,
+            "label":         label,
+            "z_score":       z_score,
+            "explanation":   explanation,
+            "actual_finger": actual_finger,
+            "ctx_before":    ctx_before,
+            "ctx_after":     ctx_after,
+            "recovery_ivs":  recovery_ivs,
+            "recovery_mean": np.mean(recovery_ivs) if recovery_ivs else None,
+        })
 
 # ── 出力 ──────────────────────────────────────────────────────
-print("=" * 65)
-print("  エラー誘発パターン分析")
-print("=" * 65)
-
-# セッションサマリー
-print(f"\n  セッション別エラー集計")
-print(f"  {'Session':>12s}  {'打鍵':>6s}  {'エラー':>6s}  {'エラー率':>8s}  {'avg_iv':>7s}")
-print("  " + "-" * 50)
-total_err = 0
-for s in SESSION_SUMMARIES:
-    print(f"  {s['sid']:>12s}  {s['total_keys']:6d}  {s['n_errors']:6d}  "
-          f"{s['error_rate']:7.1f}%  {s['baseline_mean']:6.0f}ms")
-    total_err += s["n_errors"]
-
-print(f"\n  合計エラー数: {total_err}件  / 全{sum(s['total_keys'] for s in SESSION_SUMMARIES)}打鍵")
-
-if not ALL_ERRORS:
-    print("\n  エラーデータなし（今後のセッションで蓄積されます）")
-    sys.exit(0)
-
-# ── ① リズム崩れ分析 ─────────────────────────────────────────
 print()
 print("=" * 65)
-print("  ① エラー直前のリズム崩れ（急加速の検出）")
-print(f"     急加速 = interval < baseline_mean × {SPEED_RATIO:.1f}")
+print("  エラー誘発パターン分析（アルペジオ考慮版）")
 print("=" * 65)
 
-rushing = [e for e in ALL_ERRORS if e["is_rushing"]]
-calm    = [e for e in ALL_ERRORS if not e["is_rushing"]]
+print(f"\n  {'Session':>12s}  {'打鍵':>6s}  {'エラー':>6s}  {'エラー率':>8s}  {'avg_iv':>7s}")
+print("  " + "-" * 50)
+for s in SESSION_SUMMARIES:
+    print(f"  {s['sid']:>12s}  {s['total']:6d}  {s['n_errors']:6d}  "
+          f"{s['error_rate']:7.1f}%  {s['global_mean']:6.0f}ms")
 
-print(f"\n  急加速中のエラー: {len(rushing)}/{total_err}件 ({len(rushing)/total_err*100:.0f}%)")
-print(f"  通常速度のエラー: {len(calm)}/{total_err}件 ({len(calm)/total_err*100:.0f}%)")
+total_err = len(ALL_ERRORS)
+print(f"\n  合計エラー: {total_err}件")
+
+if not ALL_ERRORS:
+    print("\n  エラーデータなし")
+    sys.exit(0)
+
+# ── 各エラーの詳細分析 ────────────────────────────────────────
+print()
+print("=" * 65)
+print("  各エラーの詳細分類")
+print("=" * 65)
+
+LABEL_ICONS = {
+    "arpeggio_normal":  "[ARPEGGIO] アルペジオ正常",
+    "arpeggio_extreme": "[EXTREME ] アルペジオ内異常速",
+    "rush_variable":    "[DANGER  ] 変動大ペア急加速（最危険）",
+    "rush_normal":      "[WARNING ] 通常ペア急加速",
+    "rush_unknown":     "[CAUTION ] 不明ペア急加速",
+    "normal":           "[OK      ] 正常範囲",
+}
 
 for e in ALL_ERRORS:
-    rush_mark = "[急加速!]" if e["is_rushing"] else "[通常]  "
-    ratio     = e["ratio_to_base"]
-    print(f"\n  {rush_mark}  key=[{e['key']:8s}]  "
-          f"interval={e['interval_ms']:4d}ms  "
-          f"(baseline={e['baseline_mean']:.0f}ms, ratio={ratio:.2f})")
-    print(f"    前後コンテキスト: ", end="")
-    for c in e["ctx_before"]:
+    icon = LABEL_ICONS.get(e["label"], e["label"])
+    pi   = e["pair_info"]
+
+    print(f"\n  {icon}")
+    print(f"  key=[{e['key']}]  interval={e['interval_ms']}ms"
+          f"  (global_mean={e['global_mean']:.0f}ms)")
+
+    if pi:
+        print(f"  ペア [{e['prev_key']}→{e['key']}]: "
+              f"mean={pi['mean']:.0f}ms  std={pi['std']:.0f}ms  "
+              f"CV={pi['cv']:.2f}  type={pi['type']}  N={pi['n']}")
+        if e["z_score"] is not None:
+            print(f"  Z-score={e['z_score']:.2f}  → {e['explanation']}")
+    else:
+        print(f"  ペア不明  → {e['explanation']}")
+
+    print(f"  前後: ", end="")
+    for c in e["ctx_before"][-3:]:
         print(f"[{c['key']}:{c['interval_ms']}ms]", end=" ")
     print(f"→ [ERR:{e['key']}:{e['interval_ms']}ms] →", end=" ")
     for c in e["ctx_after"][:3]:
         print(f"[{c['key']}:{c['interval_ms']}ms]", end=" ")
     print()
-    if e["is_rushing"] and e["ctx_before"]:
-        # 急加速の直前N打鍵でintervalが下がってきているか確認
-        ivs_trend = [c["interval_ms"] for c in e["ctx_before"]
-                     if 0 < c["interval_ms"] <= PHRASE_MS]
-        if len(ivs_trend) >= 2:
-            slope = ivs_trend[-1] - ivs_trend[0]
-            trend = "加速傾向" if slope < -10 else ("減速傾向" if slope > 10 else "安定")
-            print(f"    直前のリズム: {ivs_trend} → {trend} (変化={slope:+.0f}ms)")
 
-# ── ② 危険なキー遷移 ─────────────────────────────────────────
-print()
-print("=" * 65)
-print("  ② 危険なキー遷移（エラーが起きた前→現キーの組み合わせ）")
-print("=" * 65)
-
-if ALL_ERRORS:
-    for e in ALL_ERRORS:
-        if e["prev_key"]:
-            print(f"  [{e['prev_key'].upper()}] → [{e['key'].upper()}]  "
-                  f"interval={e['interval_ms']}ms  rushing={e['is_rushing']}")
-    print("\n  ※ データが少ないため、セッションを重ねると統計が充実します")
-
-# ── ③ 指遷移別エラー率 ────────────────────────────────────────
-print()
-print("=" * 65)
-print("  ③ 指遷移別エラー情報（カメラ検出データ）")
-print("=" * 65)
-
-finger_errors = [e for e in ALL_ERRORS if e.get("actual_finger")]
-if finger_errors:
-    for e in finger_errors:
+    if e["actual_finger"]:
         fname = FINGER_NAMES.get(e["actual_finger"], e["actual_finger"])
-        print(f"  エラーキー=[{e['key']}]  使用指={fname}  rushing={e['is_rushing']}")
-else:
-    print("  指データなし（integrated.json が必要）")
+        print(f"  使用指: {fname} ({e['actual_finger']})")
 
-# ── ④ 回復コスト ─────────────────────────────────────────────
+    if e["recovery_mean"]:
+        ratio = e["recovery_mean"] / e["global_mean"] * 100
+        print(f"  回復コスト: {e['recovery_mean']:.0f}ms (baseline比 {ratio:.0f}%)")
+
+# ── ラベル別集計 ───────────────────────────────────────────────
 print()
 print("=" * 65)
-print("  ④ エラーからの回復コスト")
-print("     バックスペース後、打鍵リズムが元に戻るまでの分析")
+print("  エラー種別サマリー")
 print("=" * 65)
 
+label_counts = defaultdict(int)
 for e in ALL_ERRORS:
-    bs_iv = None
-    # バックスペース自体の間隔
-    ki_in_all = None
-    for i, k in enumerate(ALL_ERRORS):
-        if k is e:
-            ki_in_all = i
-            break
+    label_counts[e["label"]] += 1
 
-    print(f"\n  エラー: key=[{e['key']}]  baseline={e['baseline_mean']:.0f}ms")
+for label, icon in LABEL_ICONS.items():
+    cnt = label_counts.get(label, 0)
+    if cnt > 0:
+        pct = cnt / total_err * 100
+        print(f"  {icon:30s}: {cnt:3d}件 ({pct:.0f}%)")
 
-    if e["recovery_ivs"]:
-        rec = e["recovery_ivs"]
-        slowdown = np.mean(rec) / e["baseline_mean"] * 100
-        print(f"  回復後{len(rec)}打鍵の平均interval: {np.mean(rec):.0f}ms "
-              f"(baseline比 {slowdown:.0f}%)")
-        print(f"  回復interval列: {[round(v) for v in rec]}")
-        if slowdown > 120:
-            print(f"  → ミス後のリズム乱れあり（baseline比+{slowdown-100:.0f}%遅い）")
-        elif slowdown < 90:
-            print(f"  → ミス後は反応が早い傾向")
-        else:
-            print(f"  → ほぼ即回復")
-
-# ── ⑤ クラスタリング ─────────────────────────────────────────
 print()
-print("=" * 65)
-print("  ⑤ エラーのクラスタリング分析")
-print("=" * 65)
+print("  【解釈】")
+arp_n  = label_counts.get("arpeggio_normal", 0)
+rush_n = label_counts.get("rush_variable", 0) + label_counts.get("rush_normal", 0)
+unk_n  = label_counts.get("rush_unknown", 0)
 
-# 全セッションでエラーのタイムスタンプ間隔を見る
-error_timestamps = [(e["sid"], k["timestamp_ms"])
-                    for e in ALL_ERRORS
-                    for kf2 in key_files
-                    for k in ([e_k for e_k in (json.load(open(kf2, encoding="utf-8"))
-                                               if os.path.exists(kf2) else [])
-                                if e_k.get("is_error")])
-                    ]
-
-print(f"  現在のデータでは{total_err}件のエラーのみ。")
-print(f"  クラスタリング分析には最低10件以上のエラーが必要です。")
-print(f"  セッションを重ねると分析が充実します。")
-
-# ── ⑥ 急加速の「危険閾値」推定 ───────────────────────────────
-print()
-print("=" * 65)
-print("  ⑥ 急加速の「危険速度帯」推定")
-print("=" * 65)
-
-if ALL_BASELINES:
-    bm = np.mean(ALL_BASELINES)
-    bmd = np.median(ALL_BASELINES)
-    print(f"\n  全セッション baseline: 平均={bm:.0f}ms  中央値={bmd:.0f}ms")
-    print(f"\n  エラー時の interval（vs baseline）:")
-    for e in ALL_ERRORS:
-        pct = e["interval_ms"] / bm * 100
-        bar = "#" * int(pct / 5)
-        print(f"    [{e['key']}]  {e['interval_ms']:4d}ms  = baseline の {pct:.0f}%  {bar}")
-
-    if ALL_ERRORS:
-        error_ratios = [e["interval_ms"] / bm for e in ALL_ERRORS
-                        if 0 < e["interval_ms"] <= PHRASE_MS]
-        if error_ratios:
-            mean_ratio = np.mean(error_ratios)
-            print(f"\n  推定危険閾値: baseline の {mean_ratio*100:.0f}% 以下 "
-                  f"(= {bm * mean_ratio:.0f}ms 以下) で打ち続けるとミスが増える可能性")
-            print(f"  → 現在のあなたには「{bm * mean_ratio:.0f}ms ({60000 / (bm * mean_ratio / 5):.0f} WPM相当）以下」が危険速度帯")
+if arp_n > 0:
+    print(f"  アルペジオ内エラー {arp_n}件: 速さ自体は問題ではない。")
+    print(f"    → キーの選択（どの文字を打つか）の判断ミスが原因と考えられる。")
+if rush_n > 0:
+    print(f"  急加速エラー {rush_n}件: 意図せず速くなりすぎた可能性。")
+    print(f"    → そのペアの練習または意識的なペース維持が有効。")
+if unk_n > 0:
+    print(f"  不明ペアエラー {unk_n}件: データが少ないペア。")
+    print(f"    → セッションを重ねると分類精度が上がります。")
 
 # ── 可視化 ────────────────────────────────────────────────────
-fig = plt.figure(figsize=(14, 8))
-fig.suptitle("エラー誘発パターン分析", fontsize=13, fontweight="bold")
-gs = gridspec.GridSpec(2, 2, figure=fig, hspace=0.4, wspace=0.35)
+fig = plt.figure(figsize=(14, 6))
+fig.suptitle("エラー分析（アルペジオ考慮版）", fontsize=13, fontweight="bold")
+gs = gridspec.GridSpec(1, 2, figure=fig, wspace=0.35)
 
-# 左上: セッション別エラー率
-ax1 = fig.add_subplot(gs[0, 0])
-sids  = [s["sid"][-4:] for s in SESSION_SUMMARIES]
-rates = [s["error_rate"] for s in SESSION_SUMMARIES]
-colors = ["#F44336" if r > 0 else "#4CAF50" for r in rates]
-bars = ax1.bar(range(len(sids)), rates, color=colors, alpha=0.8)
-for bar, v in zip(bars, rates):
-    ax1.text(bar.get_x() + bar.get_width()/2, v + 0.02,
-             f"{v:.1f}%", ha="center", fontsize=9)
-ax1.set_xticks(range(len(sids))); ax1.set_xticklabels(sids, fontsize=9)
-ax1.set_title("セッション別エラー率", fontweight="bold")
-ax1.set_ylabel("エラー率 (%)")
-ax1.grid(axis="y", alpha=0.3)
+# 左: ペア分布 with エラーポイント
+ax1 = fig.add_subplot(gs[0])
+if ALL_BASELINES and arpeggio_map:
+    # 全ペアの分布
+    means = [v["mean"] for v in arpeggio_map.values()]
+    cvs   = [v["cv"]   for v in arpeggio_map.values()]
+    types = [v["type"] for v in arpeggio_map.values()]
+    type_colors = {"arpeggio":"#F44336","fast":"#FF9800","variable":"#9C27B0","normal":"#BBBBBB"}
+    for t, col in type_colors.items():
+        idxs = [i for i, tp in enumerate(types) if tp == t]
+        if idxs:
+            ax1.scatter([means[i] for i in idxs], [cvs[i] for i in idxs],
+                        c=col, alpha=0.5, s=20, label=t)
 
-# 右上: エラー時のintervalをbaseline分布と比較
-ax2 = fig.add_subplot(gs[0, 1])
-if ALL_BASELINES:
-    ax2.hist(ALL_BASELINES, bins=40, alpha=0.6, color="#2196F3",
-             label=f"baseline (N={len(ALL_BASELINES)})", density=True)
+    # エラーポイントを重ねて表示
     for e in ALL_ERRORS:
-        ax2.axvline(e["interval_ms"], color="#F44336", linewidth=2.5,
-                    label=f"エラー [{e['key']}] ({e['interval_ms']}ms)")
-    ax2.axvline(np.mean(ALL_BASELINES) * SPEED_RATIO, color="orange",
-                linestyle="--", linewidth=1.5, label=f"急加速閾値 ({SPEED_RATIO:.0%})")
-    ax2.set_title("エラー時のinterval vs baseline分布", fontweight="bold")
-    ax2.set_xlabel("打鍵間隔 (ms)")
-    ax2.set_ylabel("密度")
-    ax2.legend(fontsize=7)
-    ax2.set_xlim(0, min(np.percentile(ALL_BASELINES, 95) * 1.5, 600))
-    ax2.grid(alpha=0.3)
+        pi = e["pair_info"]
+        if pi:
+            marker = "X" if "rush" in e["label"] else "o"
+            ec_color = "red" if "rush" in e["label"] else "blue"
+            ax1.scatter(pi["mean"], pi["cv"], c=ec_color, s=120,
+                        marker=marker, zorder=5, edgecolors="black", linewidth=1.5)
+            ax1.annotate(f"{e['prev_key']}->{e['key']}\n({e['interval_ms']}ms)",
+                         (pi["mean"], pi["cv"]), fontsize=7.5,
+                         xytext=(5, 5), textcoords="offset points",
+                         color=ec_color)
 
-# 左下: エラー前後のinterval推移
-ax3 = fig.add_subplot(gs[1, 0])
-if ALL_ERRORS:
-    for ei, e in enumerate(ALL_ERRORS):
-        ctx = e["ctx_before"][-args.context:]
-        ivs = [c["interval_ms"] for c in ctx if 0 < c["interval_ms"] <= PHRASE_MS]
-        ivs.append(e["interval_ms"])  # エラー地点
-        rec = [v for v in e["recovery_ivs"][:args.context] if 0 < v <= PHRASE_MS]
-        ivs.extend(rec)
+    ax1.axvline(100,  color="gray",   linestyle="--", linewidth=1)
+    ax1.axhline(0.35, color="red",    linestyle=":",  linewidth=1)
+    ax1.axhline(0.60, color="purple", linestyle=":",  linewidth=1)
+    ax1.set_xlabel("平均間隔 (ms)")
+    ax1.set_ylabel("CV = σ/μ")
+    ax1.set_title("ペア分類マップ\nX=危険エラー  o=アルペジオエラー", fontweight="bold")
+    ax1.legend(fontsize=8)
+    ax1.grid(alpha=0.3)
 
-        x_err = len([c for c in ctx if 0 < c["interval_ms"] <= PHRASE_MS])
-        xs = list(range(len(ivs)))
-        color = "#F44336" if e["is_rushing"] else "#FF9800"
-        ax3.plot(xs, ivs, "o-", color=color, alpha=0.8,
-                 label=f"[{e['key']}] (rushing={e['is_rushing']})")
-        ax3.axvline(x_err, color="red", linestyle="--", linewidth=1, alpha=0.5)
-
-    if ALL_BASELINES:
-        ax3.axhline(np.mean(ALL_BASELINES), color="blue",
-                    linestyle=":", linewidth=1, label="baseline平均")
-        ax3.axhline(np.mean(ALL_BASELINES) * SPEED_RATIO, color="orange",
-                    linestyle=":", linewidth=1, label="急加速閾値")
-
-    ax3.set_title("エラー前後のinterval推移\n(縦破線=エラー地点)", fontweight="bold")
-    ax3.set_xlabel("打鍵インデックス（エラー地点基準）")
-    ax3.set_ylabel("interval (ms)")
-    ax3.legend(fontsize=7)
-    ax3.grid(alpha=0.3)
-
-# 右下: 回復コスト
-ax4 = fig.add_subplot(gs[1, 1])
-recovery_data = [(e["key"], e["recovery_mean"], e["baseline_mean"])
-                 for e in ALL_ERRORS if e["recovery_mean"] is not None]
-if recovery_data:
-    labels_r = [f"[{k}]" for k, _, _ in recovery_data]
-    ratios_r  = [rm/bm*100 for _, rm, bm in recovery_data]
-    colors_r  = ["#F44336" if r > 120 else "#4CAF50" for r in ratios_r]
-    bars_r = ax4.bar(range(len(labels_r)), ratios_r, color=colors_r, alpha=0.8)
-    ax4.axhline(100, color="blue", linestyle="--", linewidth=1, label="baseline=100%")
-    for bar, v in zip(bars_r, ratios_r):
-        ax4.text(bar.get_x() + bar.get_width()/2, v + 1,
-                 f"{v:.0f}%", ha="center", fontsize=10)
-    ax4.set_xticks(range(len(labels_r))); ax4.set_xticklabels(labels_r)
-    ax4.set_title("エラー後の回復コスト\n(baseline=100%)", fontweight="bold")
-    ax4.set_ylabel("回復後interval / baseline (%)")
-    ax4.legend(fontsize=8)
-    ax4.grid(axis="y", alpha=0.3)
-else:
-    ax4.text(0.5, 0.5, "回復データなし", ha="center", va="center", transform=ax4.transAxes)
+# 右: エラー種別の円グラフ
+ax2 = fig.add_subplot(gs[1])
+label_display = {
+    "arpeggio_normal":  "アルペジオ\n正常",
+    "arpeggio_extreme": "アルペジオ\n異常速",
+    "rush_variable":    "急加速\n(変動大)",
+    "rush_normal":      "急加速\n(通常)",
+    "rush_unknown":     "急加速\n(不明)",
+    "normal":           "正常範囲",
+}
+pie_colors = {
+    "arpeggio_normal":  "#2196F3",
+    "arpeggio_extreme": "#FF9800",
+    "rush_variable":    "#F44336",
+    "rush_normal":      "#FF5722",
+    "rush_unknown":     "#FFC107",
+    "normal":           "#4CAF50",
+}
+pie_data = [(label_display.get(l, l), cnt, pie_colors.get(l, "#888888"))
+            for l, cnt in label_counts.items() if cnt > 0]
+if pie_data:
+    lbls = [p[0] for p in pie_data]
+    vals = [p[1] for p in pie_data]
+    cols = [p[2] for p in pie_data]
+    wedges, texts, autotexts = ax2.pie(
+        vals, labels=lbls, colors=cols,
+        autopct="%1.0f%%", startangle=90,
+        textprops={"fontsize": 9}
+    )
+    ax2.set_title("エラー種別の内訳", fontweight="bold")
 
 plt.savefig("error_analysis.png", dpi=150, bbox_inches="tight")
-print("\n\n保存: error_analysis.png")
-print("\n注意: 現在のエラーデータは少ないため、セッションを重ねるほど")
-print("      より信頼性の高い統計が得られます。")
+print("\n保存: error_analysis.png")

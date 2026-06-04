@@ -8,13 +8,15 @@ run_pipeline.py  ─ タイピング研究 エンドツーエンド分析パイ�
   python run_pipeline.py --skip-pose             # pose_analysis をスキップ（高速化）
 
 ステップ:
-  1. extract_frame   ─ キーボード検出用フレームを動画から自動抽出
-  2. keyboard_detect ─ キーボード位置・キーグリッドを検出して保存
-  3. pose_analysis   ─ MediaPipe で全フレームの指先座標を取得
-  4. onset_detection ─ 打鍵音から打鍵タイミングを検出してキーログと照合
-  5. integrate       ─ キーログ × 音 × カメラ映像を1打鍵ずつ統合
-  6. export_excel    ─ 結果を Excel に出力
-  7. report          ─ サマリーをターミナルに表示
+  1. extract_frame    ─ キーボード検出用フレームを動画から自動抽出
+  2. keyboard_detect  ─ キーボード位置・キーグリッドを検出して保存
+  3. pose_analysis    ─ MediaPipe で全フレームの指先座標を取得
+  4. onset_detection  ─ 打鍵音から打鍵タイミングを検出してキーログと照合
+  5. integrate        ─ キーログ × 音 × カメラ映像を1打鍵ずつ統合
+  6. export_excel     ─ 結果を Excel に出力
+  7. report           ─ サマリーをターミナルに表示
+  8. arpeggio         ─ 全セッションのアルペジオペアを更新（蓄積型）
+  9. error_analysis   ─ アルペジオ考慮型エラー誘発パターン分析
 """
 import argparse
 import os
@@ -37,11 +39,14 @@ parser.add_argument("--session-id", default=None,
 parser.add_argument("--skip-pose", action="store_true",
                     help="pose_analysis をスキップ（既に完了済みの場合など）")
 parser.add_argument("--from", dest="from_step",
-                    choices=["extract", "keyboard", "pose", "onset", "integrate", "export", "report"],
+                    choices=["extract","keyboard","pose","onset","integrate",
+                             "export","report","arpeggio","error"],
                     default="extract",
                     help="指定ステップから再実行（途中から再開するとき）")
-parser.add_argument("--no-excel", action="store_true", help="Excel出力をスキップ")
-parser.add_argument("--no-report", action="store_true", help="最終レポートをスキップ")
+parser.add_argument("--no-excel",   action="store_true", help="Excel出力をスキップ")
+parser.add_argument("--no-report",  action="store_true", help="最終レポートをスキップ")
+parser.add_argument("--no-arpeggio",action="store_true", help="アルペジオ分析をスキップ")
+parser.add_argument("--no-error",   action="store_true", help="エラー分析をスキップ")
 args = parser.parse_args()
 
 _sf = get_session_files(args.session_id)
@@ -49,12 +54,13 @@ SESSION_ID = _sf["session_id"]
 VIDEO_FILE = _sf["video"]
 SESSION_ARGS = ["--session-id", SESSION_ID]
 
-STEP_ORDER = ["extract", "keyboard", "pose", "onset", "integrate", "export", "report"]
+STEP_ORDER = ["extract","keyboard","pose","onset","integrate",
+              "export","report","arpeggio","error"]
 
 def should_run(step):
     return STEP_ORDER.index(step) >= STEP_ORDER.index(args.from_step)
 
-def banner(title, step_n, total=7):
+def banner(title, step_n, total=9):
     print(f"\n{'='*55}")
     print(f"  Step {step_n}/{total}: {title}")
     print(f"{'='*55}")
@@ -164,6 +170,23 @@ if should_run("report") and not args.no_report:
     run_script("report.py", ["--session-id", SESSION_ID, "--detail"])
 
 # ───────────────────────────────────────────────
+# Step 8: アルペジオマップ更新（全セッション蓄積型）
+# ───────────────────────────────────────────────
+if should_run("arpeggio") and not args.no_arpeggio:
+    banner("アルペジオペアマップ更新（全セッション）", 8, total=9)
+    print("  全セッションのキーペア統計を再計算します（蓄積型）")
+    run_script("arpeggio_analysis.py", allow_fail=True)
+
+# ───────────────────────────────────────────────
+# Step 9: エラー誘発パターン分析
+# ───────────────────────────────────────────────
+if should_run("error") and not args.no_error:
+    banner("エラー誘発パターン分析（アルペジオ考慮）", 9, total=9)
+    run_script("error_analysis.py",
+               ["--session-id", SESSION_ID] if args.session_id else [],
+               allow_fail=True)
+
+# ───────────────────────────────────────────────
 # 完了サマリ
 # ───────────────────────────────────────────────
 print(f"\n{'='*55}")
@@ -174,8 +197,9 @@ for pattern in [
     f"session_{SESSION_ID}_integrated.json",
     f"session_{SESSION_ID}_keyboard_grid.json",
     f"typing_analysis_{SESSION_ID}.xlsx",
-    "keyboard_detect.png",
-    "onset_result.png",
+    "keyboard_detect.png", "onset_result.png",
+    "arpeggio_analysis.png", "arpeggio_map.json",
+    "error_analysis.png",
 ]:
     for f in glob.glob(pattern):
         size = os.path.getsize(f)
