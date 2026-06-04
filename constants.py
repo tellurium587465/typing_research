@@ -2,12 +2,18 @@
 constants.py  ─ プロジェクト共通定数
 
 すべてのスクリプトはここからインポートする。
-個別ファイルへの重複定義は廃止。
+PROJECT_ROOT を絶対パスで定義するため、デスクトップから実行しても
+セッションデータを正しく参照できる。
 """
+import os
 
-# ── ディレクトリ構造 ──────────────────────────────────────────
-SESSIONS_DIR = "sessions"    # 各セッションのデータフォルダ
-OUTPUT_DIR   = "output"      # 横断分析の出力フォルダ
+# ── プロジェクトルート（このファイルがある場所）──────────────────
+# どのディレクトリから実行しても常に正しいパスを返す
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+# ── ディレクトリ構造（絶対パス）──────────────────────────────────
+SESSIONS_DIR = os.path.join(PROJECT_ROOT, "sessions")
+OUTPUT_DIR   = os.path.join(PROJECT_ROOT, "output")
 
 # ── タイミング ────────────────────────────────────────────────
 PHRASE_BOUNDARY_MS = 1000    # フレーズ境界と判定する interval 閾値 (ms)

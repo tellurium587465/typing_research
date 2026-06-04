@@ -32,7 +32,11 @@ import os
 import re
 import shutil
 
-from constants import SESSIONS_DIR, OUTPUT_DIR
+from constants import SESSIONS_DIR, OUTPUT_DIR, PROJECT_ROOT
+
+# ── カレントディレクトリをプロジェクトルートに固定 ──────────────
+# デスクトップや別フォルダから実行しても正しいパスを参照できるようにする
+os.chdir(PROJECT_ROOT)
 
 # ── ディレクトリ確認・作成 ──────────────────────────────────────
 def ensure_dirs():
@@ -62,8 +66,8 @@ def list_all_session_ids() -> list[str]:
         sid = os.path.basename(os.path.dirname(p))
         ids.add(sid)
 
-    # 旧構造（後方互換）
-    for p in glob.glob("session_*_keys.json"):
+    # 旧構造（後方互換）─ PROJECT_ROOT 直下を検索
+    for p in glob.glob(os.path.join(PROJECT_ROOT, "session_*_keys.json")):
         m = re.search(r"session_(\d+)_keys", p)
         if m:
             ids.add(m.group(1))
@@ -79,12 +83,16 @@ def get_latest_session() -> str:
 
 def session_id_from_path(path: str) -> str:
     """新旧どちらの構造のパスからでもセッションIDを抽出する"""
-    # 新構造: sessions/{id}/keys.json
-    parts = os.path.normpath(path).split(os.sep)
-    if SESSIONS_DIR in parts:
-        idx = parts.index(SESSIONS_DIR)
-        if idx + 1 < len(parts):
-            return parts[idx + 1]
+    # 新構造: …/sessions/{id}/keys.json
+    # SESSIONS_DIR は絶対パスなのでパス内の sessions フォルダ名で判定
+    norm = os.path.normpath(os.path.abspath(path))
+    sessions_norm = os.path.normpath(SESSIONS_DIR)
+    if norm.startswith(sessions_norm + os.sep):
+        # sessions/ の直下のフォルダ名 = session_id
+        rel = os.path.relpath(norm, sessions_norm)
+        sid = rel.split(os.sep)[0]
+        if sid.isdigit():
+            return sid
     # 旧構造: session_{id}_keys.json
     m = re.search(r"session_(\d+)", path)
     if m:

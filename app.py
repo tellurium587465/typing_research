@@ -27,7 +27,7 @@ import streamlit as st
 from plotly.subplots import make_subplots
 
 from constants import (FINGER_NAMES, FINGER_ORDER, PHRASE_BOUNDARY_MS,
-                        SESSIONS_DIR, OUTPUT_DIR, STANDARD_FINGER)
+                        SESSIONS_DIR, OUTPUT_DIR, STANDARD_FINGER, PROJECT_ROOT)
 from session_utils import (get_session_files, list_all_session_ids,
                             load_meta, output_path, session_id_from_path)
 
@@ -39,10 +39,12 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-PYTHON = str(Path(".venv310/Scripts/python.exe").resolve())
+# デスクトップなど別ディレクトリから起動しても PROJECT_ROOT を参照
+PYTHON      = str(Path(PROJECT_ROOT) / ".venv310" / "Scripts" / "python.exe")
+LABELS_FILE = str(Path(PROJECT_ROOT) / "labels_config.json")
 
 # ── ラベル設定ファイル ──────────────────────────────────────────
-LABELS_FILE = "labels_config.json"
+# LABELS_FILE は上で PROJECT_ROOT ベースで定義済み
 
 def load_labels_config():
     default = {
@@ -291,8 +293,9 @@ elif page == "🎙️ 録音":
         if category:
             cmd += ["--category", category]
 
-        # Windows: 新しいウィンドウで起動
-        subprocess.Popen(cmd, creationflags=subprocess.CREATE_NEW_CONSOLE)
+        # Windows: 新しいウィンドウで起動（PROJECT_ROOT で実行）
+        subprocess.Popen(cmd, creationflags=subprocess.CREATE_NEW_CONSOLE,
+                         cwd=PROJECT_ROOT)
         st.success(f"recorder.py を起動しました（ラベル: {final_label or 'なし'}）")
         st.info("カメラウィンドウが開いたらタイピングを開始してください。\n"
                 "終了後、「⚙️ 分析」ページで分析を実行してください。")
@@ -359,7 +362,7 @@ elif page == "⚙️ 分析":
                 text=True,
                 encoding="utf-8",
                 errors="replace",
-                cwd=os.getcwd(),
+                cwd=PROJECT_ROOT,
             )
             lines = []
             current_step = 0
@@ -596,7 +599,8 @@ elif page == "✋ 運指":
                 with st.spinner("実行中..."):
                     result = subprocess.run([PYTHON, "arpeggio_analysis.py"],
                                             capture_output=True, text=True,
-                                            encoding="utf-8", errors="replace")
+                                            encoding="utf-8", errors="replace",
+                                            cwd=PROJECT_ROOT)
                     st.code(result.stdout)
                     st.cache_data.clear()
                     st.rerun()
@@ -662,7 +666,7 @@ elif page == "✋ 運指":
                     [PYTHON, "finger_optimize.py"],
                     capture_output=True, text=True,
                     encoding="utf-8", errors="replace",
-                    cwd=os.getcwd(),
+                    cwd=PROJECT_ROOT,
                 )
                 st.code(result.stdout[-3000:] if len(result.stdout) > 3000 else result.stdout)
 
