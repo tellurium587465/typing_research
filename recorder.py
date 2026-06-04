@@ -1,3 +1,4 @@
+import argparse
 import json
 import time
 import threading
@@ -7,10 +8,26 @@ from pynput import keyboard
 import numpy as np
 import cv2
 
+# ── コマンドライン引数 ────────────────────────────────────────────
+parser = argparse.ArgumentParser(description="タイピング録音")
+parser.add_argument("--label", default="",
+                    help='セッションのラベル（例: "寿司打3000点" "英単語練習"）')
+parser.add_argument("--category", default="",
+                    choices=["", "sushida", "english", "code", "free"],
+                    help="練習カテゴリ")
+args = parser.parse_args()
+
 # 設定
 SAMPLE_RATE = 44100
-SESSION_ID = f"session_{int(time.time())}"
+SESSION_ID  = f"session_{int(time.time())}"
+SESSION_LABEL    = args.label
+SESSION_CATEGORY = args.category
 FPS = 30
+
+if SESSION_LABEL:
+    print(f"ラベル: {SESSION_LABEL}")
+if SESSION_CATEGORY:
+    print(f"カテゴリ: {SESSION_CATEGORY}")
 
 # -----------------------------------------------
 # マイクデバイス自動選択
@@ -206,12 +223,15 @@ if audio_frames:
 # セッションメタデータ保存（actual_fps を記録して後続スクリプトが使えるように）
 meta_file = f"{SESSION_ID}_meta.json"
 meta = {
-    "session_id": SESSION_ID,
-    "claimed_fps": FPS,
-    "actual_fps": round(actual_fps_real, 4),
-    "frame_count": frame_count,
+    "session_id":      SESSION_ID,
+    "label":           SESSION_LABEL,
+    "category":        SESSION_CATEGORY,
+    "recorded_at":     time.strftime("%Y-%m-%d %H:%M:%S"),
+    "claimed_fps":     FPS,
+    "actual_fps":      round(actual_fps_real, 4),
+    "frame_count":     frame_count,
     "video_duration_s": round(actual_duration, 3),
-    "sample_rate": SAMPLE_RATE,
+    "sample_rate":     SAMPLE_RATE,
 }
 with open(meta_file, "w", encoding="utf-8") as f:
     json.dump(meta, f, ensure_ascii=False, indent=2)

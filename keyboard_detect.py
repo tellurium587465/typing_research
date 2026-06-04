@@ -159,15 +159,35 @@ def to_orig(cx, cy):
     r  = cv2.perspectiveTransform(pt, M_inv)
     return int(r[0][0][0]), int(r[0][0][1])
 
+# ── ⑩ カメラ視差補正（行ごとのy方向オフセット） ──────────────────
+# 真上からのカメラでは、遠いキー（上段）に指を伸ばすと
+# 指先が手前にずれて見える（視差）。
+# ホームポジション（ASDF行）を基準に、各行へのy補正を適用する。
+#
+# 補正量の推定:
+#   カメラ高さH、指の高さh ≈ 0mm（キーボード面と仮定）として
+#   実際は「指が伸びた先のキー」と「指先が見える位置」のズレ。
+#   簡易的に row_offset_px = PARALLAX_FACTOR × row_distance_from_home で補正。
+#
+# PARALLAX_FACTOR: 正の値なら上段ほど指先をより下にシフト
+#                  0 なら補正なし（従来の動作）
+# デフォルト: 0.0（データが少ないため保守的に無効。実験時は 1.5~3.0 を試す）
+PARALLAX_FACTOR = 0.0   # px / row_distance  （将来的に自動推定に変更予定）
+HOME_ROW_IDX    = 3     # ASDF行のインデックス（0-based）
+
 # 各キーのピクセル座標を計算
 key_positions = {}
 
 for row_idx, centers in enumerate(row_centers_u):
     cy = by + (row_idx + 0.5) * key_h_px
+    # ホーム行からの距離（上段は負、下段は正）
+    row_dist = row_idx - HOME_ROW_IDX
+    # 視差補正: 上段（row_dist < 0）は指先が手前に見えるので y を増やす
+    parallax_offset = PARALLAX_FACTOR * (-row_dist)  # 上段で正方向（下）に補正
     for key, cx_u in centers:
         cx = bx + cx_u * key_w_px
         ox, oy = to_orig(cx, cy)
-        key_positions[key] = (ox, oy)
+        key_positions[key] = (ox, int(oy + parallax_offset))
 
 # 行中心y座標（元画像座標）
 row_y_centers = []
