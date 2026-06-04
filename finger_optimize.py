@@ -24,6 +24,8 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from session_utils import get_session_files, find_session_integrated_files, list_all_session_ids
+from constants import FINGER_NAMES, FINGER_ORDER, PHRASE_BOUNDARY_MS
 from plot_utils import setup_jp_font
 setup_jp_font()
 
@@ -86,9 +88,10 @@ def is_practical(finger: str, key: str, threshold: float) -> bool:
 
 # ── データ読み込み ─────────────────────────────────────────────
 if args.session_id:
-    int_files = [f"session_{args.session_id}_integrated.json"]
+    sf_s = get_session_files(args.session_id)
+    int_files = [sf_s["integrated"]] if os.path.exists(sf_s["integrated"]) else []
 else:
-    int_files = sorted(glob.glob("session_*_integrated.json"))
+    int_files = find_session_integrated_files()
 
 all_strokes = []
 for fpath in int_files:
@@ -96,7 +99,7 @@ for fpath in int_files:
         continue
     with open(fpath, encoding="utf-8") as f:
         data = json.load(f)
-    sid = re.search(r"session_(\d+)_integrated", fpath).group(1)
+    sid = session_id_from_path(fpath)
     cam = [r for r in data
            if r["source"] == "camera"
            and r.get("actual_finger")
@@ -426,5 +429,6 @@ if top_keys:
     ax2.axhline(-0.5, color="white", linewidth=0.5)
 
 plt.tight_layout()
-plt.savefig("finger_optimize.png", dpi=150, bbox_inches="tight")
-print("\n保存: finger_optimize.png")
+from session_utils import output_path as _op
+plt.savefig(_op("finger_optimize.png"), dpi=150, bbox_inches="tight")
+print(f"\n保存: {_op('finger_optimize.png')}") 

@@ -18,6 +18,8 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
+from session_utils import get_session_files, list_all_session_ids, load_meta, output_path
+from constants import PHRASE_BOUNDARY_MS, FINGER_NAMES, STANDARD_FINGER
 from plot_utils import setup_jp_font
 setup_jp_font()
 
@@ -25,32 +27,16 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--no-show", action="store_true")
 args = parser.parse_args()
 
-PHRASE_BOUNDARY_MS = 1000
-FINGER_NAMES = {
-    "L1":"左小指","L2":"左薬指","L3":"左中指","L4":"左人差",
-    "R4":"右人差","R3":"右中指","R2":"右薬指","R1":"右小指",
-}
-STANDARD_FINGER = {
-    "q":"L1","w":"L2","e":"L3","r":"L4","t":"L4",
-    "y":"R4","u":"R4","i":"R3","o":"R2","p":"R1",
-    "a":"L1","s":"L2","d":"L3","f":"L4","g":"L4",
-    "h":"R4","j":"R4","k":"R3","l":"R2",
-    "z":"L1","x":"L2","c":"L3","v":"L4","b":"L4",
-    "n":"R4","m":"R4",",":"R3",".":"R2","/":"R1"," ":"RT",
-}
 
 # ── データ収集 ─────────────────────────────────────────────────
-session_ids = sorted(set(
-    re.search(r"session_(\d+)_keys", f).group(1)
-    for f in glob.glob("session_*_keys.json")
-))
-
 records = []
-for sid in session_ids:
-    rec = {"session_id": sid}
+for sid in list_all_session_ids():
+    sf  = get_session_files(sid)
+    meta = load_meta(sid)
+    rec = {"session_id": sid, "label": meta.get("label",""), "category": meta.get("category","")}
 
     # ── キーログ統計 ──────────────────────────────────────────
-    kf = f"session_{sid}_keys.json"
+    kf = sf["keys"]
     if not os.path.exists(kf):
         continue
     with open(kf, encoding="utf-8") as f:
@@ -70,7 +56,7 @@ for sid in session_ids:
     rec["median_iv"]   = np.median(ivs) if ivs else 0
 
     # ── integrate 統計 ────────────────────────────────────────
-    inf = f"session_{sid}_integrated.json"
+    inf = sf["integrated"]
     if os.path.exists(inf):
         with open(inf, encoding="utf-8") as f:
             data = json.load(f)
@@ -104,7 +90,12 @@ if len(records) < 2:
     sys.exit(0)
 
 # ── プロット ───────────────────────────────────────────────────
-labels = [f"S{i+1}\n({r['n_keys']}打)" for i, r in enumerate(records)]
+labels = []
+for i, r in enumerate(records):
+    lbl = r.get("label","") or r.get("category","")
+    line1 = f"S{i+1}" + (f"\n{lbl[:8]}" if lbl else "")
+    line2 = f"({r['n_keys']}打)"
+    labels.append(f"{line1}\n{line2}")
 x      = np.arange(len(records))
 colors = plt.cm.tab10.colors
 
@@ -196,8 +187,9 @@ ax5.axhline(80, color="gray", linestyle="--", linewidth=0.8, alpha=0.5, label="8
 ax5.legend(fontsize=8, loc="lower right")
 ax5.grid(axis="y", alpha=0.3)
 
-plt.savefig("trend.png", dpi=150, bbox_inches="tight")
-print("保存: trend.png")
+out = output_path("trend.png")
+plt.savefig(out, dpi=150, bbox_inches="tight")
+print(f"保存: {out}")
 
 # ── テキストサマリー ──────────────────────────────────────────
 print()

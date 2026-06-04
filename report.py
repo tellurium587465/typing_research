@@ -14,6 +14,10 @@ import re
 from collections import defaultdict
 import numpy as np
 
+from session_utils import (get_session_files, list_all_session_ids,
+                            load_meta, find_session_key_files)
+from constants import PHRASE_BOUNDARY_MS, FINGER_NAMES
+
 parser = argparse.ArgumentParser()
 parser.add_argument("--session-id", default=None)
 parser.add_argument("--detail", action="store_true", help="キー別詳細を表示")
@@ -109,10 +113,7 @@ def analyze_session(session_id):
 if args.session_id:
     session_ids = [args.session_id]
 else:
-    files = glob.glob("session_*_keys.json")
-    session_ids = sorted(
-        set(re.search(r"session_(\d+)_keys", f).group(1) for f in files)
-    )
+    session_ids = list_all_session_ids()
 
 print("=" * 70)
 print("  Typing Research  全セッション サマリー")

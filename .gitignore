@@ -5,7 +5,13 @@
 *.task
 *.png
 
-# セッション生データ（ローカル保持・git管理外）
+# セッション生データ（新構造: sessions/{id}/）
+sessions/*/audio.wav
+sessions/*/video.avi
+sessions/*/pose.json
+sessions/*/pose_backup.json
+
+# セッション生データ（旧構造: 後方互換）
 session_*_pose.json
 session_*_pose_backup.json
 session_*_video.*
@@ -21,6 +27,8 @@ frame_*.png
 jasp_trigram_*.csv
 jasp_trigram_ALL*.csv
 typing_analysis_*.xlsx
+output/*.png
+output/*.csv
 
 # 仮想環境
 __pycache__/

@@ -24,6 +24,8 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
+from session_utils import get_session_files, find_session_integrated_files, list_all_session_ids
+from constants import FINGER_NAMES, STANDARD_FINGER
 from plot_utils import setup_jp_font
 setup_jp_font()
 
@@ -34,9 +36,10 @@ args = parser.parse_args()
 
 # ── データ収集 ─────────────────────────────────────────────────
 if args.session_id:
-    int_files = [f"session_{args.session_id}_integrated.json"]
+    sf_s = get_session_files(args.session_id)
+    int_files = [sf_s["integrated"]] if os.path.exists(sf_s["integrated"]) else []
 else:
-    int_files = sorted(glob.glob("session_*_integrated.json"))
+    int_files = find_session_integrated_files()
 
 KEY_STATS = defaultdict(lambda: {
     "cam": 0, "key_ok": 0, "fin_ok": 0,
@@ -190,6 +193,7 @@ title_sfx = f"session {args.session_id}" if args.session_id else "全セッシ�
 ax.set_title(f"キーごとの苦手ヒートマップ（{title_sfx}）",
              color="white", fontsize=13, fontweight="bold", pad=10)
 
-plt.savefig("weakness_heatmap.png", dpi=150, bbox_inches="tight",
+from session_utils import output_path as _op
+plt.savefig(_op("weakness_heatmap.png"), dpi=150, bbox_inches="tight",
             facecolor=fig.get_facecolor())
-print("\n保存: weakness_heatmap.png")
+print(f"\n保存: {_op('weakness_heatmap.png')}") 

@@ -218,8 +218,9 @@ ax2.set_title("平均 ± SD")
 ax2.grid(axis="y", alpha=0.3)
 
 plt.tight_layout()
-plt.savefig("stats_test_result.png", dpi=150, bbox_inches="tight")
-print("\n保存: stats_test_result.png")
+from session_utils import output_path as _op
+plt.savefig(_op("stats_test_result.png"), dpi=150, bbox_inches="tight")
+print(f"\n保存: {_op('stats_test_result.png')}") 
 
 # ── 解釈コメント ──────────────────────────────────────────────
 print()

@@ -12,3 +12,5 @@ pynput
 pykakasi
 python-pptx
 numba
+streamlit
+plotly

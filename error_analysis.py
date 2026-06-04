@@ -28,20 +28,26 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 
+from session_utils import (get_session_files, find_session_key_files,
+                           list_all_session_ids, session_id_from_path)
+from constants import PHRASE_BOUNDARY_MS, FINGER_NAMES
 from plot_utils import setup_jp_font
 setup_jp_font()
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--session-id",    default=None)
 parser.add_argument("--phrase-ms",     type=int,   default=1000)
-parser.add_argument("--arpeggio-map",  default="arpeggio_map.json")
+parser.add_argument("--arpeggio-map",  default=None,
+                    help="アルペジオマップのパス（省略時は output/arpeggio_map.json）")
 parser.add_argument("--context",       type=int,   default=4)
 args = parser.parse_args()
 
 # ── アルペジオマップの読み込み ─────────────────────────────────
+from session_utils import output_path as _output_path
+arpeggio_map_path = args.arpeggio_map or _output_path("arpeggio_map.json")
 arpeggio_map = {}
-if os.path.exists(args.arpeggio_map):
-    with open(args.arpeggio_map, encoding="utf-8") as f:
+if os.path.exists(arpeggio_map_path):
+    with open(arpeggio_map_path, encoding="utf-8") as f:
         arpeggio_map = json.load(f)
     print(f"アルペジオマップ: {len(arpeggio_map)}ペア読み込み")
 else:
@@ -90,9 +96,10 @@ def classify_speed(interval_ms, pair_info, global_mean):
 
 # ── データ読み込み ─────────────────────────────────────────────
 if args.session_id:
-    key_files = [f"session_{args.session_id}_keys.json"]
+    sf_single = get_session_files(args.session_id)
+    key_files = [sf_single["keys"]] if os.path.exists(sf_single["keys"]) else []
 else:
-    key_files = sorted(glob.glob("session_*_keys.json"))
+    key_files = find_session_key_files()
 
 def load_integrated(sid):
     p = f"session_{sid}_integrated.json"
@@ -114,7 +121,7 @@ SESSION_SUMMARIES = []
 for kf in key_files:
     if not os.path.exists(kf):
         continue
-    sid = re.search(r"session_(\d+)_keys", kf).group(1)
+    sid = session_id_from_path(kf)
     with open(kf, encoding="utf-8") as f:
         keylog = json.load(f)
 
@@ -363,5 +370,6 @@ if pie_data:
     )
     ax2.set_title("エラー種別の内訳", fontweight="bold")
 
-plt.savefig("error_analysis.png", dpi=150, bbox_inches="tight")
-print("\n保存: error_analysis.png")
+from session_utils import output_path as _op
+plt.savefig(_op("error_analysis.png"), dpi=150, bbox_inches="tight")
+print(f"\n保存: {_op('error_analysis.png')}") 

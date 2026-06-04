@@ -27,6 +27,9 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
+from session_utils import (get_session_files, list_all_session_ids,
+                           find_session_key_files, output_path)
+from constants import PHRASE_BOUNDARY_MS, OUTPUT_DIR
 from plot_utils import setup_jp_font
 setup_jp_font()
 
@@ -43,13 +46,14 @@ parser.add_argument("--cv-variable", type=float, default=0.60,
 parser.add_argument("--phrase-ms",   type=int,   default=1000)
 parser.add_argument("--show",        action="store_true",
                     help="ペア一覧を表示")
-parser.add_argument("--out",         default="arpeggio_map.json")
+parser.add_argument("--out",         default=None,
+                    help="保存先（省略時は output/arpeggio_map.json）")
 args = parser.parse_args()
 
 # ── 全セッションのキーペア統計を収集 ──────────────────────────
 pair_ivs = defaultdict(list)   # (prev_key, curr_key) → [interval_ms, ...]
 
-for kf in sorted(glob.glob("session_*_keys.json")):
+for kf in find_session_key_files():
     with open(kf, encoding="utf-8") as f:
         keys = json.load(f)
     normal = [k for k in keys
@@ -96,9 +100,10 @@ for (pk, ck), ivs in pair_ivs.items():
     }
 
 # ── 保存 ──────────────────────────────────────────────────────
-with open(args.out, "w", encoding="utf-8") as f:
+out_path = args.out if args.out else output_path("arpeggio_map.json")
+with open(out_path, "w", encoding="utf-8") as f:
     json.dump(arpeggio_map, f, ensure_ascii=False, indent=2)
-print(f"保存: {args.out}  ({len(arpeggio_map)}ペア)")
+print(f"保存: {out_path}  ({len(arpeggio_map)}ペア)")
 
 # ── サマリー ──────────────────────────────────────────────────
 by_type = defaultdict(list)
@@ -201,5 +206,6 @@ if top_arp:
         ax2.grid(alpha=0.3)
 
 plt.tight_layout()
-plt.savefig("arpeggio_analysis.png", dpi=150, bbox_inches="tight")
-print("\n保存: arpeggio_analysis.png")
+from session_utils import output_path as _op
+plt.savefig(_op("arpeggio_analysis.png"), dpi=150, bbox_inches="tight")
+print(f"\n保存: {_op('arpeggio_analysis.png')}") 

@@ -17,6 +17,9 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
+from session_utils import (get_session_files, find_session_key_files,
+                           list_all_session_ids, session_id_from_path, output_path)
+from constants import PHRASE_BOUNDARY_MS, FINGER_NAMES
 from plot_utils import setup_jp_font
 setup_jp_font()
 
@@ -27,9 +30,10 @@ parser.add_argument("--phrase-ms", type=int,   default=1000)
 args = parser.parse_args()
 
 if args.session_id:
-    key_files = [f"session_{args.session_id}_keys.json"]
+    sf_s = get_session_files(args.session_id)
+    key_files = [sf_s["keys"]] if os.path.exists(sf_s["keys"]) else []
 else:
-    key_files = sorted(glob.glob("session_*_keys.json"))
+    key_files = find_session_key_files()
 
 FINGER_NAMES = {
     "L1":"左小指","L2":"左薬指","L3":"左中指","L4":"左人差し指",
@@ -48,7 +52,7 @@ fig.suptitle("セッション内の時間帯別パフォーマンス", fontsize=
 for row_i, kf in enumerate(key_files):
     if not os.path.exists(kf):
         continue
-    sid = re.search(r"session_(\d+)_keys", kf).group(1)
+    sid = session_id_from_path(kf)
 
     with open(kf, encoding="utf-8") as f:
         keys = json.load(f)
@@ -154,5 +158,6 @@ for row_i, kf in enumerate(key_files):
     ax_err.grid(axis="y", alpha=0.3)
 
 plt.tight_layout()
-plt.savefig("fatigue_analysis.png", dpi=150, bbox_inches="tight")
-print(f"\n保存: fatigue_analysis.png")
+from session_utils import output_path as _op
+plt.savefig(_op("fatigue_analysis.png"), dpi=150, bbox_inches="tight")
+print(f"\n保存: {_op('fatigue_analysis.png')}") 
