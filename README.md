@@ -105,6 +105,14 @@ start.bat report --detail # キー別の詳細も表示
 録音・分析以外に、個別で呼べる分析ツールがあります。
 
 ```bat
+# 全セッション統合分析（依存なし・標準ライブラリだけで動く）
+#   セッション別トレンド/疲労・3gram統計検定・キー別苦手スコア・
+#   同指ビッグラム・母音パターンを1コマンドで横断集計
+#   → consolidated_report.txt と jasp_trigram_ALL_clean.csv を出力
+python consolidated_analysis.py
+# 各分析の「なぜその手法か・何が分かるか」は
+#   分析手法の選定理由と得られる知見.txt を参照
+
 # 成長グラフ（WPM・打鍵間隔・運指一致率の推移）
 .venv310\Scripts\python trend.py
 
