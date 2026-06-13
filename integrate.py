@@ -9,6 +9,10 @@ import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--session-id", default=None)
+parser.add_argument("--use-z", action="store_true",
+                    help="z深度の押下キューを使う（実験的・validate_finger.pyで検証してから）")
+parser.add_argument("--reorder", action="store_true",
+                    help="指先x順序でR3↔R2取り違えを補正（実験的・要検証）")
 args = parser.parse_args()
 
 _sf = get_session_files(args.session_id)
@@ -197,7 +201,8 @@ for entry in onset_matched:
     std_kx, std_ky = std_key_pos
     sel = select_finger(
         nearby, onset_ms, std_kx, std_ky, key, SEARCH_WINDOW_MS,
-        KEY_W_PX, FINGER_TO_CODE, EXCLUDED_FINGERS, pixel_to_key)
+        KEY_W_PX, FINGER_TO_CODE, EXCLUDED_FINGERS, pixel_to_key,
+        use_z=args.use_z, reorder=args.reorder)
 
     if sel is None:
         results.append(_std_only(entry, key, std_finger))

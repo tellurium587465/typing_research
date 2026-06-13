@@ -244,6 +244,29 @@ python consolidated_analysis.py
 除いた**妥当な運指一致率**を報告できる。ロジックは `test_finger_select.py` で
 合成データ単体テスト済み（カメラ実データ不要で検証可）。
 
+#### 妥当性検証（誤検出率の定量化）
+
+推定運指が本当に当たっているかを人手ラベルで検証する：
+
+```bat
+REM 情報量の多い打鍵を30件抽出（uncertain/nonstandard優先）
+python validate_finger.py --sample 30 --session-id <id>
+REM → sessions/<id>/validate_labels.csv の true_finger 列を録画を見て埋める
+python validate_finger.py --score --session-id <id>
+```
+
+全体正解率・品質クラス別正解率・取り違え行列（R3↔R2 を自動フラグ）・信頼度較正を出す。
+`uncertain` の正解率が低く `standard` が高ければ品質分類が妥当と確認できる。
+
+#### 実験的オプション（検証してから有効化）
+
+```bat
+python integrate.py --use-z      # z深度の押下キューを加味
+python integrate.py --reorder    # 指先x順序で R3↔R2 取り違えを補正
+```
+
+いずれも既定 OFF。`validate_finger.py` で ON/OFF の正解率を比べてから常用する想定。
+
 ### フレーズ境界の自動検出
 
 寿司打等で次のお題が出るまでの待機時間が `interval_ms` に混入する問題を自動除外：
@@ -267,7 +290,8 @@ typing_research/
 ├── onset_detection.py    # 打鍵音タイミング検出
 ├── integrate.py          # 3ソース統合・指/キー判定
 ├── finger_select.py      # 使用指の多フレーム投票＋信頼度＋品質分類（純関数）
-├── test_finger_select.py # finger_select の単体テスト（合成データ）
+├── validate_finger.py    # 運指推定の妥当性検証（人手ラベルと突き合わせ）
+├── test_finger_select.py # finger_select / validate の単体テスト（合成データ）
 ├── export_excel.py       # Excel / JASP CSV 出力
 │
 ├── report.py             # 全セッションサマリー表示
