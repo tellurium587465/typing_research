@@ -229,6 +229,21 @@ python consolidated_analysis.py
   R2（右薬指）:  2%  → 誤検出として除外
 ```
 
+### 使用指の推定（多フレーム投票＋信頼度＋品質分類）
+
+`integrate.py` は `finger_select.py` を使い、打鍵ごとに onset±150ms の**全フレームで投票**して使用指を決める（単一フレーム最近傍からの改良）。
+
+- 票 = 時間の近さ × キーへの近さ。合計票が最大の指を採用 → 1フレームのジッタに強い
+- 出力に `detection_confidence`（勝者票/総票）と `vote_margin`（2位との差）を追加
+- `finger_quality` で **「本人の運指の癖」と「カメラ誤検出」を分離**：
+  - `standard` … 高信頼かつ標準運指と一致
+  - `nonstandard` … 高信頼だが標準と不一致（＝本人の運指の癖。計測したい本物）
+  - `uncertain` … 低信頼（誤検出の疑い。集計から除外できる）
+
+これにより「運指一致率が低い」を“癖”と“ノイズ”に切り分けられ、`uncertain` を
+除いた**妥当な運指一致率**を報告できる。ロジックは `test_finger_select.py` で
+合成データ単体テスト済み（カメラ実データ不要で検証可）。
+
 ### フレーズ境界の自動検出
 
 寿司打等で次のお題が出るまでの待機時間が `interval_ms` に混入する問題を自動除外：
@@ -251,6 +266,8 @@ typing_research/
 ├── pose_analysis.py      # MediaPipe による指先追跡
 ├── onset_detection.py    # 打鍵音タイミング検出
 ├── integrate.py          # 3ソース統合・指/キー判定
+├── finger_select.py      # 使用指の多フレーム投票＋信頼度＋品質分類（純関数）
+├── test_finger_select.py # finger_select の単体テスト（合成データ）
 ├── export_excel.py       # Excel / JASP CSV 出力
 │
 ├── report.py             # 全セッションサマリー表示

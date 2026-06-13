@@ -4,6 +4,7 @@ from collections import defaultdict
 
 import argparse
 from session_utils import get_session_files
+from finger_select import select_finger, classify_quality
 import os
 
 parser = argparse.ArgumentParser()
@@ -149,8 +150,31 @@ print(f"pose範囲:  {pose_first}ms 〜 {pose_last}ms")
 
 # -----------------------------------------------
 # 打鍵ごとに pose から使用指を推定
+#   多フレーム投票＋信頼度＋品質分類（finger_select.py）
 # -----------------------------------------------
 SEARCH_WINDOW_MS = 150  # 前後150ms（約±4〜5フレーム@30fps）
+
+def _std_only(entry, key, std_finger):
+    """カメラで指特定できなかった打鍵の結果（標準運指のみ）"""
+    return {
+        "onset_ms":            entry["onset_ms"],
+        "key":                 key,
+        "std_finger":          std_finger,
+        "std_finger_name":     FINGER_NAMES.get(std_finger, "?"),
+        "actual_finger":       None,
+        "actual_finger_name":  None,
+        "finger_match":        False,
+        "detected_key":        None,
+        "key_match":           False,
+        "dist_to_key":         None,
+        "detection_confidence": None,
+        "vote_margin":          None,
+        "finger_quality":       "no_detection",
+        "n_candidate_frames":   0,
+        "interval_ms":         entry["interval_ms"],
+        "is_error":            entry["is_error"],
+        "source":              "std_only",
+    }
 
 results = []
 
@@ -167,85 +191,24 @@ for entry in onset_matched:
     ]
 
     if not nearby or std_key_pos is None:
-        results.append({
-            "onset_ms":           onset_ms,
-            "key":                key,
-            "std_finger":         std_finger,
-            "std_finger_name":    FINGER_NAMES.get(std_finger, "?"),
-            "actual_finger":      None,
-            "actual_finger_name": None,
-            "finger_match":       False,
-            "detected_key":       None,
-            "key_match":          False,
-            "dist_to_key":        None,
-            "interval_ms":        entry["interval_ms"],
-            "is_error":           entry["is_error"],
-            "source":             "std_only"
-        })
+        results.append(_std_only(entry, key, std_finger))
         continue
 
     std_kx, std_ky = std_key_pos
-    best       = None
-    best_score = float("inf")
+    sel = select_finger(
+        nearby, onset_ms, std_kx, std_ky, key, SEARCH_WINDOW_MS,
+        KEY_W_PX, FINGER_TO_CODE, EXCLUDED_FINGERS, pixel_to_key)
 
-    for frame in nearby:
-        ts_diff = abs(frame["timestamp_ms"] - onset_ms)
-        for hand in frame["hands"]:
-            label = hand["label"]
-            for fname, coords in hand["fingertips"].items():
-                # 除外指をスキップ
-                if (label, fname) in EXCLUDED_FINGERS:
-                    continue
-                # 左親指もスペース以外は除外
-                if fname == "thumb" and key != " ":
-                    continue
-
-                px, py = coords["px"], coords["py"]
-
-                # 打鍵キーの座標から2キー分以内の指先だけを候補にする
-                # bboxベースではなくキー中心距離でフィルタ（隣接手の誤混入を防ぐ）
-                dist = np.sqrt((px - std_kx) ** 2 + (py - std_ky) ** 2)
-                if dist > KEY_W_PX * 2.0:  # 約60px（キー2個分）を超えたら除外
-                    continue
-
-                score = dist + ts_diff * 0.5
-
-                if score < best_score:
-                    best_score = score
-                    finger_code  = FINGER_TO_CODE.get((label, fname), f"{label[0]}_{fname}")
-                    detected_key = pixel_to_key(px, py)
-                    best = {
-                        "finger_code":  finger_code,
-                        "finger_label": f"{label}_{fname}",
-                        "detected_key": detected_key,
-                        "px": px, "py": py,
-                        "dist": round(float(dist), 1),
-                    }
-
-    if best is None:
-        results.append({
-            "onset_ms":           onset_ms,
-            "key":                key,
-            "std_finger":         std_finger,
-            "std_finger_name":    FINGER_NAMES.get(std_finger, "?"),
-            "actual_finger":      None,
-            "actual_finger_name": None,
-            "finger_match":       False,
-            "detected_key":       None,
-            "key_match":          False,
-            "dist_to_key":        None,
-            "interval_ms":        entry["interval_ms"],
-            "is_error":           entry["is_error"],
-            "source":             "std_only"
-        })
+    if sel is None:
+        results.append(_std_only(entry, key, std_finger))
         continue
 
-    finger_code  = best["finger_code"]
-    detected_key = best["detected_key"]
+    finger_code  = sel["finger_code"]
+    detected_key = sel["detected_key"]
     finger_match = (finger_code == std_finger)
 
     # key_match の判定：key_rects の実寸矩形で判定
-    px, py  = best["px"], best["py"]
+    px, py = sel["px"], sel["py"]
     if KEY_RECTS and key in KEY_RECTS:
         rect    = KEY_RECTS[key]
         in_rect = rect["x_min"] <= px <= rect["x_max"] and rect["y_min"] <= py <= rect["y_max"]
@@ -256,20 +219,28 @@ for entry in onset_matched:
     name_ok   = (detected_key is not None and detected_key.lower() == key.lower())
     key_match = in_rect or name_ok
 
+    # 品質分類：高信頼かつ標準一致=standard / 高信頼だが不一致=nonstandard（癖）
+    #           低信頼=uncertain（誤検出疑い）。"癖" と "ノイズ" を分離する。
+    quality = classify_quality(sel["confidence"], sel["margin"], finger_match)
+
     results.append({
-        "onset_ms":           onset_ms,
-        "key":                key,
-        "std_finger":         std_finger,
-        "std_finger_name":    FINGER_NAMES.get(std_finger, "?"),
-        "actual_finger":      finger_code,
-        "actual_finger_name": FINGER_NAMES.get(finger_code, finger_code),
-        "finger_match":       finger_match,
-        "detected_key":       detected_key,
-        "key_match":          key_match,
-        "dist_to_key":        best["dist"],
-        "interval_ms":        entry["interval_ms"],
-        "is_error":           entry["is_error"],
-        "source":             "camera"
+        "onset_ms":            onset_ms,
+        "key":                 key,
+        "std_finger":          std_finger,
+        "std_finger_name":     FINGER_NAMES.get(std_finger, "?"),
+        "actual_finger":       finger_code,
+        "actual_finger_name":  FINGER_NAMES.get(finger_code, finger_code),
+        "finger_match":        finger_match,
+        "detected_key":        detected_key,
+        "key_match":           key_match,
+        "dist_to_key":         sel["dist"],
+        "detection_confidence": sel["confidence"],
+        "vote_margin":          sel["margin"],
+        "finger_quality":       quality,
+        "n_candidate_frames":   sel["n_frames"],
+        "interval_ms":         entry["interval_ms"],
+        "is_error":            entry["is_error"],
+        "source":              "camera",
     })
 
 # -----------------------------------------------
@@ -282,8 +253,27 @@ finger_matches = [r for r in camera_results if r["finger_match"]]
 print(f"\nカメラで指特定できた件数: {len(camera_results)}/{len(results)}件")
 print(f"キー一致率:  {len(key_matches)}/{len(camera_results)}件 "
       f"({len(key_matches)/max(len(camera_results),1)*100:.1f}%)")
-print(f"運指一致率:  {len(finger_matches)}/{len(camera_results)}件 "
+print(f"運指一致率(全カメラ): {len(finger_matches)}/{len(camera_results)}件 "
       f"({len(finger_matches)/max(len(camera_results),1)*100:.1f}%)")
+
+# ── 検出品質の内訳（"本人の癖" と "誤検出" を分離）─────────────────
+q_std    = [r for r in camera_results if r.get("finger_quality") == "standard"]
+q_nonstd = [r for r in camera_results if r.get("finger_quality") == "nonstandard"]
+q_unc    = [r for r in camera_results if r.get("finger_quality") == "uncertain"]
+n_cam    = max(len(camera_results), 1)
+confident = len(q_std) + len(q_nonstd)
+print("\n--- 検出品質の内訳 ---")
+print(f"  standard   (高信頼・標準運指)     : {len(q_std):4d}件 ({len(q_std)/n_cam*100:.1f}%)")
+print(f"  nonstandard(高信頼・本人の運指の癖): {len(q_nonstd):4d}件 ({len(q_nonstd)/n_cam*100:.1f}%)")
+print(f"  uncertain  (低信頼・誤検出の疑い)  : {len(q_unc):4d}件 ({len(q_unc)/n_cam*100:.1f}%)")
+if confident:
+    print(f"\n  妥当な運指一致率（uncertain除外）: "
+          f"{len(q_std)}/{confident}件 ({len(q_std)/confident*100:.1f}%)")
+    print(f"  → 残り {len(q_nonstd)/confident*100:.1f}% は誤検出ではなく "
+          f"本人が標準と違う指で打っている（運指の癖）")
+avg_conf = np.mean([r["detection_confidence"] for r in camera_results
+                    if r.get("detection_confidence") is not None]) if camera_results else 0
+print(f"  平均検出信頼度: {avg_conf:.3f}")
 
 print("\n--- サンプル（先頭20件）---")
 for r in results[:20]:
